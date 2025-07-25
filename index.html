@@ -409,8 +409,31 @@
     
     <script>
         function selectPath(pathName) {
-            // Production-ready: Show user-friendly message instead of alert
-            const message = `You selected: ${pathName}\n\nTo use this framework:\n1. Copy the path name: "${pathName}"\n2. Start a new chat with your AI assistant\n3. Paste: "I want to use ${pathName} from the AI Development Framework v.4"\n4. Follow the AI's guidance through your chosen path`;
+            // Get path-specific information
+            let pathInfo = {};
+            
+            if (pathName === 'Path A - The Sprinter') {
+                pathInfo = {
+                    steps: '4 streamlined steps',
+                    questions: '8-12 essential questions',
+                    time: '2-4 hours + development time',
+                    focus: 'Core functionality with basic research'
+                };
+            } else if (pathName === 'Path B - The Strategist') {
+                pathInfo = {
+                    steps: '6 structured steps',
+                    questions: '15-25 strategic questions',
+                    time: '4-8 hours + development time',
+                    focus: 'Technical research and risk analysis'
+                };
+            } else if (pathName === 'Path C - The Architect') {
+                pathInfo = {
+                    steps: '8 detailed steps',
+                    questions: '25-35 comprehensive questions',
+                    time: '8-16 hours + development time',
+                    focus: 'Deep technical research and solutions'
+                };
+            }
             
             // Create a modal-style notification
             const notification = document.createElement('div');
@@ -425,22 +448,31 @@
                 box-shadow: 0 20px 40px rgba(0,0,0,0.3);
                 z-index: 1000;
                 max-width: 500px;
-                text-align: center;
+                text-align: left;
                 font-family: inherit;
             `;
             
             notification.innerHTML = `
-                <h3 style="color: #667eea; margin-bottom: 15px;">Path Selected!</h3>
-                <p style="margin-bottom: 20px; line-height: 1.5;">${message}</p>
-                <button onclick="this.parentElement.remove()" style="
-                    background: #667eea;
-                    color: white;
-                    border: none;
-                    padding: 10px 20px;
-                    border-radius: 6px;
-                    cursor: pointer;
-                    font-size: 16px;
-                ">Got it!</button>
+                <h3 style="color: #667eea; margin-bottom: 15px; text-align: center;">✅ ${pathName} Selected!</h3>
+                <ul style="margin: 20px 0; padding-left: 20px; line-height: 1.6;">
+                    <li><strong>Steps:</strong> ${pathInfo.steps}</li>
+                    <li><strong>Questions:</strong> ${pathInfo.questions}</li>
+                    <li><strong>Time:</strong> ${pathInfo.time}</li>
+                    <li><strong>Focus:</strong> ${pathInfo.focus}</li>
+                </ul>
+                <p style="text-align: center; margin: 20px 0; font-weight: 600; color: #333;">Ready to begin your development journey!</p>
+                <div style="text-align: center;">
+                    <button onclick="this.parentElement.remove()" style="
+                        background: #667eea;
+                        color: white;
+                        border: none;
+                        padding: 12px 24px;
+                        border-radius: 6px;
+                        cursor: pointer;
+                        font-size: 16px;
+                        font-weight: 600;
+                    ">Let's Go!</button>
+                </div>
             `;
             
             document.body.appendChild(notification);
