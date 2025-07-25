@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Framework Setup and Introduction</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .header .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .quick-start {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+            border-left: 5px solid #667eea;
+        }
+        
+        .quick-start h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+        
+        .quick-start ol {
+            padding-left: 20px;
+        }
+        
+        .quick-start li {
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .comparison-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px 15px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+        
+        .comparison-table td {
+            padding: 20px 15px;
+            border-bottom: 1px solid #eee;
+            vertical-align: top;
+        }
+        
+        .comparison-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        .comparison-table tr:hover {
+            background-color: #e3f2fd;
+            transition: background-color 0.3s ease;
+        }
+        
+        .path-selection {
+            margin: 50px 0;
+        }
+        
+        .path-selection h2 {
+            text-align: center;
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .path-selection .intro {
+            text-align: center;
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 40px;
+        }
+        
+        .path-button {
+            display: block;
+            width: 100%;
+            padding: 25px;
+            margin: 20px 0;
+            border: none;
+            border-radius: 16px;
+            font-size: 16px;
+            font-family: inherit;
+            text-align: left;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .path-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        }
+        
+        .path-button:active {
+            transform: translateY(-2px);
+        }
+        
+        .path-button.sprinter {
+            background: linear-gradient(135deg, #FFF3CD 0%, #FFE69C 100%);
+            border: 3px solid #FFD700;
+            color: #856404;
+        }
+        
+        .path-button.sprinter:hover {
+            background: linear-gradient(135deg, #FFE69C 0%, #FFD700 100%);
+        }
+        
+        .path-button.strategist {
+            background: linear-gradient(135deg, #D1ECF1 0%, #B3D9E6 100%);
+            border: 3px solid #17A2B8;
+            color: #0c5460;
+        }
+        
+        .path-button.strategist:hover {
+            background: linear-gradient(135deg, #B3D9E6 0%, #17A2B8 100%);
+            color: white;
+        }
+        
+        .path-button.architect {
+            background: linear-gradient(135deg, #D4EDDA 0%, #C3E6CB 100%);
+            border: 3px solid #28A745;
+            color: #155724;
+        }
+        
+        .path-button.architect:hover {
+            background: linear-gradient(135deg, #C3E6CB 0%, #28A745 100%);
+            color: white;
+        }
+        
+        .path-emoji {
+            font-size: 1.5em;
+            margin-right: 10px;
+        }
+        
+        .path-title {
+            font-size: 1.3em;
+            font-weight: 700;
+            margin-bottom: 8px;
+            display: block;
+        }
+        
+        .path-subtitle {
+            font-size: 1.1em;
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: block;
+        }
+        
+        .path-features {
+            font-size: 1em;
+            line-height: 1.4;
+            opacity: 0.9;
+        }
+        
+        .benefits {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 30px;
+            margin-top: 50px;
+        }
+        
+        .benefits h2 {
+            color: #667eea;
+            margin-bottom: 25px;
+            font-size: 1.8em;
+        }
+        
+        .benefits h3 {
+            color: #333;
+            margin: 20px 0 15px 0;
+            font-size: 1.3em;
+        }
+        
+        .benefits ul {
+            padding-left: 20px;
+        }
+        
+        .benefits li {
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 30px;
+            background: #f8f9fa;
+            font-size: 1.2em;
+            color: #666;
+        }
+        
+        .footer strong {
+            color: #667eea;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 12px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .content {
+                padding: 30px 20px;
+            }
+            
+            .comparison-table {
+                font-size: 0.9em;
+            }
+            
+            .comparison-table th,
+            .comparison-table td {
+                padding: 15px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 AI-Powered Software Development Framework v.4</h1>
+            <div class="subtitle">Hybrid Framework Edition</div>
+        </div>
+        
+        <div class="content">
+            <div class="quick-start">
+                <h2>⚡ Quick Start</h2>
+                <ol>
+                    <li><strong>Read this overview</strong> to understand the framework approach</li>
+                    <li><strong>Choose your path</strong> using the comparison table below</li>
+                    <li><strong>Click your chosen path button</strong> to proceed to your dedicated workflow</li>
+                    <li><strong>Stay in one chat session</strong> for best results throughout your entire project</li>
+                </ol>
+            </div>
+            
+            <h2>🎯 Choose Your Path</h2>
+            <p style="text-align: center; font-size: 1.2em; color: #666; margin-bottom: 30px;">
+                Select your level of involvement. This choice determines your workflow complexity and depth.
+            </p>
+            
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Attribute</th>
+                        <th>Path A: The Sprinter</th>
+                        <th>Path B: The Strategist</th>
+                        <th>Path C: The Architect</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Best for</strong></td>
+                        <td>Quick prototypes, simple projects, rapid validation</td>
+                        <td>Business applications, structured development</td>
+                        <td>Complex systems, enterprise applications, high-stakes projects</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Steps</strong></td>
+                        <td>4 Total</td>
+                        <td>6 Total</td>
+                        <td>8 Total</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Questions</strong></td>
+                        <td>~8-12 essential</td>
+                        <td>~15-25 strategic</td>
+                        <td>~25-35 comprehensive</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Time</strong></td>
+                        <td>2-4 hours + dev time<br><small>30-60 mins brainstorming<br>1-2 hours Q&A/planning<br>1-2 hours AI coordination</small></td>
+                        <td>4-8 hours + dev time<br><small>1 hour brainstorming<br>2-3 hours Q&A<br>2-4 hours research/planning<br>1 hour AI coordination</small></td>
+                        <td>8-16 hours + dev time<br><small>2 hours brainstorming<br>4-6 hours Q&A<br>4-8 hours research/planning<br>1-2 hours AI coordination</small></td>
+                    </tr>
+                </tbody>
+            </table>
+            
+            <div class="path-selection">
+                <h2>🚀 Select Your Path</h2>
+                <p class="intro">Choose the path that best matches your project needs and time constraints:</p>
+                
+                <button class="path-button sprinter" onclick="selectPath('Path A - The Sprinter')">
+                    <span class="path-emoji">🟡</span>
+                    <span class="path-title">Path A - The Sprinter →</span>
+                    <span class="path-subtitle">Fast Track MVP Development</span>
+                    <div class="path-features">
+                        • 4 streamlined steps<br>
+                        • Focus on core functionality<br>
+                        • Basic web research and requirements<br>
+                        • Combined implementation and review
+                    </div>
+                </button>
+                
+                <button class="path-button strategist" onclick="selectPath('Path B - The Strategist')">
+                    <span class="path-emoji">🔵</span>
+                    <span class="path-title">Path B - The Strategist →</span>
+                    <span class="path-subtitle">Balanced MVP Development</span>
+                    <div class="path-features">
+                        • 6 structured steps<br>
+                        • Technical research and risk analysis<br>
+                        • Quality-focused development<br>
+                        • Comprehensive planning and review
+                    </div>
+                </button>
+                
+                <button class="path-button architect" onclick="selectPath('Path C - The Architect')">
+                    <span class="path-emoji">🟢</span>
+                    <span class="path-title">Path C - The Architect →</span>
+                    <span class="path-subtitle">Enterprise MVP Development</span>
+                    <div class="path-features">
+                        • 8 detailed steps<br>
+                        • Deep technical research and solutions<br>
+                        • Enterprise-grade quality standards<br>
+                        • Full risk analysis and mitigation planning
+                    </div>
+                </button>
+            </div>
+            
+            <div class="benefits">
+                <h2>💡 Framework Benefits</h2>
+                
+                <h3>Enhanced v.4 Features:</h3>
+                <ul>
+                    <li><strong>Path A Enhancement:</strong> Basic PRD creation with web research capabilities</li>
+                    <li><strong>Vibe Architecting:</strong> Integrated "one ticket at a time" implementation methodology</li>
+                    <li><strong>Updated Documentation:</strong> Clear naming conventions and streamlined workflows</li>
+                    <li><strong>MVP-First Approach:</strong> Focus on functionality before visual polish</li>
+                    <li><strong>Quality Assurance:</strong> Path-specific standards and comprehensive testing</li>
+                </ul>
+                
+                <h3>What You'll Get:</h3>
+                <ul>
+                    <li>Complete set of planning documents serving as project foundation</li>
+                    <li>Functional MVP application with all planned features</li>
+                    <li>Quality assurance with identified improvements</li>
+                    <li>Complete development history and documentation</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <strong>Ready to start?</strong> Click one of the path buttons above to begin your development journey!
+        </div>
+    </div>
+    
+    <script>
+        function selectPath(pathName) {
+            // Production-ready: Show user-friendly message instead of alert
+            const message = `You selected: ${pathName}\n\nTo use this framework:\n1. Copy the path name: "${pathName}"\n2. Start a new chat with your AI assistant\n3. Paste: "I want to use ${pathName} from the AI Development Framework v.4"\n4. Follow the AI's guidance through your chosen path`;
+            
+            // Create a modal-style notification
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                background: white;
+                padding: 30px;
+                border-radius: 12px;
+                box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+                z-index: 1000;
+                max-width: 500px;
+                text-align: center;
+                font-family: inherit;
+            `;
+            
+            notification.innerHTML = `
+                <h3 style="color: #667eea; margin-bottom: 15px;">Path Selected!</h3>
+                <p style="margin-bottom: 20px; line-height: 1.5;">${message}</p>
+                <button onclick="this.parentElement.remove()" style="
+                    background: #667eea;
+                    color: white;
+                    border: none;
+                    padding: 10px 20px;
+                    border-radius: 6px;
+                    cursor: pointer;
+                    font-size: 16px;
+                ">Got it!</button>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Add visual feedback to button
+            event.target.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                event.target.style.transform = '';
+            }, 150);
+        }
+        
+        // Add interactive effects
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('.path-button');
+            
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px) scale(1.02)';
+                });
+                
+                button.addEventListener('mouseleave', function() {
+                    this.style.transform = '';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
