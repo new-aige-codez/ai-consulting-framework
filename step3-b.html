@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Path A Step 1 - Creative Foundation</title>
+    <title>Path B Step 3 - Development Roadmap</title>
     <style>
         * {
             margin: 0;
@@ -15,14 +15,14 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
             color: #333;
-            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
             min-height: 100vh;
             padding: 20px;
         }
         
         .path-header {
-            background: #FFC107;
-            color: #000;
+            background: #007BFF;
+            color: white;
             padding: 15px 40px;
             text-align: center;
             border-radius: 12px;
@@ -41,11 +41,11 @@
         }
         
         .header {
-            background: linear-gradient(135deg, #ffe8e8 0%, #ffcccc 100%);
-            color: #721c24;
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            color: #0d47a1;
             padding: 40px;
             text-align: center;
-            border-bottom: 3px solid #FFC107;
+            border-bottom: 3px solid #007BFF;
         }
         
         .header h1 {
@@ -65,7 +65,7 @@
             padding: 20px 40px;
             border-bottom: 1px solid #e9ecef;
         }
-
+        
         .progress-label {
             text-align: center;
             font-size: 1.1em;
@@ -73,12 +73,12 @@
             color: #495057;
             margin-bottom: 15px;
         }
-
+        
         .progress-container {
             position: relative;
             margin-bottom: 8px;
         }
-
+        
         .progress-bar {
             width: 100%;
             height: 12px;
@@ -86,15 +86,15 @@
             border-radius: 6px;
             overflow: hidden;
         }
-
+        
         .progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, #FFC107 0%, #e6ac00 100%);
+            background: linear-gradient(90deg, #007BFF 0%, #0056b3 100%);
             border-radius: 6px;
-            width: 25%;
+            width: 50%;
             transition: width 0.3s ease;
         }
-
+        
         .progress-ticks {
             position: absolute;
             top: -2px;
@@ -105,7 +105,7 @@
             justify-content: space-between;
             padding: 0 1px;
         }
-
+        
         .tick {
             width: 3px;
             height: 16px;
@@ -113,21 +113,23 @@
             border-radius: 2px;
             position: absolute;
         }
-
+        
         .tick.completed {
-            background: #FFC107;
+            background: #007BFF;
         }
-
+        
         .tick.current {
-            background: #e6ac00;
-            box-shadow: 0 0 8px rgba(230, 172, 0, 0.5);
+            background: #0056b3;
+            box-shadow: 0 0 8px rgba(0, 86, 179, 0.5);
         }
-
+        
         .tick:nth-child(1) { left: 0%; }
-        .tick:nth-child(2) { left: 33.33%; }
-        .tick:nth-child(3) { left: 66.66%; }
-        .tick:nth-child(4) { left: 100%; }
-
+        .tick:nth-child(2) { left: 20%; }
+        .tick:nth-child(3) { left: 40%; }
+        .tick:nth-child(4) { left: 60%; }
+        .tick:nth-child(5) { left: 80%; }
+        .tick:nth-child(6) { left: 100%; }
+        
         .progress-text {
             text-align: center;
             font-size: 0.9em;
@@ -161,8 +163,8 @@
         }
         
         .nav-button.next {
-            background: #FFC107;
-            color: #000;
+            background: #007BFF;
+            color: white;
         }
         
         .nav-button:hover {
@@ -175,29 +177,29 @@
             border-radius: 12px;
             padding: 30px;
             margin-bottom: 40px;
-            border-left: 5px solid #FFC107;
+            border-left: 5px solid #007BFF;
         }
-
+        
         .chat-instructions {
-            background: #fff8e1;
+            background: #e3f2fd;
             border-radius: 12px;
             padding: 25px;
             margin-bottom: 30px;
-            border: 2px solid #FFC107;
+            border: 2px solid #007BFF;
         }
-
+        
         .chat-instructions h3 {
             color: #333;
             margin-bottom: 15px;
             font-size: 1.3em;
         }
-
+        
         .instruction-tabs {
             display: flex;
             margin-bottom: 15px;
             border-bottom: 2px solid #e9ecef;
         }
-
+        
         .tab {
             padding: 10px 20px;
             cursor: pointer;
@@ -206,23 +208,23 @@
             color: #666;
             transition: all 0.3s ease;
         }
-
+        
         .tab.active {
-            color: #FFC107;
-            border-bottom-color: #FFC107;
+            color: #007BFF;
+            border-bottom-color: #007BFF;
         }
-
+        
         .tab-content {
             display: none;
             line-height: 1.6;
         }
-
+        
         .tab-content.active {
             display: block;
         }
-
+        
         .tab-content strong {
-            color: #FFC107;
+            color: #007BFF;
         }
         
         .system-prompt {
@@ -286,24 +288,24 @@
             padding: 20px;
             background: #f8f9fa;
             border-radius: 8px;
-            border-left: 4px solid #FFC107;
+            border-left: 4px solid #007BFF;
         }
-
+        
         .phase-gate-reminder {
-            background: #fff3cd;
-            border: 1px solid #ffeaa7;
+            background: #e3f2fd;
+            border: 1px solid #bbdefb;
             border-radius: 8px;
             padding: 15px;
             margin: 20px 0;
             text-align: center;
         }
-
+        
         .phase-gate-reminder p {
             margin: 0;
-            color: #856404;
+            color: #0d47a1;
             font-weight: 500;
         }
-
+        
         .bottom-navigation {
             display: flex;
             justify-content: center;
@@ -313,13 +315,13 @@
         }
         
         .nav-button-bottom {
-            background: linear-gradient(135deg, #FFC107 0%, #e6ac00 100%);
-            color: #000;
+            background: linear-gradient(135deg, #007BFF 0%, #0056b3 100%);
+            color: white;
             padding: 15px 30px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
-            box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
+            box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
             transition: all 0.3s ease;
             border: none;
             cursor: pointer;
@@ -333,17 +335,11 @@
         
         .nav-button-bottom:hover {
             transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(255, 193, 7, 0.4);
+            box-shadow: 0 6px 16px rgba(0, 123, 255, 0.4);
         }
         
         .nav-button-bottom.prev:hover {
             box-shadow: 0 6px 16px rgba(108, 117, 125, 0.4);
-        }
-        
-        .output-section {
-            text-align: left;
-            flex-grow: 1;
-            padding: 0 20px;
         }
         
         /* Responsive Design */
@@ -382,7 +378,7 @@
                 flex-direction: column;
                 gap: 15px;
             }
-
+            
             .nav-button-bottom {
                 width: 80%;
                 text-align: center;
@@ -392,35 +388,37 @@
 </head>
 <body>
     <div class="path-header">
-        <h2>Path A - The Sprinter</h2>
+        <h2>Path B - The Strategist</h2>
     </div>
     
     <div class="container">
         <div class="header">
-            <h1>🧠 Step 1: Creative Foundation</h1>
-            <div class="subtitle">Quick Prototype Development</div>
+            <h1>🗺️ Step 3: Development Roadmap</h1>
+            <div class="subtitle">Business Applications</div>
         </div>
-        
+
         <div class="progress-section">
-            <div class="progress-label">Step 1 of 4</div>
+            <div class="progress-label">Step 3 of 6</div>
             <div class="progress-container">
                 <div class="progress-bar">
                     <div class="progress-fill"></div>
                 </div>
                 <div class="progress-ticks">
+                    <div class="tick completed"></div>
+                    <div class="tick completed"></div>
                     <div class="tick current"></div>
                     <div class="tick"></div>
                     <div class="tick"></div>
                     <div class="tick"></div>
                 </div>
             </div>
-            <div class="progress-text">Creative Foundation</div>
+            <div class="progress-text">Development Roadmap</div>
         </div>
-        
+
         <div class="content">
             <div class="nav-buttons">
-                <a href="index.html" class="nav-button back">← Back to Framework</a>
-                <a href="step2-a.html" class="nav-button next">Next: Basic Requirements →</a>
+                <a href="step2-b.html" class="nav-button back">← Previous Step</a>
+                <a href="step4-b.html" class="nav-button next">Next: Vibe Architecting →</a>
             </div>
 
             <div class="chat-instructions">
@@ -433,67 +431,88 @@
                     <p><strong>Best Results:</strong> Complete your entire project in one long conversation with your AI assistant. This ensures full context retention, consistent decision-making, and higher quality outputs without needing to re-explain previous decisions.</p>
                 </div>
                 <div class="tab-content" id="separated">
-                    <p><strong>When Necessary:</strong> If you must start a new chat session, copy the entire system prompt below, paste it into your new conversation, and provide these documents for context:</p>
-                    <ul style="margin-top: 10px; padding-left: 20px;">
-                        <li><strong>Step 1:</strong> No previous documents needed - this is the starting step</li>
-                    </ul>
+                    <p><strong>When Necessary:</strong> If you must start a new chat session, copy the entire system prompt below, paste it into your new conversation, and provide all documents you've created so far for context.</p>
                 </div>
             </div>
 
             <div class="step-info">
                 <h2>🎯 Goal</h2>
-                <p>Create the foundational PVD.md (Product Vision Document) with clear project vision and glossary.</p>
+                <p>Create a comprehensive development plan with epic-to-ticket breakdown using "one ticket at a time" methodology.</p>
             </div>
-            
+
             <div class="system-prompt">
                 <div class="prompt-header">
-                    <div class="prompt-title">Product Strategist - System Prompt</div>
+                    <div class="prompt-title">Development Roadmap Specialist - System Prompt</div>
                     <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
                 </div>
                 <div class="prompt-content">
-                    <pre>You are a Product Strategist. Your goal is to create a structured Product Vision and establish the foundational `PVD.md` (Product Vision Document).
+                    <pre>You are a Development Roadmap Specialist. Your goal is to create a comprehensive development plan using the "one ticket at a time" methodology.
 
 **Your Process:**
-1. **FIRST:** Analyze the user's provided brain dump and chosen path (A, B, or C).
-2. **SECOND:** Review the path-specific questions below.
-3. **CRITICAL:** If the user's input is missing answers to any questions required for their chosen path, your ONLY response must be to ask for the missing information. List the questions you need answers to. Do not proceed until you have complete information.
-4. **Path A ONLY:** After gathering information, perform a quick sanity check: Does this project make basic sense? Are there any obvious red flags? Include this brief assessment in your output.
-5. **FINAL:** Once you have all necessary information, create the complete `PVD.md` with Project Glossary and detailed Product Vision sections.
-6. Add the first entry to the Project Changelog.
+1. **ANALYZE:** Review all previous documents based on your chosen path:
+   - **Path A:** Review `PVD.md` and `Requirements.md`
+   - **Path B:** Review `PVD.md` and `SDD.md` (System Design Document)
+   - **Path C:** Review `PVD.md`, `PRD.md`, and `SDD.md`
+2. **STRUCTURE:** Break down the project into logical development phases.
+3. **DETAIL:** Create specific, actionable tickets for each development task.
+4. **PRIORITIZE:** Order tickets by dependencies and logical development flow.
+5. **DOCUMENT:** Create comprehensive `DRD.md` (Development Roadmap Document).
+6. **LOG:** Add entry to Project Changelog.
 
---- 
+**Development Methodology:**
+- **One Ticket at a Time:** Each ticket should represent 1-3 hours of focused development work
+- **Clear Acceptance Criteria:** Every ticket must have specific, testable completion criteria
+- **Dependency Management:** Tickets must be ordered so each builds logically on previous work
+- **Incremental Progress:** Each completed ticket should result in demonstrable progress
+
+---
 **Questions to Validate (Ask user if answers are not found in context):**
 
-**Technical Problem Definition (Required for ALL Paths):**
-- What specific technical problem does this solve that existing solutions don't address?
-- Who is your target user (be specific about demographics, use cases)?
-- What is your target timeline for launch (e.g., weeks, months, year+)?
-- Do you have any preferred technologies or platforms?
+**Development Preferences:**
+- Do you prefer to start with frontend, backend, or full-stack development?
+- Are there any specific features you want to prioritize first?
+- Do you have any time constraints or deadlines?
+- Are there any technical dependencies or integrations that need early attention?
+
+**Quality & Testing:**
+- What level of testing do you want (unit tests, integration tests, manual testing)?
+- Do you need code review processes or can you work independently?
+- Are there any specific quality standards or coding conventions to follow?
+
+**Deployment & Infrastructure:**
+- Where do you plan to deploy the application (cloud provider, hosting service)?
+- Do you need staging/production environments or just production?
+- Are there any CI/CD pipeline requirements?
+
+---
 
 **Final Output (when all questions are answered):**
-A complete `PVD.md` file with:
-- Project overview and vision statement
-- Target user definition and personas
-- Core feature list with priorities
-- Technical approach and constraints
-- Project Glossary with key terms and definitions
-- Project Changelog with first entry
-- Path A: Brief sanity check assessment
+A comprehensive `DRD.md` (Development Roadmap Document) containing:
+- Project development phases and milestones
+- Detailed ticket breakdown with acceptance criteria
+- Dependency mapping and development order
+- Time estimates and priority levels
+- Testing and quality assurance plan
+- Deployment and infrastructure considerations
+- Risk assessment and mitigation strategies
 
 ---
 **CRITICAL REQUIREMENT: Conclude your response with the following Phase Gate Checklist, marking items as complete.**
 
 **Phase Gate Checklist:**
-- [ ] `PVD.md` created and structured correctly?
-- [ ] Project Glossary and Product Vision sections completed?
-- [ ] First changelog entry added?
-- [ ] Path A: Sanity check completed (if applicable)?
-- [ ] Ready to proceed to next step in your chosen path?</pre>
+- [ ] `DRD.md` (Development Roadmap Document) created?
+- [ ] Project broken down into logical development phases?
+- [ ] Detailed tickets created with acceptance criteria?
+- [ ] Dependencies mapped and development order established?
+- [ ] Time estimates and priorities assigned?
+- [ ] Testing and deployment plan included?
+- [ ] Changelog entry added?
+- [ ] Ready to proceed to Step 4?</pre>
                 </div>
             </div>
-            
+
             <div class="output-section">
-                <p><strong>📄 Output:</strong> Complete PVD.md file containing your project vision, target users, core features, technical approach, and a glossary of key terms.</p>
+                <p><strong>📄 Output:</strong> Comprehensive DRD.md (Development Roadmap Document) with detailed ticket breakdown, development phases, dependencies, and implementation timeline.</p>
             </div>
 
             <div class="phase-gate-reminder">
@@ -501,12 +520,12 @@ A complete `PVD.md` file with:
             </div>
 
             <div class="bottom-navigation">
-                <a href="index.html" class="nav-button-bottom prev">← Previous Step</a>
-                <a href="step2-a.html" class="nav-button-bottom next">Next Step →</a>
+                <a href="step2-b.html" class="nav-button-bottom prev">← Previous Step</a>
+                <a href="step4-b.html" class="nav-button-bottom next">Next Step →</a>
             </div>
         </div>
     </div>
-    
+
     <script>
         function copyToClipboard(button) {
             const promptContent = button.closest('.system-prompt').querySelector('pre');

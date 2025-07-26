@@ -32,7 +32,20 @@
 - Phase 7: Deployment & documentation
 
 ## Change Log:
-### v1.0 (Current)
+### v1.2 (Current - In Progress)
+- ✅ **Phase 1:** State preservation & branching complete
+- ✅ **Phase 2:** Path A Step 1 enhanced with yellow theme, tick marks, chat instructions, horizontal navigation, phase gate reminders
+- ✅ **Phase 3:** Path B Step 1 & 2 complete with blue theme and proper system prompts
+- 🔄 **In Progress:** Completing remaining Path B steps (3-6)
+
+### v1.1
+- Path A Step 1 updated with all requested enhancements
+- Chat instructions with tabbed interface
+- Horizontal navigation layout
+- Phase gate reminder system
+- Yellow background theme for Path A
+
+### v1.0
 - Complete Path A workflow (4 steps)
 - Home page with yellow/blue/green color scheme
 - Basic Path B and C placeholders

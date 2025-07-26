@@ -19,6 +19,53 @@
             min-height: 100vh;
             padding: 20px;
         }
+
+        .chat-instructions {
+            background: #fff8e1;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border: 2px solid #FFC107;
+        }
+
+        .chat-instructions h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .instruction-tabs {
+            display: flex;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #e9ecef;
+        }
+
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            font-weight: 600;
+            color: #666;
+            transition: all 0.3s ease;
+        }
+
+        .tab.active {
+            color: #FFC107;
+            border-bottom-color: #FFC107;
+        }
+
+        .tab-content {
+            display: none;
+            line-height: 1.6;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .tab-content strong {
+            color: #FFC107;
+        }
         
         .path-header {
             background: #FFC107;
