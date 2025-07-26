@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step 4: Quality Review</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #ffe8e8 0%, #ffb3b3 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .path-header {
+            background: #dc3545;
+            backdrop-filter: blur(10px);
+            padding: 15px 40px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            margin-bottom: 20px;
+            border-radius: 12px;
+            max-width: 900px;
+            margin: 0 auto 20px auto;
+        }
+        
+        .path-header h2 {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: white;
+            margin: 0;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #ffe8e8 0%, #ffcccc 100%);
+            color: #721c24;
+            padding: 40px;
+            text-align: center;
+            border-bottom: 3px solid #ff6b6b;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .header .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        .progress-section {
+            background: white;
+            padding: 20px 40px;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .progress-label {
+            text-align: center;
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #495057;
+            margin-bottom: 15px;
+        }
+        
+        .progress-container {
+            position: relative;
+            margin-bottom: 8px;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 12px;
+            background-color: #e9ecef;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ff6b6b 0%, #e55353 100%);
+            border-radius: 6px;
+            transition: width 0.3s ease;
+        }
+        
+        .progress-ticks {
+            position: absolute;
+            top: -2px;
+            left: 0;
+            right: 0;
+            height: 16px;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 1px;
+        }
+        
+        .tick {
+            width: 3px;
+            height: 16px;
+            background: #dee2e6;
+            border-radius: 2px;
+            position: absolute;
+        }
+        
+        .tick.completed {
+            background: #ff6b6b;
+        }
+        
+        .tick.current {
+            background: #e55353;
+            box-shadow: 0 0 8px rgba(229, 83, 83, 0.5);
+        }
+        
+        .tick:nth-child(1) { left: 0%; }
+        .tick:nth-child(2) { left: 33.33%; }
+        .tick:nth-child(3) { left: 66.66%; }
+        .tick:nth-child(4) { left: 100%; }
+        
+        .progress-text {
+            text-align: center;
+            font-size: 0.9em;
+            color: #6c757d;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        
+        .nav-button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-button.back {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .nav-button.complete {
+            background: #ff6b6b;
+            color: white;
+        }
+        
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        
+        .step-info {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+            border-left: 5px solid #ff6b6b;
+            border-bottom: 3px solid rgba(0,0,0,0.1);
+            box-shadow: 2px 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .step-info ol {
+            padding-left: 20px;
+            margin-left: 0;
+        }
+        
+        .chat-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .continuous-chat, .separated-chat {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .continuous-chat h4, .separated-chat h4 {
+            color: #495057;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        .system-prompt {
+            background: #2d3748;
+            color: #e2e8f0;
+            border-radius: 12px;
+            margin: 30px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .prompt-header {
+            background: #1a202c;
+            padding: 15px 20px;
+            border-bottom: 1px solid #4a5568;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .prompt-title {
+            font-weight: 600;
+            font-size: 1.1em;
+            text-align: center;
+            width: 100%;
+        }
+        
+        .copy-button {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            position: absolute;
+            right: 20px;
+        }
+        
+        .copy-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .prompt-content {
+            padding: 30px;
+        }
+        
+        .prompt-content pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            max-width: 100%;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .warning-text {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            padding: 15px;
+            text-align: center;
+            border-radius: 8px;
+            margin: 20px 0;
+            color: #856404;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        
+        .checklist {
+            background: #ffe8e8;
+            border: 1px solid #ff6b6b;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+        
+        .checklist h3 {
+            color: #ff6b6b;
+            margin-bottom: 15px;
+        }
+        
+        .checklist ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .checklist li {
+            margin: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .checklist li:before {
+            content: "☐";
+            position: absolute;
+            left: 0;
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+        
+        .completion-section {
+            background: linear-gradient(135deg, #ffe8e8 0%, #ffcccc 100%);
+            border: 2px solid #ff6b6b;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 40px 0;
+            text-align: center;
+        }
+        
+        .completion-section h2 {
+            color: #721c24;
+            margin-bottom: 15px;
+            font-size: 2em;
+        }
+        
+        .completion-section p {
+            color: #8b2635;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
+        
+        .bottom-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 40px 0;
+            gap: 20px;
+        }
+        
+        .nav-button-bottom {
+            background: linear-gradient(135deg, #ff6b6b 0%, #e55353 100%);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .nav-button-bottom.prev {
+            background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+            box-shadow: 0 4px 12px rgba(108, 117, 125, 0.3);
+        }
+        
+        .nav-button-bottom.complete {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+        }
+        
+        .nav-button-bottom:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(255, 107, 107, 0.4);
+        }
+        
+        .nav-button-bottom.prev:hover {
+            box-shadow: 0 6px 16px rgba(108, 117, 125, 0.4);
+        }
+        
+        .nav-button-bottom.complete:hover {
+            box-shadow: 0 6px 16px rgba(40, 167, 69, 0.4);
+        }
+        
+        .output-section {
+            text-align: left;
+            flex-grow: 1;
+            padding: 0 20px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 12px;
+            }
+            
+            .path-header {
+                margin: 0 10px 20px 10px;
+                padding: 15px 20px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .content, .progress-section {
+                padding: 20px;
+            }
+            
+            .prompt-content {
+                padding: 20px;
+            }
+            
+            .prompt-content pre {
+                font-size: 13px;
+            }
+            
+            .chat-options {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .bottom-navigation {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-button-bottom {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .output-section {
+                padding: 0;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="path-header">
+        <h2>Path A - The Sprinter</h2>
+    </div>
+    
+    <div class="container">
+        <div class="header">
+            <h1>🔍 Step 4: Quality Review</h1>
+            <div class="subtitle">Quick Prototype Development</div>
+        </div>
+        
+        <div class="progress-section">
+            <div class="progress-label">Step 4 of 4</div>
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 100%;"></div>
+                </div>
+                <div class="progress-ticks">
+                    <div class="tick completed"></div>
+                    <div class="tick completed"></div>
+                    <div class="tick completed"></div>
+                    <div class="tick current"></div>
+                </div>
+            </div>
+            <div class="progress-text">Quality Review</div>
+        </div>
+        
+        <div class="content">
+            <div class="nav-buttons">
+                <a href="step3-a.html" class="nav-button back">← Previous: Implementation Loop</a>
+                <a href="index.html" class="nav-button complete">🎉 Framework Complete!</a>
+            </div>
+            
+            <div class="step-info">
+                <h2>🎯 Goal</h2>
+                <p>Perform essential quality checks and basic testing to ensure your prototype is ready for use and feedback.</p>
+                
+                <h3>What You Do</h3>
+                
+                <div class="chat-options">
+                    <div class="continuous-chat">
+                        <h4>Continuous Chat</h4>
+                        <p>Continue your existing conversation - the AI already has your context and previous work.</p>
+                    </div>
+                    
+                    <div class="separated-chat">
+                        <h4>Separated Chat</h4>
+                        <ol>
+                            <li>Provide your implementation details from Step 3</li>
+                            <li>Run through basic testing procedures</li>
+                            <li>Address any critical issues found</li>
+                            <li>Prepare for user feedback and next steps</li>
+                        </ol>
+                        <p><strong>What to Expect:</strong> Quick but thorough quality checks focused on core functionality and user experience. Essential testing without over-engineering.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <h2>AI Prompting</h2>
+            <p>Copy this text and paste it into your AI assistant to begin:</p>
+            
+            <div class="system-prompt">
+                <div class="prompt-header">
+                    <div class="prompt-title">QA Engineer - System Prompt</div>
+                    <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                </div>
+                <div class="prompt-content">
+                    <pre>You are a QA Engineer focused on essential quality checks for rapid prototypes. Your goal is to ensure the prototype is functional and ready for user feedback without over-engineering.
+
+**Your Process:**
+1. **ANALYZE:** Review the implementation details from Step 3
+2. **TEST:** Execute essential testing procedures for core functionality
+3. **VALIDATE:** Check basic user experience and error handling
+4. **DOCUMENT:** Create simple `QA_REPORT.md` with findings
+5. **RECOMMEND:** Suggest immediate fixes and next steps
+6. **LOG:** Add final entry to Project Changelog
+
+**Quality Focus Areas:**
+- Core functionality works as expected
+- Basic error handling is in place
+- User experience is smooth for main flows
+- No critical bugs that break the application
+- Essential features are accessible and usable
+
+**Testing Approach:**
+- Manual testing of core user flows
+- Basic functionality validation
+- Simple error scenario testing
+- Quick usability check
+- Essential browser/device compatibility
+
+--- 
+**Questions to Validate (Ask user if answers are not found in context):**
+
+**Testing Environment:**
+- Is the application currently deployed and accessible?
+- What browsers or devices should be tested?
+- Are there specific user flows to prioritize for testing?
+- Do you have test data or scenarios prepared?
+
+**Quality Standards:**
+- What level of polish is expected for this prototype?
+- Are there any critical features that must work perfectly?
+- What's your tolerance for minor bugs in non-critical areas?
+- Do you need help creating test scenarios?
+
+**Next Steps:**
+- Who will be testing or reviewing the prototype?
+- What feedback collection method do you prefer?
+- Are there specific metrics or success criteria to track?
+- What's the plan for the next iteration or development phase?
+
+---
+
+**Final Output (when testing is complete):**
+A simple `QA_REPORT.md` containing:
+- Summary of testing performed
+- List of core functionality validated
+- Any issues found and their severity
+- Recommendations for immediate fixes
+- Suggestions for next development phase
+- Basic user guide for testing the prototype
+
+---
+**CRITICAL REQUIREMENT: Conclude your response with the following Phase Gate Checklist, marking items as complete.**
+
+**Phase Gate Checklist:**
+- [ ] Essential functionality testing completed?
+- [ ] `QA_REPORT.md` created with findings and recommendations?
+- [ ] Core user flows validated and working?
+- [ ] Critical issues identified and addressed?
+- [ ] Prototype ready for user feedback?
+- [ ] Next steps and recommendations documented?
+- [ ] Final changelog entry added?
+- [ ] Path A framework completed successfully?</pre>
+                </div>
+            </div>
+            
+            <div class="warning-text">
+                MAKE SURE ALL BOXES ARE CHECKED FROM THE AI OUTPUT BEFORE COMPLETING THE FRAMEWORK
+            </div>
+            
+            <div class="checklist">
+                <h3>Checklist</h3>
+                <ul>
+                    <li>Essential functionality testing completed?</li>
+                    <li>QA_REPORT.md created with findings and recommendations?</li>
+                    <li>Core user flows validated and working?</li>
+                    <li>Critical issues identified and addressed?</li>
+                    <li>Prototype ready for user feedback?</li>
+                    <li>Next steps and recommendations documented?</li>
+                    <li>Final changelog entry added?</li>
+                    <li>Path A framework completed successfully?</li>
+                </ul>
+            </div>
+            
+            <div class="completion-section">
+                <h2>🎉 Congratulations!</h2>
+                <p>You have successfully completed Path A - The Sprinter rapid prototyping framework!</p>
+                <p>Your prototype is now ready for user feedback and the next development phase.</p>
+            </div>
+            
+            <div class="bottom-navigation">
+                <a href="step3-a.html" class="nav-button-bottom prev">← Previous Step</a>
+                <div class="output-section">
+                    <p><strong>📄 Output:</strong> QA_REPORT.md with essential testing results, issue findings, recommendations, and next steps for prototype development.</p>
+                </div>
+                <a href="index.html" class="nav-button-bottom complete">🏠 Return to Framework</a>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function copyToClipboard(button) {
+            const promptContent = button.closest('.system-prompt').querySelector('pre');
+            const text = promptContent.textContent;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                button.textContent = 'Copied!';
+                button.style.background = 'rgba(40, 167, 69, 0.8)';
+                
+                setTimeout(() => {
+                    button.textContent = 'Copy';
+                    button.style.background = 'rgba(255, 255, 255, 0.1)';
+                }, 2000);
+            }).catch(() => {
+                button.textContent = 'Failed';
+                setTimeout(() => {
+                    button.textContent = 'Copy';
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
