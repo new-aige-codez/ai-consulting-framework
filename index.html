@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Framework Setup and Introduction</title>
+    <title>AI-Driven Software Development Workflow</title>
     <style>
         * {
             margin: 0;
@@ -15,477 +15,519 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
             color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
             min-height: 100vh;
-            padding: 20px;
-        }
-        
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
-            overflow: hidden;
         }
         
         .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
             color: white;
-            padding: 40px;
             text-align: center;
+            padding: 60px 20px 40px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
         }
         
         .header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
+            font-size: 3em;
             font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
         }
         
-        .header .subtitle {
-            font-size: 1.2em;
-            opacity: 0.9;
+        .author {
+            font-size: 1.3em;
             font-weight: 300;
+            margin-bottom: 25px;
+            opacity: 0.9;
+            font-style: italic;
         }
         
-        .content {
-            padding: 40px;
-        }
-        
-        .quick-start {
-            background: #f8f9fa;
-            border-radius: 12px;
-            padding: 30px;
-            margin-bottom: 40px;
-            border-left: 5px solid #667eea;
-        }
-        
-        .quick-start h2 {
-            color: #667eea;
-            margin-bottom: 20px;
-            font-size: 1.5em;
-        }
-        
-        .quick-start ol {
-            padding-left: 20px;
-        }
-        
-        .quick-start li {
-            margin-bottom: 10px;
+        .readme-notice {
             font-size: 1.1em;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px 25px;
+            border-radius: 8px;
+            display: inline-block;
+            backdrop-filter: blur(10px);
         }
         
-        .comparison-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 30px 0;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-        
-        .comparison-table th {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 20px 15px;
-            text-align: left;
+        .readme-notice a {
+            color: #60a5fa;
+            text-decoration: none;
             font-weight: 600;
-            font-size: 1.1em;
+            transition: color 0.3s ease;
         }
         
-        .comparison-table td {
-            padding: 20px 15px;
-            border-bottom: 1px solid #eee;
-            vertical-align: top;
+        .readme-notice a:hover {
+            color: #93c5fd;
+            text-decoration: underline;
         }
         
-        .comparison-table tr:nth-child(even) {
-            background-color: #f8f9fa;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
         }
         
-        .comparison-table tr:hover {
-            background-color: #e3f2fd;
-            transition: background-color 0.3s ease;
+        .intro {
+            text-align: center;
+            margin-bottom: 50px;
         }
         
-        .path-selection {
+        .intro h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #1e293b;
+        }
+        
+        .intro p {
+            font-size: 1.2em;
+            color: #64748b;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .paths {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
             margin: 50px 0;
         }
         
-        .path-selection h2 {
-            text-align: center;
-            font-size: 2em;
-            margin-bottom: 20px;
-            color: #333;
+        .path {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
         }
         
-        .path-selection .intro {
+        .path:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .path.path-a {
+            border-color: #fbbf24;
+        }
+        
+        .path.path-b {
+            border-color: #3b82f6;
+        }
+        
+        .path h3 {
+            font-size: 2em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .path.path-a h3 {
+            color: #f59e0b;
+        }
+        
+        .path.path-b h3 {
+            color: #3b82f6;
+        }
+        
+        .path .subtitle {
+            font-size: 1.1em;
+            color: #64748b;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+        
+        .path .description {
+            color: #475569;
+            margin-bottom: 30px;
+            line-height: 1.7;
+        }
+        
+        .path .cta-button {
+            display: inline-block;
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: all 0.3s ease;
+            text-align: center;
+            width: 100%;
+        }
+        
+        .path.path-a .cta-button {
+            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            color: white;
+        }
+        
+        .path.path-b .cta-button {
+            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+            color: white;
+        }
+        
+        .path .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+        
+        .comparison-section {
+            margin: 60px 0;
+        }
+        
+        .comparison-section h2 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: #1e293b;
+        }
+        
+        .comparison-section .subtitle {
             text-align: center;
             font-size: 1.2em;
-            color: #666;
+            color: #64748b;
             margin-bottom: 40px;
         }
         
-        .path-button {
-            display: block;
-            width: 100%;
-            padding: 25px;
-            margin: 20px 0;
-            border: none;
-            border-radius: 16px;
-            font-size: 16px;
-            font-family: inherit;
-            text-align: left;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-            position: relative;
-            overflow: hidden;
-            text-decoration: none;
-            color: inherit;
+        .aspect-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
         }
         
-        .path-button:hover {
+        .aspect-block {
+            border-radius: 16px;
+            padding: 30px;
+            color: white;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .aspect-block::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+            pointer-events: none;
+        }
+        
+        .aspect-block:hover {
             transform: translateY(-5px);
             box-shadow: 0 15px 35px rgba(0,0,0,0.2);
         }
         
-        .path-button:active {
-            transform: translateY(-2px);
+        .aspect-block.duration {
+            background: linear-gradient(135deg, #3B82F6 0%, #1E40AF 100%);
         }
         
-        .path-button.sprinter {
-            background: linear-gradient(135deg, #FFF3CD 0%, #FFE69C 100%);
-            border: 3px solid #FFD700;
-            color: #856404;
+        .aspect-block.complexity {
+            background: linear-gradient(135deg, #10B981 0%, #047857 100%);
         }
         
-        .path-button.sprinter:hover {
-            background: linear-gradient(135deg, #FFE69C 0%, #FFD700 100%);
+        .aspect-block.planning {
+            background: linear-gradient(135deg, #8B5CF6 0%, #5B21B6 100%);
         }
         
-        .path-button.strategist {
-            background: linear-gradient(135deg, #D1ECF1 0%, #B3D9E6 100%);
-            border: 3px solid #17A2B8;
-            color: #0c5460;
+        .aspect-block.documentation {
+            background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
         }
         
-        .path-button.strategist:hover {
-            background: linear-gradient(135deg, #B3D9E6 0%, #17A2B8 100%);
-            color: white;
+        .aspect-block.risk {
+            background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
         }
         
-        .path-button.architect {
-            background: linear-gradient(135deg, #D4EDDA 0%, #C3E6CB 100%);
-            border: 3px solid #28A745;
-            color: #155724;
+        .aspect-block.quality {
+            background: linear-gradient(135deg, #06B6D4 0%, #0891B2 100%);
         }
         
-        .path-button.architect:hover {
-            background: linear-gradient(135deg, #C3E6CB 0%, #28A745 100%);
-            color: white;
-        }
-        
-        .path-emoji {
+        .aspect-block h3 {
             font-size: 1.5em;
-            margin-right: 10px;
-        }
-        
-        .path-title {
-            font-size: 1.3em;
-            font-weight: 700;
-            margin-bottom: 8px;
-            display: block;
-        }
-        
-        .path-subtitle {
-            font-size: 1.1em;
+            margin-bottom: 20px;
             font-weight: 600;
-            margin-bottom: 12px;
-            display: block;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
         }
         
-        .path-features {
-            font-size: 1em;
-            line-height: 1.4;
+        .aspect-comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .path-comparison {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 20px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .path-comparison h4 {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+            font-weight: 600;
             opacity: 0.9;
         }
         
-        .benefits {
-            background: #f8f9fa;
-            border-radius: 12px;
-            padding: 30px;
-            margin-top: 50px;
+        .path-comparison p {
+            font-size: 0.95em;
+            line-height: 1.5;
+            opacity: 0.85;
         }
         
-        .benefits h2 {
-            color: #667eea;
-            margin-bottom: 25px;
-            font-size: 1.8em;
+        .quick-start {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            margin: 50px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            border: 2px solid #e2e8f0;
         }
         
-        .benefits h3 {
-            color: #333;
-            margin: 20px 0 15px 0;
-            font-size: 1.3em;
+        .quick-start h2 {
+            color: #1e293b;
+            margin-bottom: 20px;
+            font-size: 2em;
         }
         
-        .benefits ul {
+        .quick-start ol {
+            color: #475569;
             padding-left: 20px;
         }
         
-        .benefits li {
-            margin-bottom: 10px;
-            font-size: 1.1em;
+        .quick-start li {
+            margin: 10px 0;
+            line-height: 1.6;
         }
         
         .footer {
             text-align: center;
-            padding: 30px;
-            background: #f8f9fa;
-            font-size: 1.2em;
-            color: #666;
-        }
-        
-        .footer strong {
-            color: #667eea;
+            padding: 40px 20px;
+            color: #64748b;
+            border-top: 1px solid #e2e8f0;
+            margin-top: 60px;
         }
         
         /* Responsive Design */
         @media (max-width: 768px) {
-            .container {
-                margin: 10px;
-                border-radius: 12px;
-            }
-            
-            .header {
-                padding: 30px 20px;
-            }
-            
             .header h1 {
+                font-size: 2.2em;
+            }
+            
+            .author {
+                font-size: 1.1em;
+            }
+            
+            .readme-notice {
+                font-size: 1em;
+                padding: 12px 20px;
+            }
+            
+            .intro h2 {
                 font-size: 2em;
             }
             
-            .content {
-                padding: 30px 20px;
+            .intro p {
+                font-size: 1.1em;
             }
             
-            .comparison-table {
-                font-size: 0.9em;
+            .paths {
+                grid-template-columns: 1fr;
+                gap: 20px;
             }
             
-            .comparison-table th,
-            .comparison-table td {
-                padding: 15px 10px;
+            .path {
+                padding: 30px;
+            }
+            
+            .aspect-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .aspect-comparison {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .comparison-section h2 {
+                font-size: 2em;
+            }
+            
+            .container {
+                padding: 20px 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .header {
+                padding: 40px 15px 30px;
+            }
+            
+            .header h1 {
+                font-size: 1.8em;
+            }
+            
+            .aspect-block {
+                padding: 25px;
+            }
+            
+            .path {
+                padding: 25px;
+            }
+            
+            .quick-start {
+                padding: 30px;
             }
         }
     </style>
 </head>
 <body>
+    <div class="header">
+        <h1>AI-Driven Software Development Workflow</h1>
+        <p class="author">-Brian Brubaker</p>
+        <p class="readme-notice">
+            📖 For complete instructions, please read the 
+            <a href="README.md" target="_blank">README.md</a> file.
+        </p>
+    </div>
+    
     <div class="container">
-        <div class="header">
-            <h1>🚀 AI-Powered Software Development Framework v.4</h1>
-            <div class="subtitle">Hybrid Framework Edition</div>
+        <div class="intro">
+            <h2>Choose Your Development Path</h2>
+            <p>Select the approach that best fits your project timeline, complexity, and strategic requirements. Both paths deliver production-ready results with comprehensive AI guidance.</p>
         </div>
         
-        <div class="content">
-            <div class="quick-start">
-                <h2>⚡ Quick Start</h2>
-                <ol>
-                    <li><strong>Read this overview</strong> to understand the framework approach</li>
-                    <li><strong>Choose your path</strong> using the comparison table below</li>
-                    <li><strong>Click your chosen path button</strong> to proceed to your dedicated workflow</li>
-                    <li><strong>Stay in one chat session</strong> for best results throughout your entire project</li>
-                </ol>
+        <div class="paths">
+            <div class="path path-a">
+                <h3>⚡ Path A - The Executor</h3>
+                <div class="subtitle">Fast Track MVP Development</div>
+                <div class="description">
+                    Perfect for rapid prototyping and quick market validation. Get your MVP built and deployed in record time with streamlined processes and focused execution.
+                </div>
+                <a href="step1.html" class="cta-button">Start Fast Track →</a>
             </div>
             
-            <h2>🎯 Choose Your Path</h2>
-            <p style="text-align: center; font-size: 1.2em; color: #666; margin-bottom: 30px;">
-                Select your level of involvement. This choice determines your workflow complexity and depth.
-            </p>
-            
-            <table class="comparison-table">
-                <thead>
-                    <tr>
-                        <th>Attribute</th>
-                        <th>Path A: The Sprinter</th>
-                        <th>Path B: The Strategist</th>
-                        <th>Path C: The Architect</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Best for</strong></td>
-                        <td>Quick prototypes, simple projects, rapid validation</td>
-                        <td>Business applications, structured development</td>
-                        <td>Complex systems, enterprise applications, high-stakes projects</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Steps</strong></td>
-                        <td>4 Total</td>
-                        <td>6 Total</td>
-                        <td>8 Total</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Questions</strong></td>
-                        <td>~8-12 essential</td>
-                        <td>~15-25 strategic</td>
-                        <td>~25-35 comprehensive</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Time</strong></td>
-                        <td>2-4 hours + dev time<br><small>30-60 mins brainstorming<br>1-2 hours Q&A/planning<br>1-2 hours AI coordination</small></td>
-                        <td>4-8 hours + dev time<br><small>1 hour brainstorming<br>2-3 hours Q&A<br>2-4 hours research/planning<br>1 hour AI coordination</small></td>
-                        <td>8-16 hours + dev time<br><small>2 hours brainstorming<br>4-6 hours Q&A<br>4-8 hours research/planning<br>1-2 hours AI coordination</small></td>
-                    </tr>
-                </tbody>
-            </table>
-            
-            <div class="path-selection">
-                <h2>🚀 Select Your Path</h2>
-                <p class="intro">Choose the path that best matches your project needs and time constraints:</p>
-                
-                <a href="step1.html" class="path-button sprinter">
-                    <span class="path-emoji">🟡</span>
-                    <span class="path-title">Path A - The Sprinter →</span>
-                    <span class="path-subtitle">Fast Track MVP Development</span>
-                    <div class="path-features">
-                        • 4 streamlined steps<br>
-                        • Focus on core functionality<br>
-                        • Basic web research and requirements<br>
-                        • Combined implementation and review
-                    </div>
-                </a>
-                
-                <a href="step1-b.html" class="path-button strategist">
-                    <span class="path-emoji">🔵</span>
-                    <span class="path-title">Path B - The Strategist →</span>
-                    <span class="path-subtitle">Balanced MVP Development</span>
-                    <div class="path-features">
-                        • 6 structured steps<br>
-                        • Technical research and risk analysis<br>
-                        • Quality-focused development<br>
-                        • Comprehensive planning and review
-                    </div>
-                </a>
-                
-                <button class="path-button architect" onclick="selectPath('Path C - The Architect')">
-                    <span class="path-emoji">🟢</span>
-                    <span class="path-title">Path C - The Architect →</span>
-                    <span class="path-subtitle">Enterprise MVP Development</span>
-                    <div class="path-features">
-                        • 8 detailed steps<br>
-                        • Deep technical research and solutions<br>
-                        • Enterprise-grade quality standards<br>
-                        • Full risk analysis and mitigation planning
-                    </div>
-                </button>
-            </div>
-            
-            <div class="benefits">
-                <h2>💡 Framework Benefits</h2>
-                
-                <h3>Enhanced v.4 Features:</h3>
-                <ul>
-                    <li><strong>Path A Enhancement:</strong> Basic PRD creation with web research capabilities</li>
-                    <li><strong>Vibe Architecting:</strong> Integrated "one ticket at a time" implementation methodology</li>
-                    <li><strong>Updated Documentation:</strong> Clear naming conventions and streamlined workflows</li>
-                    <li><strong>MVP-First Approach:</strong> Focus on functionality before visual polish</li>
-                    <li><strong>Quality Assurance:</strong> Path-specific standards and comprehensive testing</li>
-                </ul>
-                
-                <h3>What You'll Get:</h3>
-                <ul>
-                    <li>Complete set of planning documents serving as project foundation</li>
-                    <li>Functional MVP application with all planned features</li>
-                    <li>Quality assurance with identified improvements</li>
-                    <li>Complete development history and documentation</li>
-                </ul>
+            <div class="path path-b">
+                <h3>🧠 Path B - The Strategist</h3>
+                <div class="subtitle">Strategic Product Development</div>
+                <div class="description">
+                    Comprehensive planning and strategic development for scalable, enterprise-ready solutions. Build with thorough documentation, risk management, and quality assurance.
+                </div>
+                <a href="step1-b.html" class="cta-button">Start Strategic Path →</a>
             </div>
         </div>
         
-        <div class="footer">
-            <strong>Ready to start?</strong> Click one of the path buttons above to begin your development journey!
+        <div class="comparison-section">
+            <h2>Path Comparison</h2>
+            <p class="subtitle">Understanding the key differences between our development approaches</p>
+            
+            <div class="aspect-grid">
+                <div class="aspect-block duration">
+                    <h3>Duration</h3>
+                    <div class="aspect-comparison">
+                        <div class="path-comparison">
+                            <h4>Path A - Fast Track</h4>
+                            <p>1-2 weeks for complete MVP development and deployment</p>
+                        </div>
+                        <div class="path-comparison">
+                            <h4>Path B - Strategic</h4>
+                            <p>4-8 weeks for comprehensive planning and development</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="aspect-block complexity">
+                    <h3>Complexity</h3>
+                    <div class="aspect-comparison">
+                        <div class="path-comparison">
+                            <h4>Path A - Fast Track</h4>
+                            <p>Simple to moderate complexity projects with core features</p>
+                        </div>
+                        <div class="path-comparison">
+                            <h4>Path B - Strategic</h4>
+                            <p>Complex enterprise solutions with advanced requirements</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="aspect-block planning">
+                    <h3>Planning Depth</h3>
+                    <div class="aspect-comparison">
+                        <div class="path-comparison">
+                            <h4>Path A - Fast Track</h4>
+                            <p>Essential planning focused on immediate development needs</p>
+                        </div>
+                        <div class="path-comparison">
+                            <h4>Path B - Strategic</h4>
+                            <p>Comprehensive strategic planning with detailed specifications</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="aspect-block documentation">
+                    <h3>Documentation</h3>
+                    <div class="aspect-comparison">
+                        <div class="path-comparison">
+                            <h4>Path A - Fast Track</h4>
+                            <p>Basic documentation for immediate development and deployment</p>
+                        </div>
+                        <div class="path-comparison">
+                            <h4>Path B - Strategic</h4>
+                            <p>Extensive documentation including PVD, technical specs, and processes</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="aspect-block risk">
+                    <h3>Risk Management</h3>
+                    <div class="aspect-comparison">
+                        <div class="path-comparison">
+                            <h4>Path A - Fast Track</h4>
+                            <p>Basic risk identification with rapid mitigation strategies</p>
+                        </div>
+                        <div class="path-comparison">
+                            <h4>Path B - Strategic</h4>
+                            <p>Comprehensive risk analysis with detailed mitigation plans</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="aspect-block quality">
+                    <h3>Quality Assurance</h3>
+                    <div class="aspect-comparison">
+                        <div class="path-comparison">
+                            <h4>Path A - Fast Track</h4>
+                            <p>Essential testing and validation for MVP launch</p>
+                        </div>
+                        <div class="path-comparison">
+                            <h4>Path B - Strategic</h4>
+                            <p>Comprehensive QA strategy with multiple testing phases</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="quick-start">
+            <h2>🚀 Quick Start Guide</h2>
+            <ol>
+                <li><strong>Choose Your Path:</strong> Select Path A for rapid development or Path B for strategic planning</li>
+                <li><strong>Follow the Steps:</strong> Each path provides numbered steps with AI prompts and clear instructions</li>
+                <li><strong>Use AI Assistance:</strong> Copy the provided prompts into your preferred AI assistant (Claude, ChatGPT, etc.)</li>
+                <li><strong>Complete Phase Gates:</strong> Ensure all checklist items are completed before moving to the next step</li>
+                <li><strong>Build and Deploy:</strong> Follow the guidance to create and launch your product</li>
+            </ol>
         </div>
     </div>
     
-    <script>
-        function selectPath(pathName) {
-            // Get path-specific information for Path C (Paths A and B now link directly)
-            let pathInfo = {};
-            
-            if (pathName === 'Path C - The Architect') {
-                pathInfo = {
-                    steps: '8 detailed steps',
-                    questions: '25-35 comprehensive questions',
-                    time: '8-16 hours + development time',
-                    focus: 'Deep technical research and solutions'
-                };
-            }
-            
-            // Create a modal-style notification
-            const notification = document.createElement('div');
-            notification.style.cssText = `
-                position: fixed;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                background: white;
-                padding: 30px;
-                border-radius: 12px;
-                box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-                z-index: 1000;
-                max-width: 500px;
-                text-align: left;
-                font-family: inherit;
-            `;
-            
-            notification.innerHTML = `
-                <h3 style="color: #667eea; margin-bottom: 15px; text-align: center;">✅ ${pathName} Selected!</h3>
-                <ul style="margin: 20px 0; padding-left: 20px; line-height: 1.6;">
-                    <li><strong>Steps:</strong> ${pathInfo.steps}</li>
-                    <li><strong>Questions:</strong> ${pathInfo.questions}</li>
-                    <li><strong>Time:</strong> ${pathInfo.time}</li>
-                    <li><strong>Focus:</strong> ${pathInfo.focus}</li>
-                </ul>
-                <p style="text-align: center; margin: 20px 0; font-weight: 600; color: #333;">Coming Soon! This path is under development.</p>
-                <div style="text-align: center;">
-                    <button onclick="this.parentElement.remove()" style="
-                        background: #667eea;
-                        color: white;
-                        border: none;
-                        padding: 12px 24px;
-                        border-radius: 6px;
-                        cursor: pointer;
-                        font-size: 16px;
-                        font-weight: 600;
-                    ">Got it!</button>
-                </div>
-            `;
-            
-            document.body.appendChild(notification);
-            
-            // Add visual feedback to button
-            event.target.style.transform = 'scale(0.95)';
-            setTimeout(() => {
-                event.target.style.transform = '';
-            }, 150);
-        }
-        
-        // Add interactive effects
-        document.addEventListener('DOMContentLoaded', function() {
-            const buttons = document.querySelectorAll('.path-button');
-            
-            buttons.forEach(button => {
-                button.addEventListener('mouseenter', function() {
-                    this.style.transform = 'translateY(-5px) scale(1.02)';
-                });
-                
-                button.addEventListener('mouseleave', function() {
-                    this.style.transform = '';
-                });
-            });
-        });
-    </script>
+    <div class="footer">
+        <p>&copy; 2024 AI-Driven Software Development Workflow. Designed for modern development teams.</p>
+    </div>
 </body>
 </html>
