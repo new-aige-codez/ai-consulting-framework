@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step 1: Creative Foundation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #e8f5e8 0%, #a7f3d0 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .path-header {
+            background: #1e40af;
+            backdrop-filter: blur(10px);
+            padding: 15px 40px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            margin-bottom: 20px;
+            border-radius: 12px;
+            max-width: 900px;
+            margin: 0 auto 20px auto;
+        }
+        
+        .path-header h2 {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: white;
+            margin: 0;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #e8f5e8 0%, #d1fae5 100%);
+            color: #065f46;
+            padding: 40px;
+            text-align: center;
+            border-bottom: 3px solid #10b981;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .header .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        .progress-section {
+            background: white;
+            padding: 20px 40px;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .progress-label {
+            text-align: center;
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #495057;
+            margin-bottom: 15px;
+        }
+        
+        .progress-container {
+            position: relative;
+            margin-bottom: 8px;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 12px;
+            background-color: #e9ecef;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #10b981 0%, #059669 100%);
+            border-radius: 6px;
+            transition: width 0.3s ease;
+        }
+        
+        .progress-ticks {
+            position: absolute;
+            top: -2px;
+            left: 0;
+            right: 0;
+            height: 16px;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 1px;
+        }
+        
+        .tick {
+            width: 3px;
+            height: 16px;
+            background: #dee2e6;
+            border-radius: 2px;
+            position: absolute;
+        }
+        
+        .tick.completed {
+            background: #10b981;
+        }
+        
+        .tick.current {
+            background: #059669;
+            box-shadow: 0 0 8px rgba(5, 150, 105, 0.5);
+        }
+        
+        .tick:nth-child(1) { left: 0%; }
+        .tick:nth-child(2) { left: 12.5%; }
+        .tick:nth-child(3) { left: 25%; }
+        .tick:nth-child(4) { left: 37.5%; }
+        .tick:nth-child(5) { left: 50%; }
+        .tick:nth-child(6) { left: 62.5%; }
+        .tick:nth-child(7) { left: 75%; }
+        .tick:nth-child(8) { left: 87.5%; }
+        
+        .progress-text {
+            text-align: center;
+            font-size: 0.9em;
+            color: #6c757d;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        
+        .nav-button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-button.back {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .nav-button.next {
+            background: #28a745;
+            color: white;
+        }
+        
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        
+        .step-info {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+            border-left: 5px solid #6c757d;
+            border-bottom: 3px solid rgba(0,0,0,0.1);
+            box-shadow: 2px 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .step-info ol {
+            padding-left: 20px;
+            margin-left: 0;
+        }
+        
+        .chat-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .continuous-chat, .separated-chat {
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #dee2e6;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .continuous-chat h4, .separated-chat h4 {
+            color: #495057;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        .system-prompt {
+            background: #2d3748;
+            color: #e2e8f0;
+            border-radius: 12px;
+            margin: 30px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .prompt-header {
+            background: #1a202c;
+            padding: 15px 20px;
+            border-bottom: 1px solid #4a5568;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .prompt-title {
+            font-weight: 600;
+            font-size: 1.1em;
+            text-align: center;
+            width: 100%;
+        }
+        
+        .copy-button {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+            position: absolute;
+            right: 20px;
+        }
+        
+        .copy-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .prompt-content {
+            padding: 30px;
+        }
+        
+        .prompt-content pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            max-width: 100%;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .warning-text {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            padding: 15px;
+            text-align: center;
+            border-radius: 8px;
+            margin: 20px 0;
+            color: #856404;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        
+        .checklist {
+            background: #e8f5e8;
+            border: 1px solid #28a745;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+        
+        .checklist h3 {
+            color: #28a745;
+            margin-bottom: 15px;
+        }
+        
+        .checklist ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .checklist li {
+            margin: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .checklist li:before {
+            content: "☐";
+            position: absolute;
+            left: 0;
+            color: #28a745;
+            font-weight: bold;
+        }
+        
+        .bottom-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 40px 0;
+            gap: 20px;
+        }
+        
+        .nav-button-bottom {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .nav-button-bottom.prev {
+            background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+            box-shadow: 0 4px 12px rgba(108, 117, 125, 0.3);
+        }
+        
+        .nav-button-bottom:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(40, 167, 69, 0.4);
+        }
+        
+        .nav-button-bottom.prev:hover {
+            box-shadow: 0 6px 16px rgba(108, 117, 125, 0.4);
+        }
+        
+        .output-section {
+            text-align: left;
+            flex-grow: 1;
+            padding: 0 20px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 12px;
+            }
+            
+            .path-header {
+                margin: 0 10px 20px 10px;
+                padding: 15px 20px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .content, .progress-section {
+                padding: 20px;
+            }
+            
+            .prompt-content {
+                padding: 20px;
+            }
+            
+            .prompt-content pre {
+                font-size: 13px;
+            }
+            
+            .chat-options {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+            
+            .bottom-navigation {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-button-bottom {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .output-section {
+                padding: 0;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="path-header">
+        <h2>Path C - The Architect</h2>
+    </div>
+    
+    <div class="container">
+        <div class="header">
+            <h1>🧠 Step 1: Creative Foundation</h1>
+            <div class="subtitle">Enterprise Development Framework</div>
+        </div>
+        
+        <div class="progress-section">
+            <div class="progress-label">Step 1 of 8</div>
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 12.5%;"></div>
+                </div>
+                <div class="progress-ticks">
+                    <div class="tick current"></div>
+                    <div class="tick"></div>
+                    <div class="tick"></div>
+                    <div class="tick"></div>
+                    <div class="tick"></div>
+                    <div class="tick"></div>
+                    <div class="tick"></div>
+                    <div class="tick"></div>
+                </div>
+            </div>
+            <div class="progress-text">Creative Foundation</div>
+        </div>
+        
+        <div class="content">
+            <div class="nav-buttons">
+                <a href="index.html" class="nav-button back">← Back to Framework</a>
+                <a href="step2-c.html" class="nav-button next">Next: Fundamental Requirements →</a>
+            </div>
+            
+            <div class="step-info">
+                <h2>🎯 Goal</h2>
+                <p>Create the foundational PVD.md (Product Vision Document) with clear project vision and comprehensive glossary for enterprise-level development.</p>
+                
+                <h3>What You Do</h3>
+                
+                <div class="chat-options">
+                    <div class="continuous-chat">
+                        <h4>Continuous Chat</h4>
+                        <p>Continue your existing conversation - the AI already has your context and previous work.</p>
+                    </div>
+                    
+                    <div class="separated-chat">
+                        <h4>Separated Chat</h4>
+                        <ol>
+                            <li>Write down all your ideas, notes, and requirements in a document</li>
+                            <li>Tell the AI you chose Path C (The Architect)</li>
+                            <li>Share your brain dump with the AI</li>
+                            <li>Answer comprehensive questions about your enterprise project</li>
+                        </ol>
+                        <p><strong>What to Expect:</strong> The AI will ask detailed questions about technical problems, success criteria, and enterprise requirements to create a comprehensive foundation.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <h2>AI Prompting</h2>
+            <p>Copy this text and paste it into your AI assistant to begin:</p>
+            
+            <div class="system-prompt">
+                <div class="prompt-header">
+                    <div class="prompt-title">Product Strategist - System Prompt</div>
+                    <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                </div>
+                <div class="prompt-content">
+                    <pre>You are a Product Strategist. Your goal is to create a structured Product Vision and establish the foundational `PVD.md` (Product Vision Document).
+
+**Your Process:**
+1. **FIRST:** Analyze the user's provided brain dump and chosen path (A, B, or C).
+2. **SECOND:** Review the path-specific questions below.
+3. **CRITICAL:** If the user's input is missing answers to any questions required for their chosen path, your ONLY response must be to ask for the missing information. List the questions you need answers to. Do not proceed until you have complete information.
+4. **Path A ONLY:** After gathering information, perform a quick sanity check: Does this project make basic sense? Are there any obvious red flags? Include this brief assessment in your output.
+5. **FINAL:** Once you have all necessary information, create the complete `PVD.md` with Project Glossary and detailed Product Vision sections.
+6. Add the first entry to the Project Changelog.
+
+--- 
+**Questions to Validate (Ask user if answers are not found in context):**
+
+**Technical Problem Definition (Required for ALL Paths):**
+- What specific technical problem does this solve that existing solutions don't address?
+- Who is your target user (be specific about demographics, use cases)?
+- What is your target timeline for launch (e.g., weeks, months, year+)?
+- Do you have any preferred technologies or platforms?
+
+**Technical Preferences (Required for Path B & C):**
+- Will you need integrations with existing systems or services?
+- Are there any known technical constraints (e.g., compliance, security)?
+- What's your team's technical expertise level?
+- Do you have existing infrastructure or hosting preferences?
+
+**Success Criteria (Required for Path C):**
+- How will you measure success in the first 6 months?
+- What would make this project a complete failure?
+- What features are absolutely essential vs. nice-to-have?
+- What are your key performance indicators (KPIs)?
+- Do you have existing user research or validation?
+--- 
+
+**Final Output (when all questions are answered):**
+A complete `PVD.md` file with:
+- Project overview and vision statement
+- Target user definition and personas
+- Core feature list with priorities
+- Technical approach and constraints
+- Project Glossary with key terms and definitions
+- Project Changelog with first entry
+- Path A: Brief sanity check assessment
+
+---
+**CRITICAL REQUIREMENT: Conclude your response with the following Phase Gate Checklist, marking items as complete.**
+
+**Phase Gate Checklist:**
+- [ ] `PVD.md` created and structured correctly?
+- [ ] Project Glossary and Product Vision sections completed?
+- [ ] First changelog entry added?
+- [ ] Path A: Sanity check completed (if applicable)?
+- [ ] Ready to proceed to next step in your chosen path?</pre>
+                </div>
+            </div>
+            
+            <div class="warning-text">
+                MAKE SURE ALL BOXES ARE CHECKED FROM THE AI OUTPUT BEFORE MOVING TO NEXT STEP
+            </div>
+            
+            <div class="checklist">
+                <h3>Checklist</h3>
+                <ul>
+                    <li>PVD.md created and structured correctly?</li>
+                    <li>Project Glossary and Product Vision sections completed?</li>
+                    <li>First changelog entry added?</li>
+                    <li>All Path C success criteria questions answered?</li>
+                    <li>Ready to proceed to next step in your chosen path?</li>
+                </ul>
+            </div>
+            
+            <div class="bottom-navigation">
+                <a href="index.html" class="nav-button-bottom prev">← Previous Step</a>
+                <div class="output-section">
+                    <p><strong>📄 Output:</strong> Complete PVD.md file with project vision, target users, core features, technical approach, and comprehensive glossary</p>
+                </div>
+                <a href="step2-c.html" class="nav-button-bottom next">Next Step →</a>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function copyToClipboard(button) {
+            const promptContent = button.closest('.system-prompt').querySelector('pre');
+            const text = promptContent.textContent;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                button.textContent = 'Copied!';
+                button.style.background = 'rgba(40, 167, 69, 0.8)';
+                
+                setTimeout(() => {
+                    button.textContent = 'Copy';
+                    button.style.background = 'rgba(255, 255, 255, 0.1)';
+                }, 2000);
+            }).catch(() => {
+                button.textContent = 'Failed';
+                setTimeout(() => {
+                    button.textContent = 'Copy';
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
