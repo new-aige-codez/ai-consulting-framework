@@ -357,7 +357,7 @@
                     </div>
                 </a>
                 
-                <button class="path-button strategist" onclick="selectPath('Path B - The Strategist')">
+                <a href="step1-b.html" class="path-button strategist">
                     <span class="path-emoji">🔵</span>
                     <span class="path-title">Path B - The Strategist →</span>
                     <span class="path-subtitle">Balanced MVP Development</span>
@@ -367,7 +367,7 @@
                         • Quality-focused development<br>
                         • Comprehensive planning and review
                     </div>
-                </button>
+                </a>
                 
                 <button class="path-button architect" onclick="selectPath('Path C - The Architect')">
                     <span class="path-emoji">🟢</span>
@@ -411,17 +411,10 @@
     
     <script>
         function selectPath(pathName) {
-            // Get path-specific information for paths B and C (Path A now links directly)
+            // Get path-specific information for Path C (Paths A and B now link directly)
             let pathInfo = {};
             
-            if (pathName === 'Path B - The Strategist') {
-                pathInfo = {
-                    steps: '6 structured steps',
-                    questions: '15-25 strategic questions',
-                    time: '4-8 hours + development time',
-                    focus: 'Technical research and risk analysis'
-                };
-            } else if (pathName === 'Path C - The Architect') {
+            if (pathName === 'Path C - The Architect') {
                 pathInfo = {
                     steps: '8 detailed steps',
                     questions: '25-35 comprehensive questions',
