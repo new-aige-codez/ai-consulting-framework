@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step 3: Development Roadmap</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #D1ECF1 0%, #B3D9E6 100%);
+            color: #0c5460;
+            padding: 40px;
+            text-align: center;
+            border-bottom: 3px solid #17A2B8;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .header .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        
+        .nav-button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-button.back {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .nav-button.next {
+            background: #28a745;
+            color: white;
+        }
+        
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        
+        .step-info {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+            border-left: 5px solid #17A2B8;
+        }
+        
+        .system-prompt {
+            background: #2d3748;
+            color: #e2e8f0;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+            position: relative;
+        }
+        
+        .copy-button {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .copy-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .checklist {
+            background: #e8f5e8;
+            border: 1px solid #28a745;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+        
+        .checklist h3 {
+            color: #28a745;
+            margin-bottom: 15px;
+        }
+        
+        .checklist ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .checklist li {
+            margin: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .checklist li:before {
+            content: "☐";
+            position: absolute;
+            left: 0;
+            color: #28a745;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🗺️ Step 3: Development Roadmap</h1>
+            <div class="subtitle">Balanced MVP Development</div>
+        </div>
+        
+        <div class="content">
+            <div class="nav-buttons">
+                <a href="step2-b.html" class="nav-button back">← Step 2: Technical Research</a>
+                <a href="step4-b.html" class="nav-button next">Next: Risk Analysis →</a>
+            </div>
+            
+            <div class="step-info">
+                <h2>🎯 Goal</h2>
+                <p>Create a comprehensive development plan with detailed epic-to-ticket breakdown using "one ticket at a time" methodology.</p>
+                
+                <h3>What You Do:</h3>
+                <ol>
+                    <li>Provide your PVD.md and SDD.md files from previous steps</li>
+                    <li>Answer questions about development constraints and preferences</li>
+                    <li>Review and approve the development roadmap</li>
+                </ol>
+                
+                <p><strong>What to Expect:</strong> The AI will break your project into 3-4 detailed epics with time estimates and dependencies.</p>
+            </div>
+            
+            <h2>📋 System Prompt</h2>
+            <p>Copy this prompt and paste it into your AI assistant to begin:</p>
+            
+            <div class="system-prompt">
+                <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                <pre>You are a Development Planner for a strategic business project. Your goal is to create a comprehensive, actionable development roadmap that breaks down the project into manageable epics using "one ticket at a time" methodology.
+
+Your Process:
+1. ANALYZE: Review provided PVD.md and SDD.md files
+2. VALIDATE: Ask for any missing planning context
+3. PLAN: Create 3-4 detailed epics with time estimates and dependencies
+4. DOCUMENT: Create comprehensive SDP.md (Software Development Plan)
+5. INSTRUCT: Provide clear guidance for the implementation phase
+6. LOG: Add entry to Project Changelog
+
+Epic Complexity: 3-4 detailed epics with time estimates and dependencies
+
+Questions to Validate (Ask user if answers are not found in context):
+• What's your preferred development methodology (Agile, Waterfall, etc.)?
+• What's your team size and skill composition?
+• Are there any specific deadlines or milestone requirements?
+• What's your testing strategy preference?
+• Do you have any CI/CD or deployment automation preferences?
+• Are there any integration dependencies with external systems?
+• What's your approach to documentation and code reviews?
+• Do you need any specific monitoring or analytics capabilities?
+
+Final Output (when all questions are answered):
+A comprehensive SDP.md (Software Development Plan) containing:
+• Project timeline and milestone overview with realistic estimates
+• 3-4 detailed epics with:
+  - Epic descriptions and business value
+  - Detailed acceptance criteria and user stories
+  - Technical implementation notes and architecture decisions
+  - Time estimates and complexity ratings
+  - Dependencies and prerequisites
+  - Risk factors and mitigation strategies
+• Development workflow and quality standards
+• "One ticket at a time" implementation methodology
+• Testing strategy and quality assurance approach
+• Deployment and release management plan
+• Team coordination and communication protocols
+• Clear instructions for epic-by-epic implementation
+
+Phase Gate Checklist:
+☐ SDP.md created with comprehensive development plan?
+☐ 3-4 detailed epics defined with clear acceptance criteria?
+☐ Time estimates and dependencies documented?
+☐ Technical implementation approach detailed?
+☐ "One ticket at a time" methodology established?
+☐ Development workflow and quality standards defined?
+☐ Testing and deployment strategies documented?
+☐ Changelog updated?
+☐ Ready to proceed to Step 4?</pre>
+            </div>
+            
+            <div class="checklist">
+                <h3>✅ Phase Gate Checklist</h3>
+                <ul>
+                    <li>SDP.md created with comprehensive development plan?</li>
+                    <li>3-4 detailed epics defined with clear acceptance criteria?</li>
+                    <li>Time estimates and dependencies documented?</li>
+                    <li>Technical implementation approach detailed?</li>
+                    <li>"One ticket at a time" methodology established?</li>
+                    <li>Development workflow and quality standards defined?</li>
+                    <li>Testing and deployment strategies documented?</li>
+                    <li>Changelog updated?</li>
+                    <li>Ready to proceed to Step 4?</li>
+                </ul>
+            </div>
+            
+            <div style="text-align: center; margin: 40px 0;">
+                <p><strong>📄 Output:</strong> Comprehensive SDP.md with development roadmap and detailed epic breakdown</p>
+                <p><strong>Next →</strong> <a href="step4-b.html">Step 4: Risk Analysis & Solutions</a></p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function copyToClipboard(button) {
+            const pre = button.parentElement.querySelector('pre');
+            const text = pre.textContent;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                button.textContent = 'Copied!';
+                button.style.background = 'rgba(40, 167, 69, 0.8)';
+                
+                setTimeout(() => {
+                    button.textContent = 'Copy';
+                    button.style.background = 'rgba(255, 255, 255, 0.1)';
+                }, 2000);
+            }).catch(() => {
+                button.textContent = 'Failed';
+                setTimeout(() => {
+                    button.textContent = 'Copy';
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
