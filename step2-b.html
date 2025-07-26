@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Path B Step 1 - Creative Foundation</title>
+    <title>Path B Step 2 - Technical Research</title>
     <style>
         * {
             margin: 0;
@@ -74,22 +74,61 @@
             margin-bottom: 15px;
         }
         
+        .progress-container {
+            position: relative;
+            margin-bottom: 8px;
+        }
+        
         .progress-bar {
             width: 100%;
             height: 12px;
             background-color: #e9ecef;
             border-radius: 6px;
             overflow: hidden;
-            margin-bottom: 8px;
         }
         
         .progress-fill {
             height: 100%;
             background: linear-gradient(90deg, #007BFF 0%, #0056b3 100%);
             border-radius: 6px;
-            width: 16.67%;
+            width: 33.33%;
             transition: width 0.3s ease;
         }
+        
+        .progress-ticks {
+            position: absolute;
+            top: -2px;
+            left: 0;
+            right: 0;
+            height: 16px;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 1px;
+        }
+        
+        .tick {
+            width: 3px;
+            height: 16px;
+            background: #dee2e6;
+            border-radius: 2px;
+            position: absolute;
+        }
+        
+        .tick.completed {
+            background: #007BFF;
+        }
+        
+        .tick.current {
+            background: #0056b3;
+            box-shadow: 0 0 8px rgba(0, 86, 179, 0.5);
+        }
+        
+        .tick:nth-child(1) { left: 0%; }
+        .tick:nth-child(2) { left: 20%; }
+        .tick:nth-child(3) { left: 40%; }
+        .tick:nth-child(4) { left: 60%; }
+        .tick:nth-child(5) { left: 80%; }
+        .tick:nth-child(6) { left: 100%; }
         
         .progress-text {
             text-align: center;
@@ -140,7 +179,7 @@
             margin-bottom: 40px;
             border-left: 5px solid #007BFF;
         }
-
+        
         .chat-instructions {
             background: #e3f2fd;
             border-radius: 12px;
@@ -148,19 +187,19 @@
             margin-bottom: 30px;
             border: 2px solid #007BFF;
         }
-
+        
         .chat-instructions h3 {
             color: #333;
             margin-bottom: 15px;
             font-size: 1.3em;
         }
-
+        
         .instruction-tabs {
             display: flex;
             margin-bottom: 15px;
             border-bottom: 2px solid #e9ecef;
         }
-
+        
         .tab {
             padding: 10px 20px;
             cursor: pointer;
@@ -169,25 +208,25 @@
             color: #666;
             transition: all 0.3s ease;
         }
-
+        
         .tab.active {
             color: #007BFF;
             border-bottom-color: #007BFF;
         }
-
+        
         .tab-content {
             display: none;
             line-height: 1.6;
         }
-
+        
         .tab-content.active {
             display: block;
         }
-
+        
         .tab-content strong {
             color: #007BFF;
         }
-
+        
         .system-prompt {
             background: #2d3748;
             color: #e2e8f0;
@@ -196,7 +235,7 @@
             position: relative;
             overflow: hidden;
         }
-
+        
         .prompt-header {
             background: #1a202c;
             padding: 15px 20px;
@@ -205,14 +244,14 @@
             justify-content: space-between;
             align-items: center;
         }
-
+        
         .prompt-title {
             font-weight: 600;
             font-size: 1.1em;
             text-align: center;
             width: 100%;
         }
-
+        
         .copy-button {
             background: rgba(255, 255, 255, 0.1);
             color: white;
@@ -225,15 +264,15 @@
             position: absolute;
             right: 20px;
         }
-
+        
         .copy-button:hover {
             background: rgba(255, 255, 255, 0.2);
         }
-
+        
         .prompt-content {
             padding: 30px;
         }
-
+        
         .prompt-content pre {
             margin: 0;
             white-space: pre-wrap;
@@ -241,25 +280,6 @@
             font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
             font-size: 14px;
             line-height: 1.5;
-        }
-        
-        .coming-soon {
-            background: linear-gradient(135deg, #007BFF 0%, #0056b3 100%);
-            color: white;
-            padding: 40px;
-            text-align: center;
-            border-radius: 12px;
-            margin: 30px 0;
-        }
-        
-        .coming-soon h2 {
-            font-size: 2em;
-            margin-bottom: 15px;
-        }
-        
-        .coming-soon p {
-            font-size: 1.2em;
-            opacity: 0.9;
         }
         
         .output-section {
@@ -270,7 +290,7 @@
             border-radius: 8px;
             border-left: 4px solid #007BFF;
         }
-
+        
         .phase-gate-reminder {
             background: #e3f2fd;
             border: 1px solid #bbdefb;
@@ -279,13 +299,13 @@
             margin: 20px 0;
             text-align: center;
         }
-
+        
         .phase-gate-reminder p {
             margin: 0;
             color: #0d47a1;
             font-weight: 500;
         }
-
+        
         .bottom-navigation {
             display: flex;
             justify-content: center;
@@ -322,12 +342,6 @@
             box-shadow: 0 6px 16px rgba(108, 117, 125, 0.4);
         }
         
-        .output-section {
-            text-align: left;
-            flex-grow: 1;
-            padding: 0 20px;
-        }
-        
         /* Responsive Design */
         @media (max-width: 768px) {
             .container {
@@ -352,18 +366,21 @@
                 padding: 20px;
             }
             
+            .prompt-content {
+                padding: 20px;
+            }
+            
+            .prompt-content pre {
+                font-size: 13px;
+            }
+            
             .bottom-navigation {
                 flex-direction: column;
                 gap: 15px;
             }
             
             .nav-button-bottom {
-                width: 100%;
-                text-align: center;
-            }
-            
-            .output-section {
-                padding: 0;
+                width: 80%;
                 text-align: center;
             }
         }
@@ -376,29 +393,34 @@
     
     <div class="container">
         <div class="header">
-            <h1>🧠 Step 1: Creative Foundation</h1>
+            <h1>📖 Step 2: Technical Research</h1>
             <div class="subtitle">Business Applications</div>
         </div>
         
         <div class="progress-section">
-            <div class="progress-label">Step 1 of 6</div>
-            <div class="progress-bar">
-                <div class="progress-fill"></div>
+            <div class="progress-label">Step 2 of 6</div>
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <div class="progress-ticks">
+                    <div class="tick completed"></div>
+                    <div class="tick current"></div>
+                    <div class="tick"></div>
+                    <div class="tick"></div>
+                    <div class="tick"></div>
+                    <div class="tick"></div>
+                </div>
             </div>
-            <div class="progress-text">Creative Foundation</div>
+            <div class="progress-text">Technical Research</div>
         </div>
-        
+
         <div class="content">
             <div class="nav-buttons">
-                <a href="index.html" class="nav-button back">← Back to Framework</a>
-                <a href="step2-b.html" class="nav-button next">Next: Technical Research →</a>
+                <a href="step1-b.html" class="nav-button back">← Previous Step</a>
+                <a href="step3-b.html" class="nav-button next">Next: Development Roadmap →</a>
             </div>
-            
-            <div class="step-info">
-                <h2>🎯 Goal</h2>
-                <p>Create comprehensive project foundation with detailed business analysis and strategic planning.</p>
-            </div>
-            
+
             <div class="chat-instructions">
                 <h3>💬 Chat Session Guidance</h3>
                 <div class="instruction-tabs">
@@ -415,62 +437,101 @@
 
             <div class="step-info">
                 <h2>🎯 Goal</h2>
-                <p>Create comprehensive project foundation with detailed business analysis and strategic planning.</p>
+                <p>Research and document the technical foundation for the project with comprehensive analysis and recommendations.</p>
             </div>
 
             <div class="system-prompt">
                 <div class="prompt-header">
-                    <div class="prompt-title">Product Strategist - System Prompt</div>
+                    <div class="prompt-title">Technical Research Specialist - System Prompt</div>
                     <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
                 </div>
                 <div class="prompt-content">
-                    <pre>You are a Product Strategist. Your goal is to create a structured Product Vision and establish the foundational `PVD.md` (Product Vision Document).
+                    <pre>You are a Technical Research Specialist with web search capabilities. Your goal is to research and document the optimal technical approach for this project based on the established requirements.
 
 **Your Process:**
-1. **FIRST:** Analyze the user's provided brain dump and chosen path (A, B, or C).
-2. **SECOND:** Review the path-specific questions below.
-3. **CRITICAL:** If the user's input is missing answers to any questions required for their chosen path, your ONLY response must be to ask for the missing information. List the questions you need answers to. Do not proceed until you have complete information.
-4. **Path A ONLY:** After gathering information, perform a quick sanity check: Does this project make basic sense? Are there any obvious red flags? Include this brief assessment in your output.
-5. **FINAL:** Once you have all necessary information, create the complete `PVD.md` with Project Glossary and detailed Product Vision sections.
-6. Add the first entry to the Project Changelog.
+1. **ANALYZE:** Review the user's documents based on their chosen path:
+   - **Path B:** Review the user's `PVD.md` from Step 1
+   - **Path C:** Review the user's `PVD.md` and `PRD.md` from previous steps
+2. **RESEARCH:** Conduct path-appropriate technical research using web search capabilities.
+3. **VALIDATE:** Review the questions below and ask for any missing technical context.
+4. **DOCUMENT:** Create comprehensive `SDD.md` (System Design Document).
+5. **LOG:** Add entry to Project Changelog.
+
+**Research Approach by Path:**
+- **Path B:** Standard web search for libraries, frameworks, and basic architecture patterns. Focus on practical, proven solutions with good community support and documentation.
+- **Path C:** Deep research with comprehensive analysis of multiple architecture options, performance considerations, scalability planning, and enterprise patterns. Include trade-off analysis and future-proofing strategies.
 
 ---
 **Questions to Validate (Ask user if answers are not found in context):**
 
-**Technical Problem Definition (Required for ALL Paths):**
-- What specific technical problem does this solve that existing solutions don't address?
-- Who is your target user (be specific about demographics, use cases)?
-- What is your target timeline for launch (e.g., weeks, months, year+)?
-- Do you have any preferred technologies or platforms?
+**Basic UX Structure Questions:**
+- What are the main screens/pages needed?
+- Navigation structure (header, sidebar, bottom nav)?
+- Key buttons and their placement?
+- Input fields and form structures?
+- Dropdown menus and selection elements?
+- Text hierarchy (headers, subtext, body)?
 
-**Technical Preferences (Required for Path B & C):**
-- Will you need integrations with existing systems or services?
-- Are there any known technical constraints (e.g., compliance, security)?
-- What's your team's technical expertise level?
-- Do you have existing infrastructure or hosting preferences?
+**User Experience Structure:**
+- What are the main user journeys from entry to goal completion?
+- Do you need user accounts, authentication, or can it be anonymous?
+- Are there different user roles with different permissions?
+- What are the core actions users need to perform?
+
+**Data & Business Logic:**
+- What data do users create, read, update, or delete?
+- Are there any complex business rules or calculations?
+- Do you need reporting, analytics, or data export features?
+- How should data be organized and categorized?
+
+**Integration & Advanced Features:**
+- Do you need to integrate with external services (payment, email, etc.)?
+- Are there any workflow or approval processes?
+- Do you need notifications, alerts, or communication features?
+- Are there any automation or scheduled task requirements?
+
+**Platform & Device Considerations:**
+- What are the target devices and primary screen sizes?
+- Does the app need to function offline or with poor connectivity?
+- Are there any accessibility requirements (WCAG compliance)?
+- Do you need mobile apps, or is web sufficient?
+
+**Optional Uploads:**
+- Reference screenshots or wireframes
+- Basic color preferences
+- Style inspirations
+
+**Note:** Focus is on functionality and basic layout. Advanced styling will be handled in separate workflow after MVP completion.
+---
 
 **Final Output (when all questions are answered):**
-A complete `PVD.md` file with:
-- Project overview and vision statement
-- Target user definition and personas
-- Core feature list with priorities
-- Technical approach and constraints
-- Project Glossary with key terms and definitions
-- Project Changelog with first entry
+A comprehensive `SDD.md` (System Design Document) containing:
+- Technical research findings and recommendations
+- Recommended technology stack with rationale
+- System architecture and component design
+- Database design and data flow
+- API specifications and integration points
+- Security considerations and implementation
+- Performance and scalability planning
+- Path C: Alternative approaches with trade-off analysis
+- Path C: Future-proofing and enterprise considerations
 
 ---
 **CRITICAL REQUIREMENT: Conclude your response with the following Phase Gate Checklist, marking items as complete.**
 
 **Phase Gate Checklist:**
-- [ ] `PVD.md` created and structured correctly?
-- [ ] Project Glossary and Product Vision sections completed?
-- [ ] First changelog entry added?
-- [ ] Ready to proceed to next step in your chosen path?</pre>
+- [ ] Technical research completed for chosen path depth?
+- [ ] `SDD.md` (System Design Document) created?
+- [ ] Technology stack recommendations provided?
+- [ ] System architecture and database design documented?
+- [ ] Security and performance considerations addressed?
+- [ ] Changelog entry added?
+- [ ] Ready to proceed to Step 3?</pre>
                 </div>
             </div>
-            
+
             <div class="output-section">
-                <p><strong>📄 Output:</strong> Complete PVD.md file containing your project vision, target users, core features, technical approach, and a glossary of key terms.</p>
+                <p><strong>📄 Output:</strong> Comprehensive SDD.md (System Design Document) with technical research findings, technology stack recommendations, system architecture, and implementation guidance.</p>
             </div>
 
             <div class="phase-gate-reminder">
@@ -478,8 +539,8 @@ A complete `PVD.md` file with:
             </div>
 
             <div class="bottom-navigation">
-                <a href="index.html" class="nav-button-bottom prev">← Previous Step</a>
-                <a href="step2-b.html" class="nav-button-bottom next">Next Step →</a>
+                <a href="step1-b.html" class="nav-button-bottom prev">← Previous Step</a>
+                <a href="step3-b.html" class="nav-button-bottom next">Next Step →</a>
             </div>
         </div>
     </div>
