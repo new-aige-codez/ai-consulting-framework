@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step 1: Strategic Foundation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #D1ECF1 0%, #B3D9E6 100%);
+            color: #0c5460;
+            padding: 40px;
+            text-align: center;
+            border-bottom: 3px solid #17A2B8;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .header .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        
+        .nav-button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-button.back {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .nav-button.next {
+            background: #28a745;
+            color: white;
+        }
+        
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        
+        .step-info {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+            border-left: 5px solid #17A2B8;
+        }
+        
+        .system-prompt {
+            background: #2d3748;
+            color: #e2e8f0;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+            position: relative;
+        }
+        
+        .copy-button {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .copy-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .checklist {
+            background: #e8f5e8;
+            border: 1px solid #28a745;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+        
+        .checklist h3 {
+            color: #28a745;
+            margin-bottom: 15px;
+        }
+        
+        .checklist ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .checklist li {
+            margin: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .checklist li:before {
+            content: "☐";
+            position: absolute;
+            left: 0;
+            color: #28a745;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧠 Step 1: Strategic Foundation</h1>
+            <div class="subtitle">Balanced MVP Development</div>
+        </div>
+        
+        <div class="content">
+            <div class="nav-buttons">
+                <a href="index.html" class="nav-button back">← Back to Framework</a>
+                <a href="step2-b.html" class="nav-button next">Next: Technical Research →</a>
+            </div>
+            
+            <div class="step-info">
+                <h2>🎯 Goal</h2>
+                <p>Create the foundational PVD.md (Product Vision Document) with strategic depth and business context.</p>
+                
+                <h3>What You Do:</h3>
+                <ol>
+                    <li>Write down all your ideas, notes, and requirements in a document (any format)</li>
+                    <li>Share your brain dump with the AI</li>
+                    <li>Answer the AI's strategic questions about your project</li>
+                </ol>
+                
+                <p><strong>What to Expect:</strong> The AI will ask strategic questions to understand your project's business context and technical requirements.</p>
+            </div>
+            
+            <h2>📋 System Prompt</h2>
+            <p>Copy this prompt and paste it into your AI assistant to begin:</p>
+            
+            <div class="system-prompt">
+                <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                <pre>You are a Product Strategist for a business-focused development project. Your goal is to create a structured Product Vision and establish the foundational PVD.md (Product Vision Document) with strategic depth.
+
+Your Process:
+1. ANALYZE: Review the user's provided brain dump
+2. VALIDATE: Ask strategic questions if critical information is missing
+3. DOCUMENT: Create the complete PVD.md with Project Glossary and Product Vision sections
+4. LOG: Add the first entry to the Project Changelog
+
+Questions to Validate (Ask user if answers are not found in context):
+• What specific business problem does this solve?
+• Who is your target market and what are their pain points?
+• What's your unique value proposition compared to existing solutions?
+• What are your business goals and success metrics?
+• What's your go-to-market strategy?
+• Are there any regulatory or compliance requirements?
+• What's your budget and timeline constraints?
+• What technical constraints or preferences do you have?
+• Who are your key stakeholders and decision makers?
+• What are the biggest risks to this project's success?
+
+Final Output (when all questions are answered):
+A complete PVD.md (Product Vision Document) containing:
+• Project overview and vision statement
+• Target user definition and personas
+• Core feature list with business priorities
+• Technical approach and constraints
+• Business model and success metrics
+• Project Glossary with key terms and definitions
+• Project Changelog with first entry
+
+Phase Gate Checklist:
+☐ PVD.md created with strategic business foundation?
+☐ Project Glossary and Product Vision sections completed?
+☐ Business context and market positioning documented?
+☐ Success metrics and goals clearly defined?
+☐ First changelog entry added?
+☐ Ready to proceed to Step 2?</pre>
+            </div>
+            
+            <div class="checklist">
+                <h3>✅ Phase Gate Checklist</h3>
+                <ul>
+                    <li>PVD.md created with strategic business foundation?</li>
+                    <li>Project Glossary and Product Vision sections completed?</li>
+                    <li>Business context and market positioning documented?</li>
+                    <li>Success metrics and goals clearly defined?</li>
+                    <li>First changelog entry added?</li>
+                    <li>Ready to proceed to Step 2?</li>
+                </ul>
+            </div>
+            
+            <div style="text-align: center; margin: 40px 0;">
+                <p><strong>📄 Output:</strong> Complete PVD.md with strategic project foundation</p>
+                <p><strong>Next →</strong> <a href="step2-b.html">Step 2: Technical Research</a></p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function copyToClipboard(button) {
+            const pre = button.parentElement.querySelector('pre');
+            const text = pre.textContent;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                button.textContent = 'Copied!';
+                button.style.background = 'rgba(40, 167, 69, 0.8)';
+                
+                setTimeout(() => {
+                    button.textContent = 'Copy';
+                    button.style.background = 'rgba(255, 255, 255, 0.1)';
+                }, 2000);
+            }).catch(() => {
+                button.textContent = 'Failed';
+                setTimeout(() => {
+                    button.textContent = 'Copy';
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
