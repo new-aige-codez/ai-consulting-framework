@@ -49,6 +49,69 @@
             font-weight: 300;
         }
         
+        .path-info {
+            background: #f8f9fa;
+            padding: 25px 40px;
+            border-bottom: 2px solid #e9ecef;
+            text-align: center;
+        }
+        
+        .path-title {
+            font-size: 1.4em;
+            font-weight: 700;
+            color: #17A2B8;
+            margin-bottom: 8px;
+        }
+        
+        .path-subtitle {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #0c5460;
+            margin-bottom: 10px;
+        }
+        
+        .path-features {
+            font-size: 0.95em;
+            color: #6c757d;
+            line-height: 1.4;
+        }
+        
+        .progress-section {
+            background: white;
+            padding: 20px 40px;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .progress-label {
+            text-align: center;
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #495057;
+            margin-bottom: 10px;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 12px;
+            background-color: #e9ecef;
+            border-radius: 6px;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #17A2B8 0%, #138496 100%);
+            border-radius: 6px;
+            transition: width 0.3s ease;
+        }
+        
+        .progress-text {
+            text-align: center;
+            font-size: 0.9em;
+            color: #6c757d;
+        }
+        
         .content {
             padding: 40px;
         }
@@ -110,15 +173,26 @@
             background: #2d3748;
             color: #e2e8f0;
             border-radius: 12px;
-            padding: 30px;
             margin: 30px 0;
             position: relative;
+            overflow: hidden;
+        }
+        
+        .prompt-header {
+            background: #1a202c;
+            padding: 15px 20px;
+            border-bottom: 1px solid #4a5568;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .prompt-title {
+            font-weight: 600;
+            font-size: 1.1em;
         }
         
         .copy-button {
-            position: absolute;
-            top: 15px;
-            right: 15px;
             background: rgba(255, 255, 255, 0.1);
             color: white;
             border: none;
@@ -127,10 +201,26 @@
             cursor: pointer;
             font-size: 14px;
             transition: all 0.3s ease;
+            flex-shrink: 0;
         }
         
         .copy-button:hover {
             background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .prompt-content {
+            padding: 30px;
+        }
+        
+        .prompt-content pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            max-width: 100%;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 14px;
+            line-height: 1.5;
         }
         
         .checklist {
@@ -164,6 +254,34 @@
             color: #28a745;
             font-weight: bold;
         }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 12px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .content, .path-info, .progress-section {
+                padding: 20px;
+            }
+            
+            .prompt-content {
+                padding: 20px;
+            }
+            
+            .prompt-content pre {
+                font-size: 13px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -171,6 +289,20 @@
         <div class="header">
             <h1>⚠️ Step 4: Risk Analysis & Solutions</h1>
             <div class="subtitle">Balanced MVP Development</div>
+        </div>
+        
+        <div class="path-info">
+            <div class="path-title">🔵 Path B - The Strategist</div>
+            <div class="path-subtitle">Balanced MVP Development</div>
+            <div class="path-features">• 6 structured steps • Technical research and risk analysis • Quality-focused development</div>
+        </div>
+        
+        <div class="progress-section">
+            <div class="progress-label">Step 4 of 6</div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 66.67%;"></div>
+            </div>
+            <div class="progress-text">Risk Analysis & Solutions</div>
         </div>
         
         <div class="content">
@@ -206,8 +338,12 @@
             <p>Copy this prompt and paste it into your AI assistant to begin:</p>
             
             <div class="system-prompt">
-                <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-                <pre>You are a skeptical, cynical, and brutally honest Senior Technical Auditor with research capabilities for a strategic business project. You operate in a two-phase execution model.
+                <div class="prompt-header">
+                    <div class="prompt-title">System Prompt</div>
+                    <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                </div>
+                <div class="prompt-content">
+                    <pre>You are a skeptical, cynical, and brutally honest Senior Technical Auditor with research capabilities for a strategic business project. You operate in a two-phase execution model.
 
 Phase Detection: Check if this is Phase 1 (first run) or Phase 2 (user running again after Phase 1 completion)
 
@@ -270,6 +406,7 @@ Phase Gate Checklist:
 ☐ Phase 2: Implementation plans and resource requirements documented?
 ☐ Both phases: Changelog updated?
 ☐ Ready to proceed to Step 5?</pre>
+                </div>
             </div>
             
             <div class="checklist">
@@ -295,8 +432,8 @@ Phase Gate Checklist:
     
     <script>
         function copyToClipboard(button) {
-            const pre = button.parentElement.querySelector('pre');
-            const text = pre.textContent;
+            const promptContent = button.closest('.system-prompt').querySelector('pre');
+            const text = promptContent.textContent;
             
             navigator.clipboard.writeText(text).then(() => {
                 button.textContent = 'Copied!';
