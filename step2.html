@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step 2: Basic Requirements + Web Research</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #FFF3CD 0%, #FFE69C 100%);
+            color: #856404;
+            padding: 40px;
+            text-align: center;
+            border-bottom: 3px solid #FFD700;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .header .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        
+        .nav-button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-button.back {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .nav-button.next {
+            background: #28a745;
+            color: white;
+        }
+        
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        
+        .step-info {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+            border-left: 5px solid #FFD700;
+        }
+        
+        .system-prompt {
+            background: #2d3748;
+            color: #e2e8f0;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+            position: relative;
+        }
+        
+        .copy-button {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .copy-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .checklist {
+            background: #e8f5e8;
+            border: 1px solid #28a745;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+        
+        .checklist h3 {
+            color: #28a745;
+            margin-bottom: 15px;
+        }
+        
+        .checklist ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .checklist li {
+            margin: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .checklist li:before {
+            content: "☐";
+            position: absolute;
+            left: 0;
+            color: #28a745;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📋 Step 2: Basic Requirements + Web Research</h1>
+            <div class="subtitle">Fast Track MVP Development</div>
+        </div>
+        
+        <div class="content">
+            <div class="nav-buttons">
+                <a href="step1.html" class="nav-button back">← Step 1: Creative Foundation</a>
+                <a href="step3.html" class="nav-button next">Next: Development Roadmap →</a>
+            </div>
+            
+            <div class="step-info">
+                <h2>🎯 Goal</h2>
+                <p>Create comprehensive functional requirements and basic UX structure using web research.</p>
+                
+                <h3>What You Do:</h3>
+                <ol>
+                    <li>Provide your PVD.md file from Step 1</li>
+                    <li>Answer detailed questions about user flows and functionality</li>
+                    <li>Review the AI's web research findings</li>
+                    <li>Approve the comprehensive requirements</li>
+                </ol>
+                
+                <p><strong>What to Expect:</strong> The AI will conduct basic web research on similar applications and ask detailed questions about user interactions.</p>
+            </div>
+            
+            <h2>📋 System Prompt</h2>
+            <p>Copy this prompt and paste it into your AI assistant to begin:</p>
+            
+            <div class="system-prompt">
+                <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                <pre>You are a Requirements Analyst with web search capabilities for a fast-track development project. Your goal is to create a solid PRD using basic web research to inform your decisions quickly and efficiently.
+
+Your Process:
+1. ANALYZE: Review the user's PVD.md from Step 1
+2. RESEARCH: Use web search to find similar applications and common feature patterns
+3. VALIDATE: Ask user for any missing functional context
+4. DOCUMENT: Create comprehensive PRD.md informed by research
+5. LOG: Add entry to Project Changelog
+
+Questions to Validate (Ask user if answers are not found in context):
+
+User Experience Structure:
+• What are the main user journeys from entry to goal completion?
+• Do you need user accounts, authentication, or can it be anonymous?
+• Are there different user roles with different permissions?
+• What are the core actions users need to perform?
+
+Data & Business Logic:
+• What data do users create, read, update, or delete?
+• Are there any complex business rules or calculations?
+• How should data be organized and categorized?
+
+Optional Uploads:
+• Reference screenshots or wireframes
+• Basic color preferences
+• Style inspirations
+
+Note: Focus is on functionality and basic layout. Advanced styling will be handled in separate workflow after MVP completion.
+
+Final Output (when all questions are answered):
+A comprehensive PRD.md (Product Requirements Document) containing:
+• Executive Summary with research insights
+• Functional Requirements with detailed user stories
+• User Experience Flow and wireframe descriptions
+• Data Model and business logic requirements
+• Technical Requirements and constraints
+• Basic UI/UX guidelines informed by research
+• Updated Project Changelog
+
+Phase Gate Checklist:
+☐ Web research completed on similar applications?
+☐ PRD.md created with comprehensive requirements?
+☐ User stories and acceptance criteria defined?
+☐ Data model and business logic documented?
+☐ Basic UX flow established?
+☐ Changelog updated?
+☐ Ready to proceed to Step 3?</pre>
+            </div>
+            
+            <div class="checklist">
+                <h3>✅ Phase Gate Checklist</h3>
+                <ul>
+                    <li>Web research completed on similar applications?</li>
+                    <li>PRD.md created with comprehensive requirements?</li>
+                    <li>User stories and acceptance criteria defined?</li>
+                    <li>Data model and business logic documented?</li>
+                    <li>Basic UX flow established?</li>
+                    <li>Changelog updated?</li>
+                    <li>Ready to proceed to Step 3?</li>
+                </ul>
+            </div>
+            
+            <div style="text-align: center; margin: 40px 0;">
+                <p><strong>📄 Output:</strong> Comprehensive PRD.md with research findings and detailed requirements</p>
+                <p><strong>Next →</strong> <a href="step3.html">Step 3: Development Roadmap</a></p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function copyToClipboard(button) {
+            const pre = button.parentElement.querySelector('pre');
+            const text = pre.textContent;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                button.textContent = 'Copied!';
+                button.style.background = 'rgba(40, 167, 69, 0.8)';
+                
+                setTimeout(() => {
+                    button.textContent = 'Copy';
+                    button.style.background = 'rgba(255, 255, 255, 0.1)';
+                }, 2000);
+            }).catch(() => {
+                button.textContent = 'Failed';
+                setTimeout(() => {
+                    button.textContent = 'Copy';
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
