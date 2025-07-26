@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Step 5: Quality-Focused Implementation</title>
+    <title>Step 5: Development Planning</title>
     <style>
         * {
             margin: 0;
@@ -15,9 +15,28 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
             color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #B3D9E6 0%, #17A2B8 100%);
             min-height: 100vh;
             padding: 20px;
+        }
+        
+        .path-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 40px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            margin-bottom: 20px;
+            border-radius: 12px 12px 0 0;
+            max-width: 900px;
+            margin: 0 auto 20px auto;
+        }
+        
+        .path-header h2 {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: #17A2B8;
+            margin: 0;
         }
         
         .container {
@@ -49,33 +68,6 @@
             font-weight: 300;
         }
         
-        .path-info {
-            background: #f8f9fa;
-            padding: 25px 40px;
-            border-bottom: 2px solid #e9ecef;
-            text-align: center;
-        }
-        
-        .path-title {
-            font-size: 1.4em;
-            font-weight: 700;
-            color: #17A2B8;
-            margin-bottom: 8px;
-        }
-        
-        .path-subtitle {
-            font-size: 1.1em;
-            font-weight: 600;
-            color: #0c5460;
-            margin-bottom: 10px;
-        }
-        
-        .path-features {
-            font-size: 0.95em;
-            color: #6c757d;
-            line-height: 1.4;
-        }
-        
         .progress-section {
             background: white;
             padding: 20px 40px;
@@ -87,7 +79,12 @@
             font-size: 1.1em;
             font-weight: 600;
             color: #495057;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .progress-container {
+            position: relative;
+            margin-bottom: 8px;
         }
         
         .progress-bar {
@@ -96,7 +93,6 @@
             background-color: #e9ecef;
             border-radius: 6px;
             overflow: hidden;
-            margin-bottom: 8px;
         }
         
         .progress-fill {
@@ -104,6 +100,33 @@
             background: linear-gradient(90deg, #17A2B8 0%, #138496 100%);
             border-radius: 6px;
             transition: width 0.3s ease;
+        }
+        
+        .progress-ticks {
+            position: absolute;
+            top: -2px;
+            left: 0;
+            right: 0;
+            height: 16px;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 1px;
+        }
+        
+        .tick {
+            width: 3px;
+            height: 16px;
+            background: #dee2e6;
+            border-radius: 2px;
+        }
+        
+        .tick.completed {
+            background: #17A2B8;
+        }
+        
+        .tick.current {
+            background: #138496;
+            box-shadow: 0 0 8px rgba(19, 132, 150, 0.5);
         }
         
         .progress-text {
@@ -249,6 +272,11 @@
                 border-radius: 12px;
             }
             
+            .path-header {
+                margin: 0 10px 20px 10px;
+                padding: 15px 20px;
+            }
+            
             .header {
                 padding: 30px 20px;
             }
@@ -257,7 +285,7 @@
                 font-size: 2em;
             }
             
-            .content, .path-info, .progress-section {
+            .content, .progress-section {
                 padding: 20px;
             }
             
@@ -272,48 +300,55 @@
     </style>
 </head>
 <body>
+    <div class="path-header">
+        <h2>🔵 Path B - The Strategist</h2>
+    </div>
+    
     <div class="container">
         <div class="header">
-            <h1>🚀 Step 5: Quality-Focused Implementation</h1>
+            <h1>📋 Step 5: Development Planning</h1>
             <div class="subtitle">Balanced MVP Development</div>
-        </div>
-        
-        <div class="path-info">
-            <div class="path-title">🔵 Path B - The Strategist</div>
-            <div class="path-subtitle">Balanced MVP Development</div>
-            <div class="path-features">• 6 structured steps • Technical research and risk analysis • Quality-focused development</div>
         </div>
         
         <div class="progress-section">
             <div class="progress-label">Step 5 of 6</div>
-            <div class="progress-bar">
-                <div class="progress-fill" style="width: 83.33%;"></div>
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 83.33%;"></div>
+                </div>
+                <div class="progress-ticks">
+                    <div class="tick completed"></div>
+                    <div class="tick completed"></div>
+                    <div class="tick completed"></div>
+                    <div class="tick completed"></div>
+                    <div class="tick current"></div>
+                    <div class="tick"></div>
+                </div>
             </div>
-            <div class="progress-text">Quality-Focused Implementation</div>
+            <div class="progress-text">Development Planning</div>
         </div>
         
         <div class="content">
             <div class="nav-buttons">
-                <a href="step4-b.html" class="nav-button back">← Step 4: Risk Analysis</a>
-                <a href="step6-b.html" class="nav-button next">Next: Comprehensive Review →</a>
+                <a href="step4-b.html" class="nav-button back">← Back: Quality Planning</a>
+                <a href="step6-b.html" class="nav-button next">Next: Implementation →</a>
             </div>
             
             <div class="step-info">
                 <h2>🎯 Goal</h2>
-                <p>Coordinate the development process with specialized coding agents using "one ticket at a time" methodology while maintaining quality-focused standards.</p>
+                <p>Create detailed development plans, sprint structures, and implementation roadmaps for your project.</p>
                 
                 <h3>What You Do:</h3>
                 <ol>
-                    <li>Provide all documents from previous steps</li>
-                    <li>Work with the AI to brief specialized coding agents</li>
-                    <li>Review completed epics before moving to the next one</li>
-                    <li>Provide feedback and guidance during development</li>
+                    <li>Share your updated PVD.md with the AI</li>
+                    <li>Review the AI's development planning and sprint structure</li>
+                    <li>Approve the implementation roadmap</li>
                 </ol>
                 
-                <p><strong>What to Expect:</strong> The AI will coordinate with coding specialists to build your application one epic at a time, maintaining quality-focused standards.</p>
+                <p><strong>What to Expect:</strong> The AI will create detailed development plans with sprint breakdowns and implementation timelines.</p>
             </div>
             
-            <h2>📋 System Prompt</h2>
+            <h2>System Prompt</h2>
             <p>Copy this prompt and paste it into your AI assistant to begin:</p>
             
             <div class="system-prompt">
@@ -322,90 +357,78 @@
                     <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
                 </div>
                 <div class="prompt-content">
-                    <pre>You are a Senior Full-Stack Developer and Code Quality Manager for a strategic business project. Your goal is to implement the application using "one ticket at a time" methodology while maintaining quality-focused standards.
+                    <pre>You are a Development Planning Specialist for a strategic development project. Your goal is to create detailed development plans and implementation roadmaps based on the comprehensive Product Vision Document.
 
 Your Process:
-1. PREPARE: Review all project documents and extract implementation requirements
-2. BRIEF: Create comprehensive briefing for specialized coding agent
-3. COORDINATE: Manage epic-by-epic development workflow
-4. MONITOR: Ensure quality-focused standards are met
-5. DOCUMENT: Maintain Development_Log.md throughout implementation
-6. LOG: Add entries to Project Changelog for each completed epic
+1. ANALYZE: Review the complete PVD.md with all previous planning phases
+2. STRUCTURE: Create sprint-based development methodology
+3. PRIORITIZE: Organize features and tasks by business value and dependencies
+4. TIMELINE: Develop realistic implementation schedules
+5. RESOURCE: Plan team structure and resource allocation
+6. DOCUMENT: Create comprehensive development planning documentation
+7. UPDATE: Add development planning sections to the PVD.md
 
-Context for Specialized Coding Agent:
-You have been provided with a comprehensive project foundation including:
+Development Planning Areas:
+• Sprint structure and methodology (Agile/Scrum framework)
+• Feature prioritization and backlog management
+• Development phases and milestone planning
+• Team structure and role definitions
+• Resource allocation and capacity planning
+• Timeline estimation and dependency mapping
+• Release planning and deployment strategy
+• Communication and collaboration protocols
+• Progress tracking and reporting mechanisms
+• Change management and scope control
 
-1. Complete project documentation with detailed requirements
-2. Technical research and architecture decisions
-3. A structured development plan with epic breakdown
-4. Risk analysis and mitigation strategies
+Implementation Roadmap Components:
+• MVP feature breakdown and prioritization
+• Sprint planning with user stories and acceptance criteria
+• Development phases with clear deliverables
+• Testing and quality assurance integration
+• Risk mitigation embedded in planning
+• Stakeholder review and approval gates
+• Release and deployment scheduling
+• Post-launch support and maintenance planning
 
-Your task is to implement the epics as outlined in the Software Development Plan using "one ticket at a time" methodology. Please:
-
-1. Review all provided documents thoroughly (PVD.md, SDD.md, SDP.md, RMP.md, MAP.md)
-2. Implement one ticket at a time, testing and committing after each
-3. Report completion of each ticket before proceeding to the next
-4. Complete one epic at a time, reporting epic completion before proceeding
-5. Maintain quality-focused standards (well-structured code, comprehensive testing, good practices)
-6. Document your progress and any deviations from the plan
-7. Address risk mitigation strategies as outlined in the MAP.md
-8. Follow the technical architecture and decisions from SDD.md
-
-Quality Standards for Strategic Business Project:
-• All code must be production-ready with proper error handling
-• Comprehensive testing (unit, integration, and user acceptance)
-• Security best practices implemented throughout
-• Performance optimization and scalability considerations
-• Clean, maintainable, and well-documented code
-• Proper version control with meaningful commit messages
-• Code reviews and quality gates at epic completion
-
-Implementation Workflow:
-• Start with Epic 1 and complete all tickets before moving to Epic 2
-• Test each ticket individually and as part of the epic
-• Document any technical decisions or changes in Development_Log.md
-• Report epic completion with testing results before proceeding
-• Maintain continuous integration and deployment practices
-
-Final Output (when all epics are complete):
-• Complete functional application meeting all requirements
-• Development_Log.md with detailed implementation history
-• Updated Project Changelog with all implementation milestones
-• Quality-focused codebase ready for production deployment
+Final Output:
+Updated PVD.md with comprehensive development planning sections:
+• Development Methodology and Sprint Structure
+• Feature Prioritization and Product Backlog
+• Implementation Timeline and Milestones
+• Team Structure and Resource Allocation
+• Release Planning and Deployment Strategy
+• Progress Tracking and Communication Plan
+• Updated Project Changelog with development planning
 
 Phase Gate Checklist:
-☐ All project documents reviewed and understood?
-☐ Specialized coding agent briefed with complete context?
-☐ "One ticket at a time" methodology established and followed?
-☐ Epic-by-epic workflow established and followed?
-☐ Quality-focused standards maintained throughout development?
-☐ All epics implemented with comprehensive testing?
-☐ Development_Log.md created and maintained?
-☐ Risk mitigation strategies implemented as planned?
-☐ Changelog entries added for all implementation milestones?
-☐ Application ready for comprehensive review?</pre>
+☐ Development methodology and sprint structure defined?
+☐ Feature prioritization and backlog created?
+☐ Implementation timeline with milestones established?
+☐ Team structure and resource allocation planned?
+☐ Release and deployment strategy documented?
+☐ Progress tracking and communication protocols set?
+☐ PVD.md updated with comprehensive development planning?
+☐ Ready to proceed to Step 6?</pre>
                 </div>
             </div>
             
             <div class="checklist">
-                <h3>✅ Phase Gate Checklist</h3>
+                <h3>Checklist</h3>
                 <ul>
-                    <li>All project documents reviewed and understood?</li>
-                    <li>Specialized coding agent briefed with complete context?</li>
-                    <li>"One ticket at a time" methodology established and followed?</li>
-                    <li>Epic-by-epic workflow established and followed?</li>
-                    <li>Quality-focused standards maintained throughout development?</li>
-                    <li>All epics implemented with comprehensive testing?</li>
-                    <li>Development_Log.md created and maintained?</li>
-                    <li>Risk mitigation strategies implemented as planned?</li>
-                    <li>Changelog entries added for all implementation milestones?</li>
-                    <li>Application ready for comprehensive review?</li>
+                    <li>Development methodology and sprint structure defined?</li>
+                    <li>Feature prioritization and backlog created?</li>
+                    <li>Implementation timeline with milestones established?</li>
+                    <li>Team structure and resource allocation planned?</li>
+                    <li>Release and deployment strategy documented?</li>
+                    <li>Progress tracking and communication protocols set?</li>
+                    <li>PVD.md updated with comprehensive development planning?</li>
+                    <li>Ready to proceed to Step 6?</li>
                 </ul>
             </div>
             
             <div style="text-align: center; margin: 40px 0;">
-                <p><strong>📄 Output:</strong> Complete functional application with Development_Log.md and quality-focused implementation</p>
-                <p><strong>Next →</strong> <a href="step6-b.html">Step 6: Comprehensive Quality Review</a></p>
+                <p><strong>📄 Output:</strong> Updated PVD.md with comprehensive development planning and implementation roadmap</p>
+                <p><strong>Next →</strong> <a href="step6-b.html">Step 6: Implementation</a></p>
             </div>
         </div>
     </div>
