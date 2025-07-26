@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Step 4: Risk Analysis & Solutions</title>
+    <title>Step 4: Quality Planning</title>
     <style>
         * {
             margin: 0;
@@ -15,9 +15,28 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
             color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #B3D9E6 0%, #17A2B8 100%);
             min-height: 100vh;
             padding: 20px;
+        }
+        
+        .path-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 40px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            margin-bottom: 20px;
+            border-radius: 12px 12px 0 0;
+            max-width: 900px;
+            margin: 0 auto 20px auto;
+        }
+        
+        .path-header h2 {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: #17A2B8;
+            margin: 0;
         }
         
         .container {
@@ -49,33 +68,6 @@
             font-weight: 300;
         }
         
-        .path-info {
-            background: #f8f9fa;
-            padding: 25px 40px;
-            border-bottom: 2px solid #e9ecef;
-            text-align: center;
-        }
-        
-        .path-title {
-            font-size: 1.4em;
-            font-weight: 700;
-            color: #17A2B8;
-            margin-bottom: 8px;
-        }
-        
-        .path-subtitle {
-            font-size: 1.1em;
-            font-weight: 600;
-            color: #0c5460;
-            margin-bottom: 10px;
-        }
-        
-        .path-features {
-            font-size: 0.95em;
-            color: #6c757d;
-            line-height: 1.4;
-        }
-        
         .progress-section {
             background: white;
             padding: 20px 40px;
@@ -87,7 +79,12 @@
             font-size: 1.1em;
             font-weight: 600;
             color: #495057;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .progress-container {
+            position: relative;
+            margin-bottom: 8px;
         }
         
         .progress-bar {
@@ -96,7 +93,6 @@
             background-color: #e9ecef;
             border-radius: 6px;
             overflow: hidden;
-            margin-bottom: 8px;
         }
         
         .progress-fill {
@@ -104,6 +100,33 @@
             background: linear-gradient(90deg, #17A2B8 0%, #138496 100%);
             border-radius: 6px;
             transition: width 0.3s ease;
+        }
+        
+        .progress-ticks {
+            position: absolute;
+            top: -2px;
+            left: 0;
+            right: 0;
+            height: 16px;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 1px;
+        }
+        
+        .tick {
+            width: 3px;
+            height: 16px;
+            background: #dee2e6;
+            border-radius: 2px;
+        }
+        
+        .tick.completed {
+            background: #17A2B8;
+        }
+        
+        .tick.current {
+            background: #138496;
+            box-shadow: 0 0 8px rgba(19, 132, 150, 0.5);
         }
         
         .progress-text {
@@ -154,19 +177,6 @@
             padding: 30px;
             margin-bottom: 40px;
             border-left: 5px solid #17A2B8;
-        }
-        
-        .phase-warning {
-            background: #fff3cd;
-            border: 2px solid #ffc107;
-            border-radius: 12px;
-            padding: 20px;
-            margin: 20px 0;
-        }
-        
-        .phase-warning h3 {
-            color: #856404;
-            margin-bottom: 10px;
         }
         
         .system-prompt {
@@ -262,6 +272,11 @@
                 border-radius: 12px;
             }
             
+            .path-header {
+                margin: 0 10px 20px 10px;
+                padding: 15px 20px;
+            }
+            
             .header {
                 padding: 30px 20px;
             }
@@ -270,7 +285,7 @@
                 font-size: 2em;
             }
             
-            .content, .path-info, .progress-section {
+            .content, .progress-section {
                 padding: 20px;
             }
             
@@ -285,56 +300,55 @@
     </style>
 </head>
 <body>
+    <div class="path-header">
+        <h2>🔵 Path B - The Strategist</h2>
+    </div>
+    
     <div class="container">
         <div class="header">
-            <h1>⚠️ Step 4: Risk Analysis & Solutions</h1>
+            <h1>🎯 Step 4: Quality Planning</h1>
             <div class="subtitle">Balanced MVP Development</div>
-        </div>
-        
-        <div class="path-info">
-            <div class="path-title">🔵 Path B - The Strategist</div>
-            <div class="path-subtitle">Balanced MVP Development</div>
-            <div class="path-features">• 6 structured steps • Technical research and risk analysis • Quality-focused development</div>
         </div>
         
         <div class="progress-section">
             <div class="progress-label">Step 4 of 6</div>
-            <div class="progress-bar">
-                <div class="progress-fill" style="width: 66.67%;"></div>
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 66.67%;"></div>
+                </div>
+                <div class="progress-ticks">
+                    <div class="tick completed"></div>
+                    <div class="tick completed"></div>
+                    <div class="tick completed"></div>
+                    <div class="tick current"></div>
+                    <div class="tick"></div>
+                    <div class="tick"></div>
+                </div>
             </div>
-            <div class="progress-text">Risk Analysis & Solutions</div>
+            <div class="progress-text">Quality Planning</div>
         </div>
         
         <div class="content">
             <div class="nav-buttons">
-                <a href="step3-b.html" class="nav-button back">← Step 3: Development Roadmap</a>
-                <a href="step5-b.html" class="nav-button next">Next: Implementation →</a>
+                <a href="step3-b.html" class="nav-button back">← Back: Risk Analysis</a>
+                <a href="step5-b.html" class="nav-button next">Next: Development Planning →</a>
             </div>
             
             <div class="step-info">
                 <h2>🎯 Goal</h2>
-                <p>Conduct adversarial review and research-backed solutions for project risks in a two-phase approach.</p>
+                <p>Establish comprehensive quality assurance standards and testing strategies for your project.</p>
                 
                 <h3>What You Do:</h3>
                 <ol>
-                    <li><strong>Phase 1:</strong> Provide all your documents and get critical review</li>
-                    <li><strong>Phase 2:</strong> Run this step again to get solutions research</li>
-                    <li>Answer questions about risks and constraints in each phase</li>
+                    <li>Share your updated PVD.md with the AI</li>
+                    <li>Review the AI's quality planning and testing strategies</li>
+                    <li>Approve the quality assurance framework</li>
                 </ol>
                 
-                <p><strong>What to Expect:</strong> Phase 1 will brutally critique your plan. Phase 2 will research practical solutions for identified risks.</p>
+                <p><strong>What to Expect:</strong> The AI will create detailed quality standards and comprehensive testing plans.</p>
             </div>
             
-            <div class="phase-warning">
-                <h3>⚠️ Two-Phase Process</h3>
-                <p><strong>Important:</strong> This step requires running the same prompt twice:</p>
-                <ul style="margin-top: 10px; padding-left: 20px;">
-                    <li><strong>First run:</strong> Gets critical review and creates RMP.md</li>
-                    <li><strong>Second run:</strong> Researches solutions and creates MAP.md</li>
-                </ul>
-            </div>
-            
-            <h2>📋 System Prompt</h2>
+            <h2>System Prompt</h2>
             <p>Copy this prompt and paste it into your AI assistant to begin:</p>
             
             <div class="system-prompt">
@@ -343,89 +357,79 @@
                     <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
                 </div>
                 <div class="prompt-content">
-                    <pre>You are a skeptical, cynical, and brutally honest Senior Technical Auditor with research capabilities for a strategic business project. You operate in a two-phase execution model.
-
-Phase Detection: Check if this is Phase 1 (first run) or Phase 2 (user running again after Phase 1 completion)
+                    <pre>You are a Quality Assurance Specialist for a strategic development project. Your goal is to establish comprehensive quality standards and testing strategies based on the Product Vision Document.
 
 Your Process:
+1. ANALYZE: Review the PVD.md for quality requirements and constraints
+2. DEFINE: Establish quality standards and acceptance criteria
+3. PLAN: Create comprehensive testing strategies and procedures
+4. DESIGN: Develop quality gates and review processes
+5. DOCUMENT: Create detailed quality assurance documentation
+6. UPDATE: Add quality planning sections to the PVD.md
 
-Phase 1 (Adversarial Review):
-1. ANALYZE: Review all provided documents (PVD.md, SDD.md, SDP.md)
-2. VALIDATE: Ask for risk context if missing
-3. CRITIQUE: Conduct focused critique on major risks, market assumptions, and technical feasibility
-4. DOCUMENT: Create RMP.md (Risk Management Plan)
-5. COMPLETE: Mark [x] complete and instruct user to run Step 4 again
-6. LOG: Add entry to Project Changelog
+Quality Areas to Address:
+• Code quality standards and coding conventions
+• Testing strategies (unit, integration, system, acceptance)
+• Performance and scalability testing requirements
+• Security testing and vulnerability assessments
+• User experience and usability testing
+• Accessibility compliance and testing
+• Cross-browser and device compatibility testing
+• Data quality and validation procedures
+• Documentation quality standards
+• Review and approval processes
 
-Phase 2 (Solutions Research):
-1. ANALYZE: Review the RMP.md from Phase 1
-2. RESEARCH: Conduct solutions research using web search capabilities
-3. SOLVE: Create actionable solutions with implementation steps
-4. DOCUMENT: Create MAP.md (Mitigation Action Plan)
-5. LOG: Add entry to Project Changelog
+Testing Framework to Establish:
+• Test planning and strategy documentation
+• Test case design and management
+• Automated testing implementation
+• Manual testing procedures
+• Performance benchmarking and monitoring
+• Security testing protocols
+• User acceptance testing (UAT) procedures
+• Bug tracking and resolution processes
+• Quality metrics and reporting
+• Continuous integration and deployment quality gates
 
-Questions to Validate (Ask user if answers are not found in context):
-
-Phase 1 Questions:
-• What's your experience level with the chosen technology stack?
-• Have you validated market demand for this solution?
-• What's your competitive analysis and differentiation strategy?
-• What are your biggest assumptions about user behavior?
-• What could cause this project to fail completely?
-
-Phase 2 Questions:
-• What's your budget for risk mitigation measures?
-• What's your timeline flexibility for addressing risks?
-• Do you have access to additional expertise or resources?
-• What's your risk tolerance level for this project?
-
-Final Output Phase 1:
-RMP.md (Risk Management Plan) containing:
-• Executive summary of major risks identified
-• Technical risks and feasibility concerns
-• Market and business model risks
-• Resource and timeline risks
-• Assumption validation requirements
-• Risk priority matrix and impact assessment
-
-Final Output Phase 2:
-MAP.md (Mitigation Action Plan) containing:
-• Research-backed solutions for each identified risk
-• Implementation strategies and timelines
-• Resource requirements and cost estimates
-• Alternative approaches and contingency plans
-• Risk monitoring and early warning indicators
-• Updated risk priority matrix with mitigation strategies
+Final Output:
+Updated PVD.md with comprehensive quality assurance sections:
+• Quality Standards and Coding Conventions
+• Testing Strategy and Test Plans
+• Quality Gates and Review Processes
+• Performance and Security Testing Requirements
+• User Experience and Accessibility Standards
+• Quality Metrics and Success Criteria
+• Updated Project Changelog with quality planning
 
 Phase Gate Checklist:
-☐ Phase 1: Adversarial review completed?
-☐ Phase 1: RMP.md created with comprehensive risk analysis?
-☐ Phase 1: Major risks and assumptions identified?
-☐ Phase 2: Solutions research completed?
-☐ Phase 2: MAP.md created with actionable mitigation strategies?
-☐ Phase 2: Implementation plans and resource requirements documented?
-☐ Both phases: Changelog updated?
+☐ Quality standards and coding conventions defined?
+☐ Comprehensive testing strategy documented?
+☐ Quality gates and review processes established?
+☐ Performance and security testing requirements specified?
+☐ User experience and accessibility standards set?
+☐ Quality metrics and success criteria defined?
+☐ PVD.md updated with quality assurance documentation?
 ☐ Ready to proceed to Step 5?</pre>
                 </div>
             </div>
             
             <div class="checklist">
-                <h3>✅ Phase Gate Checklist</h3>
+                <h3>Checklist</h3>
                 <ul>
-                    <li>Phase 1: Adversarial review completed?</li>
-                    <li>Phase 1: RMP.md created with comprehensive risk analysis?</li>
-                    <li>Phase 1: Major risks and assumptions identified?</li>
-                    <li>Phase 2: Solutions research completed?</li>
-                    <li>Phase 2: MAP.md created with actionable mitigation strategies?</li>
-                    <li>Phase 2: Implementation plans and resource requirements documented?</li>
-                    <li>Both phases: Changelog updated?</li>
+                    <li>Quality standards and coding conventions defined?</li>
+                    <li>Comprehensive testing strategy documented?</li>
+                    <li>Quality gates and review processes established?</li>
+                    <li>Performance and security testing requirements specified?</li>
+                    <li>User experience and accessibility standards set?</li>
+                    <li>Quality metrics and success criteria defined?</li>
+                    <li>PVD.md updated with quality assurance documentation?</li>
                     <li>Ready to proceed to Step 5?</li>
                 </ul>
             </div>
             
             <div style="text-align: center; margin: 40px 0;">
-                <p><strong>📄 Output:</strong> RMP.md (Phase 1) and MAP.md (Phase 2) with comprehensive risk analysis and solutions</p>
-                <p><strong>Next →</strong> <a href="step5-b.html">Step 5: Quality-Focused Implementation</a></p>
+                <p><strong>📄 Output:</strong> Updated PVD.md with comprehensive quality assurance framework</p>
+                <p><strong>Next →</strong> <a href="step5-b.html">Step 5: Development Planning</a></p>
             </div>
         </div>
     </div>
