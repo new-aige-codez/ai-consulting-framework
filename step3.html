@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Step 3: Development Roadmap</title>
+    <title>Step 3: Fast Test</title>
     <style>
         * {
             margin: 0;
@@ -15,9 +15,28 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
             color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #FFE69C 0%, #FFD700 100%);
             min-height: 100vh;
             padding: 20px;
+        }
+        
+        .path-header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px 40px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            margin-bottom: 20px;
+            border-radius: 12px 12px 0 0;
+            max-width: 900px;
+            margin: 0 auto 20px auto;
+        }
+        
+        .path-header h2 {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: #B8860B;
+            margin: 0;
         }
         
         .container {
@@ -30,8 +49,8 @@
         }
         
         .header {
-            background: linear-gradient(135deg, #FFF3CD 0%, #FFE69C 100%);
-            color: #856404;
+            background: linear-gradient(135deg, #FFF8DC 0%, #FFE69C 100%);
+            color: #8B4513;
             padding: 40px;
             text-align: center;
             border-bottom: 3px solid #FFD700;
@@ -47,6 +66,73 @@
             font-size: 1.2em;
             opacity: 0.9;
             font-weight: 300;
+        }
+        
+        .progress-section {
+            background: white;
+            padding: 20px 40px;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .progress-label {
+            text-align: center;
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #495057;
+            margin-bottom: 15px;
+        }
+        
+        .progress-container {
+            position: relative;
+            margin-bottom: 8px;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 12px;
+            background-color: #e9ecef;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #FFD700 0%, #B8860B 100%);
+            border-radius: 6px;
+            transition: width 0.3s ease;
+        }
+        
+        .progress-ticks {
+            position: absolute;
+            top: -2px;
+            left: 0;
+            right: 0;
+            height: 16px;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 1px;
+        }
+        
+        .tick {
+            width: 3px;
+            height: 16px;
+            background: #dee2e6;
+            border-radius: 2px;
+        }
+        
+        .tick.completed {
+            background: #FFD700;
+        }
+        
+        .tick.current {
+            background: #B8860B;
+            box-shadow: 0 0 8px rgba(184, 134, 11, 0.5);
+        }
+        
+        .progress-text {
+            text-align: center;
+            font-size: 0.9em;
+            color: #6c757d;
         }
         
         .content {
@@ -97,15 +183,26 @@
             background: #2d3748;
             color: #e2e8f0;
             border-radius: 12px;
-            padding: 30px;
             margin: 30px 0;
             position: relative;
+            overflow: hidden;
+        }
+        
+        .prompt-header {
+            background: #1a202c;
+            padding: 15px 20px;
+            border-bottom: 1px solid #4a5568;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .prompt-title {
+            font-weight: 600;
+            font-size: 1.1em;
         }
         
         .copy-button {
-            position: absolute;
-            top: 15px;
-            right: 15px;
             background: rgba(255, 255, 255, 0.1);
             color: white;
             border: none;
@@ -114,10 +211,26 @@
             cursor: pointer;
             font-size: 14px;
             transition: all 0.3s ease;
+            flex-shrink: 0;
         }
         
         .copy-button:hover {
             background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .prompt-content {
+            padding: 30px;
+        }
+        
+        .prompt-content pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            max-width: 100%;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 14px;
+            line-height: 1.5;
         }
         
         .checklist {
@@ -151,106 +264,181 @@
             color: #28a745;
             font-weight: bold;
         }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 12px;
+            }
+            
+            .path-header {
+                margin: 0 10px 20px 10px;
+                padding: 15px 20px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .content, .progress-section {
+                padding: 20px;
+            }
+            
+            .prompt-content {
+                padding: 20px;
+            }
+            
+            .prompt-content pre {
+                font-size: 13px;
+            }
+        }
     </style>
 </head>
 <body>
+    <div class="path-header">
+        <h2>🟡 Path A - The Sprinter</h2>
+    </div>
+    
     <div class="container">
         <div class="header">
-            <h1>🗺️ Step 3: Development Roadmap</h1>
+            <h1>🧪 Step 3: Fast Test</h1>
             <div class="subtitle">Fast Track MVP Development</div>
+        </div>
+        
+        <div class="progress-section">
+            <div class="progress-label">Step 3 of 4</div>
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 75%;"></div>
+                </div>
+                <div class="progress-ticks">
+                    <div class="tick completed"></div>
+                    <div class="tick completed"></div>
+                    <div class="tick current"></div>
+                    <div class="tick"></div>
+                </div>
+            </div>
+            <div class="progress-text">Fast Test</div>
         </div>
         
         <div class="content">
             <div class="nav-buttons">
-                <a href="step2.html" class="nav-button back">← Step 2: Requirements & Research</a>
-                <a href="step4.html" class="nav-button next">Next: Implementation & QA →</a>
+                <a href="step2.html" class="nav-button back">← Back: Quick Build</a>
+                <a href="step4.html" class="nav-button next">Next: Launch →</a>
             </div>
             
             <div class="step-info">
                 <h2>🎯 Goal</h2>
-                <p>Create a streamlined development plan with epic-to-ticket breakdown using "one ticket at a time" methodology.</p>
+                <p>Quickly validate your MVP with essential testing and gather initial user feedback.</p>
                 
                 <h3>What You Do:</h3>
                 <ol>
-                    <li>Provide your PVD.md and PRD.md files from previous steps</li>
-                    <li>Answer questions about development constraints and preferences</li>
-                    <li>Review and approve the development roadmap</li>
+                    <li>Share your built MVP with the AI</li>
+                    <li>Let the AI run essential tests and identify critical issues</li>
+                    <li>Get quick user feedback on core functionality</li>
                 </ol>
                 
-                <p><strong>What to Expect:</strong> The AI will break your project into 2-3 basic epics focusing on core functionality with clear implementation steps.</p>
+                <p><strong>What to Expect:</strong> The AI will focus on essential testing to ensure your MVP works reliably for users.</p>
             </div>
             
-            <h2>📋 System Prompt</h2>
+            <h2>System Prompt</h2>
             <p>Copy this prompt and paste it into your AI assistant to begin:</p>
             
             <div class="system-prompt">
-                <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
-                <pre>You are a Development Planner for a fast-track project. Your goal is to create a streamlined, actionable development roadmap that breaks down the project into manageable epics using "one ticket at a time" methodology.
+                <div class="prompt-header">
+                    <div class="prompt-title">System Prompt</div>
+                    <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                </div>
+                <div class="prompt-content">
+                    <pre>You are a Rapid Testing Specialist focused on quickly validating MVPs for launch readiness. Your goal is to ensure the core functionality works reliably with minimal testing overhead.
 
 Your Process:
-1. ANALYZE: Review provided PVD.md and PRD.md files
-2. VALIDATE: Ask for any missing planning context
-3. PLAN: Create 2-3 basic epics focusing on core functionality only
-4. DOCUMENT: Create streamlined SDP.md (Software Development Plan)
-5. INSTRUCT: Provide clear guidance for the implementation phase
-6. LOG: Add entry to Project Changelog
+1. REVIEW: Analyze the built MVP and identify critical user paths
+2. TEST: Execute essential functionality tests quickly
+3. VALIDATE: Ensure core features work as expected
+4. IDENTIFY: Find and prioritize critical issues that would block users
+5. RECOMMEND: Suggest quick fixes for launch-blocking problems
+6. PREPARE: Ready the MVP for user feedback and launch
 
-Epic Complexity: 2-3 basic epics focusing on core functionality only
+Testing Priorities:
+• Core user flow works end-to-end
+• Essential features function correctly
+• Basic error handling prevents crashes
+• User interface is usable and clear
+• Data is saved and retrieved properly
+• Critical security vulnerabilities are addressed
 
-Questions to Validate (Ask user if answers are not found in context):
-• What's your preferred technology stack or framework?
-• Are there any specific technical constraints or requirements?
-• What's your deployment preference (local, cloud, specific platform)?
-• Do you have any existing code or systems to integrate with?
-• What's your experience level with the chosen technologies?
+Fast Testing Approach:
+• Focus on happy path scenarios first
+• Test the most important user journeys
+• Verify data integrity for core operations
+• Check basic error handling and edge cases
+• Ensure the application doesn't crash under normal use
+• Validate that the main value proposition is delivered
+• Test on primary target devices/browsers only
 
-Final Output (when all questions are answered):
-A streamlined SDP.md (Software Development Plan) containing:
-• Project timeline and milestone overview
-• 2-3 detailed epics with:
-  - Epic descriptions and acceptance criteria
-  - Technical implementation notes
-  - Time estimates and complexity ratings
-  - Dependencies and prerequisites
-• Development workflow and quality standards
-• "One ticket at a time" implementation methodology
-• Testing and deployment strategies
-• Clear instructions for epic-by-epic implementation
+Quality Gates for Launch:
+• Primary user flow completes successfully
+• Core features work without major bugs
+• Application handles basic errors gracefully
+• User interface is functional and understandable
+• Data persistence works correctly
+• No critical security issues present
+• Performance is acceptable for expected usage
+
+Testing Documentation:
+• List of tests performed and results
+• Critical issues found and their severity
+• Recommended fixes before launch
+• Known limitations to communicate to users
+• Basic user testing feedback if available
+
+Final Output:
+• Test results summary with pass/fail status
+• List of critical issues that must be fixed
+• Recommended quick fixes for launch blockers
+• Launch readiness assessment
+• User feedback collection plan
+• Basic performance and reliability validation
 
 Phase Gate Checklist:
-☐ SDP.md created with streamlined development plan?
-☐ 2-3 core epics defined with clear acceptance criteria?
-☐ Technical implementation approach documented?
-☐ "One ticket at a time" methodology established?
-☐ Development workflow and quality standards defined?
-☐ Changelog updated?
-☐ Ready to proceed to Step 4?</pre>
+☐ Core user flow tested and working?
+☐ Essential features validated and functional?
+☐ Critical bugs identified and prioritized?
+☐ Launch-blocking issues resolved?
+☐ MVP ready for user feedback?
+☐ Ready to proceed to launch?</pre>
+                </div>
             </div>
             
             <div class="checklist">
-                <h3>✅ Phase Gate Checklist</h3>
+                <h3>Checklist</h3>
                 <ul>
-                    <li>SDP.md created with streamlined development plan?</li>
-                    <li>2-3 core epics defined with clear acceptance criteria?</li>
-                    <li>Technical implementation approach documented?</li>
-                    <li>"One ticket at a time" methodology established?</li>
-                    <li>Development workflow and quality standards defined?</li>
-                    <li>Changelog updated?</li>
-                    <li>Ready to proceed to Step 4?</li>
+                    <li>Core user flow tested and working?</li>
+                    <li>Essential features validated and functional?</li>
+                    <li>Critical bugs identified and prioritized?</li>
+                    <li>Launch-blocking issues resolved?</li>
+                    <li>MVP ready for user feedback?</li>
+                    <li>Ready to proceed to launch?</li>
                 </ul>
             </div>
             
             <div style="text-align: center; margin: 40px 0;">
-                <p><strong>📄 Output:</strong> Streamlined SDP.md with development roadmap and epic breakdown</p>
-                <p><strong>Next →</strong> <a href="step4.html">Step 4: Implementation & Quality Assurance</a></p>
+                <p><strong>📄 Output:</strong> Validated MVP ready for launch with test results</p>
+                <p><strong>Next →</strong> <a href="step4.html">Step 4: Launch</a></p>
             </div>
         </div>
     </div>
     
     <script>
         function copyToClipboard(button) {
-            const pre = button.parentElement.querySelector('pre');
-            const text = pre.textContent;
+            const promptContent = button.closest('.system-prompt').querySelector('pre');
+            const text = promptContent.textContent;
             
             navigator.clipboard.writeText(text).then(() => {
                 button.textContent = 'Copied!';
