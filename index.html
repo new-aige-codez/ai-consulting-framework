@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI-Driven Software Development Workflow</title>
+    <title>AI-Driven Software Dev Workflow</title>
     <style>
         * {
             margin: 0;
@@ -15,16 +15,20 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
             color: #333;
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            background: linear-gradient(135deg, #4c1d95 0%, #6d28d9 100%);
             min-height: 100vh;
         }
         
         .header {
-            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            background: linear-gradient(135deg, #2d1b69 0%, #4c1d95 100%);
             color: white;
             text-align: center;
             padding: 60px 20px 40px;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border-left: 4px solid white;
+            border-right: 4px solid white;
+            border-radius: 0 0 20px 20px;
+            margin: 0 20px;
+            box-shadow: 0 6px 25px rgba(0,0,0,0.3);
         }
         
         .header h1 {
@@ -70,14 +74,19 @@
         }
         
         .section {
-            margin: 60px 0;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
         }
         
         .section h2 {
             text-align: center;
             font-size: 2.5em;
             margin-bottom: 20px;
-            color: #1e293b;
+            color: #2d1b69;
         }
         
         .section .subtitle {
@@ -90,6 +99,36 @@
             margin-right: auto;
         }
         
+        /* Quick Start Guide */
+        .quick-start {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(139, 92, 246, 0.3);
+        }
+        
+        .quick-start h2 {
+            color: #2d1b69;
+            margin-bottom: 20px;
+            font-size: 2em;
+            text-align: center;
+        }
+        
+        .quick-start ol {
+            color: #475569;
+            padding-left: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .quick-start li {
+            margin: 15px 0;
+            line-height: 1.6;
+        }
+        
         /* Comparison Table */
         .comparison-table {
             background: white;
@@ -100,10 +139,10 @@
         }
         
         .comparison-header {
-            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            background: linear-gradient(135deg, #2d1b69 0%, #4c1d95 100%);
             color: white;
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
             padding: 25px;
             font-weight: 600;
             font-size: 1.1em;
@@ -111,7 +150,7 @@
         
         .comparison-row {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
             padding: 20px 25px;
             border-bottom: 1px solid #f1f5f9;
             align-items: center;
@@ -127,7 +166,7 @@
         
         .metric-name {
             font-weight: 600;
-            color: #1e293b;
+            color: #2d1b69;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -179,6 +218,10 @@
             border-color: #3b82f6;
         }
         
+        .path.path-c {
+            border-color: #8b5cf6;
+        }
+        
         .path.coming-soon {
             opacity: 0.6;
             cursor: not-allowed;
@@ -212,6 +255,10 @@
         
         .path.path-b h3 {
             color: #3b82f6;
+        }
+        
+        .path.path-c h3 {
+            color: #8b5cf6;
         }
         
         .path.coming-soon h3 {
@@ -268,6 +315,11 @@
             color: white;
         }
         
+        .path.path-c .cta-button {
+            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+            color: white;
+        }
+        
         .path.coming-soon .cta-button {
             background: #e5e7eb;
             color: #9ca3af;
@@ -279,43 +331,22 @@
             box-shadow: 0 8px 20px rgba(0,0,0,0.2);
         }
         
-        /* Quick Start */
-        .quick-start {
-            background: white;
-            border-radius: 16px;
-            padding: 40px;
-            margin: 50px 0;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            border: 2px solid #e2e8f0;
-        }
-        
-        .quick-start h2 {
-            color: #1e293b;
-            margin-bottom: 20px;
-            font-size: 2em;
-            text-align: left;
-        }
-        
-        .quick-start ol {
-            color: #475569;
-            padding-left: 20px;
-        }
-        
-        .quick-start li {
-            margin: 15px 0;
-            line-height: 1.6;
-        }
-        
         .footer {
             text-align: center;
             padding: 40px 20px;
-            color: #64748b;
-            border-top: 1px solid #e2e8f0;
+            color: rgba(255, 255, 255, 0.8);
             margin-top: 60px;
         }
         
         /* Responsive Design */
         @media (max-width: 768px) {
+            .header {
+                margin: 0 10px;
+                border-left: 2px solid white;
+                border-right: 2px solid white;
+                border-radius: 0 0 15px 15px;
+            }
+            
             .header h1 {
                 font-size: 2.2em;
             }
@@ -365,11 +396,17 @@
             .container {
                 padding: 20px 15px;
             }
+            
+            .section {
+                margin: 20px 0;
+                padding: 30px;
+            }
         }
         
         @media (max-width: 480px) {
             .header {
                 padding: 40px 15px 30px;
+                margin: 0 5px;
             }
             
             .header h1 {
@@ -387,30 +424,48 @@
             .star-rating {
                 font-size: 1.1em;
             }
+            
+            .section {
+                padding: 25px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="header">
-        <h1>AI-Driven Software Development Workflow</h1>
+        <h1>AI-Driven Software Dev Workflow</h1>
         <p class="author">-Brian Brubaker</p>
         <p class="readme-notice">
-            📖 For complete instructions, please read the 
+            📖 For complete instructions, read the 
             <a href="README.md" target="_blank">README.md</a> file.
         </p>
     </div>
     
     <div class="container">
+        <!-- Quick Start Guide -->
+        <div class="quick-start">
+            <h2>🚀 Quick Start Guide</h2>
+            <ol>
+                <li><strong>Read this guide</strong> to understand how to use the framework effectively</li>
+                <li><strong>Compare the paths below</strong> using our star rating system to understand differences</li>
+                <li><strong>Choose your path</strong> based on your project needs and team capabilities</li>
+                <li><strong>Follow the numbered steps</strong> with AI prompts and clear instructions</li>
+                <li><strong>Use AI assistance</strong> by copying prompts into your preferred AI assistant (Claude, ChatGPT, etc.)</li>
+                <li><strong>Complete phase gates</strong> ensuring all checklist items are done before moving to the next step</li>
+            </ol>
+        </div>
+        
         <!-- Comparison Section -->
         <div class="section">
             <h2>Compare paths, then choose</h2>
-            <p class="subtitle">Understanding the key differences between our development approaches using our rating system</p>
+            <p class="subtitle">Understanding the key differences between our development approaches using our comprehensive rating system</p>
             
             <div class="comparison-table">
                 <div class="comparison-header">
                     <div>Aspect</div>
                     <div>Path A - Fast Track</div>
                     <div>Path B - Strategic</div>
+                    <div>Path C - Innovator</div>
                 </div>
                 
                 <div class="comparison-row">
@@ -429,6 +484,13 @@
                         <span class="star-empty">⭐</span>
                         <span class="star-empty">⭐</span>
                     </div>
+                    <div class="star-rating">
+                        <span class="star-filled">⭐</span>
+                        <span class="star-filled">⭐</span>
+                        <span class="star-filled">⭐</span>
+                        <span class="star-empty">⭐</span>
+                        <span class="star-empty">⭐</span>
+                    </div>
                 </div>
                 
                 <div class="comparison-row">
@@ -439,6 +501,13 @@
                         <span class="star-empty">⭐</span>
                         <span class="star-empty">⭐</span>
                         <span class="star-empty">⭐</span>
+                    </div>
+                    <div class="star-rating">
+                        <span class="star-filled">⭐</span>
+                        <span class="star-filled">⭐</span>
+                        <span class="star-filled">⭐</span>
+                        <span class="star-filled">⭐</span>
+                        <span class="star-filled">⭐</span>
                     </div>
                     <div class="star-rating">
                         <span class="star-filled">⭐</span>
@@ -465,6 +534,13 @@
                         <span class="star-filled">⭐</span>
                         <span class="star-filled">⭐</span>
                     </div>
+                    <div class="star-rating">
+                        <span class="star-filled">⭐</span>
+                        <span class="star-filled">⭐</span>
+                        <span class="star-filled">⭐</span>
+                        <span class="star-filled">⭐</span>
+                        <span class="star-empty">⭐</span>
+                    </div>
                 </div>
                 
                 <div class="comparison-row">
@@ -483,6 +559,13 @@
                         <span class="star-filled">⭐</span>
                         <span class="star-filled">⭐</span>
                     </div>
+                    <div class="star-rating">
+                        <span class="star-filled">⭐</span>
+                        <span class="star-filled">⭐</span>
+                        <span class="star-filled">⭐</span>
+                        <span class="star-filled">⭐</span>
+                        <span class="star-empty">⭐</span>
+                    </div>
                 </div>
                 
                 <div class="comparison-row">
@@ -493,6 +576,13 @@
                         <span class="star-empty">⭐</span>
                         <span class="star-empty">⭐</span>
                         <span class="star-empty">⭐</span>
+                    </div>
+                    <div class="star-rating">
+                        <span class="star-filled">⭐</span>
+                        <span class="star-filled">⭐</span>
+                        <span class="star-filled">⭐</span>
+                        <span class="star-filled">⭐</span>
+                        <span class="star-filled">⭐</span>
                     </div>
                     <div class="star-rating">
                         <span class="star-filled">⭐</span>
@@ -518,6 +608,38 @@
                         <span class="star-filled">⭐</span>
                         <span class="star-filled">⭐</span>
                         <span class="star-filled">⭐</span>
+                    </div>
+                    <div class="star-rating">
+                        <span class="star-filled">⭐</span>
+                        <span class="star-filled">⭐</span>
+                        <span class="star-filled">⭐</span>
+                        <span class="star-filled">⭐</span>
+                        <span class="star-filled">⭐</span>
+                    </div>
+                </div>
+                
+                <div class="comparison-row">
+                    <div class="metric-name">📚 Learning Curve</div>
+                    <div class="star-rating">
+                        <span class="star-filled">⭐</span>
+                        <span class="star-filled">⭐</span>
+                        <span class="star-filled">⭐</span>
+                        <span class="star-filled">⭐</span>
+                        <span class="star-filled">⭐</span>
+                    </div>
+                    <div class="star-rating">
+                        <span class="star-filled">⭐</span>
+                        <span class="star-filled">⭐</span>
+                        <span class="star-filled">⭐</span>
+                        <span class="star-empty">⭐</span>
+                        <span class="star-empty">⭐</span>
+                    </div>
+                    <div class="star-rating">
+                        <span class="star-filled">⭐</span>
+                        <span class="star-filled">⭐</span>
+                        <span class="star-empty">⭐</span>
+                        <span class="star-empty">⭐</span>
+                        <span class="star-empty">⭐</span>
                     </div>
                 </div>
             </div>
@@ -563,42 +685,29 @@
                     <a href="step1-b.html" class="cta-button">Start Strategic Path →</a>
                 </div>
                 
-                <div class="path coming-soon">
+                <div class="path path-c coming-soon">
                     <div class="coming-soon-badge">Coming Soon</div>
                     <h3>🔮 Path C - The Innovator</h3>
                     <div class="subtitle">Advanced Methodology (In Development)</div>
                     <div class="path-metrics">
                         <ul>
-                            <li>⏱️ Duration: TBD</li>
-                            <li>📊 Complexity: Specialized projects</li>
-                            <li>📋 Steps: To be announced</li>
-                            <li>🎯 Focus: [Advanced methodology]</li>
-                            <li>📝 Documentation: TBD</li>
-                            <li>🧪 Testing: TBD</li>
-                            <li>🚀 Deployment: TBD</li>
+                            <li>⏱️ Duration: 2-4 weeks</li>
+                            <li>📊 Complexity: Cutting-edge projects</li>
+                            <li>📋 Steps: Advanced methodology</li>
+                            <li>🎯 Focus: Innovation & emerging tech</li>
+                            <li>📝 Documentation: Intelligent automation</li>
+                            <li>🧪 Testing: AI-powered validation</li>
+                            <li>🚀 Deployment: Next-gen systems</li>
                         </ul>
                     </div>
                     <div class="cta-button">Coming Soon</div>
                 </div>
             </div>
         </div>
-        
-        <!-- Quick Start Guide -->
-        <div class="quick-start">
-            <h2>🚀 Quick Start Guide</h2>
-            <ol>
-                <li><strong>Compare the paths above</strong> using our star rating system to understand which approach fits your needs</li>
-                <li><strong>Choose your path:</strong> Select Path A for rapid development or Path B for strategic planning</li>
-                <li><strong>Follow the numbered steps:</strong> Each path provides clear steps with AI prompts and instructions</li>
-                <li><strong>Use AI assistance:</strong> Copy the provided prompts into your preferred AI assistant (Claude, ChatGPT, etc.)</li>
-                <li><strong>Complete phase gates:</strong> Ensure all checklist items are completed before moving to the next step</li>
-                <li><strong>Build and deploy:</strong> Follow the guidance to create and launch your product</li>
-            </ol>
-        </div>
     </div>
     
     <div class="footer">
-        <p>&copy; 2024 AI-Driven Software Development Workflow. Designed for modern development teams.</p>
+        <p>&copy; 2024 AI-Driven Software Dev Workflow. Designed for modern development teams.</p>
     </div>
 </body>
 </html>
