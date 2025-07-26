@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Step 2: Quick Build</title>
+    <title>Step 2: Rapid Prototyping & Development</title>
     <style>
         * {
             margin: 0;
@@ -15,7 +15,7 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
             color: #333;
-            background: linear-gradient(135deg, #FFE69C 0%, #FFD700 100%);
+            background: linear-gradient(135deg, #FFF3CD 0%, #FFC107 100%);
             min-height: 100vh;
             padding: 20px;
         }
@@ -27,7 +27,7 @@
             text-align: center;
             border-bottom: 1px solid rgba(255, 255, 255, 0.3);
             margin-bottom: 20px;
-            border-radius: 12px 12px 0 0;
+            border-radius: 12px;
             max-width: 900px;
             margin: 0 auto 20px auto;
         }
@@ -35,7 +35,7 @@
         .path-header h2 {
             font-size: 1.5em;
             font-weight: 700;
-            color: #B8860B;
+            color: #856404;
             margin: 0;
         }
         
@@ -49,11 +49,11 @@
         }
         
         .header {
-            background: linear-gradient(135deg, #FFF8DC 0%, #FFE69C 100%);
-            color: #8B4513;
+            background: linear-gradient(135deg, #FFF3CD 0%, #FFF8E1 100%);
+            color: #856404;
             padding: 40px;
             text-align: center;
-            border-bottom: 3px solid #FFD700;
+            border-bottom: 3px solid #FFC107;
         }
         
         .header h1 {
@@ -97,7 +97,7 @@
         
         .progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, #FFD700 0%, #B8860B 100%);
+            background: linear-gradient(90deg, #FFC107 0%, #FFB300 100%);
             border-radius: 6px;
             transition: width 0.3s ease;
         }
@@ -121,12 +121,12 @@
         }
         
         .tick.completed {
-            background: #FFD700;
+            background: #FFC107;
         }
         
         .tick.current {
-            background: #B8860B;
-            box-shadow: 0 0 8px rgba(184, 134, 11, 0.5);
+            background: #FFB300;
+            box-shadow: 0 0 8px rgba(255, 179, 0, 0.5);
         }
         
         .progress-text {
@@ -176,7 +176,9 @@
             border-radius: 12px;
             padding: 30px;
             margin-bottom: 40px;
-            border-left: 5px solid #FFD700;
+            border-left: 5px solid #FFC107;
+            border-bottom: 3px solid rgba(0,0,0,0.1);
+            box-shadow: 2px 2px 4px rgba(0,0,0,0.05);
         }
         
         .system-prompt {
@@ -301,13 +303,13 @@
 </head>
 <body>
     <div class="path-header">
-        <h2>🟡 Path A - The Sprinter</h2>
+        <h2>Path A - The Executor</h2>
     </div>
     
     <div class="container">
         <div class="header">
-            <h1>⚡ Step 2: Quick Build</h1>
-            <div class="subtitle">Fast Track MVP Development</div>
+            <h1>⚡ Step 2: Rapid Prototyping & Development</h1>
+            <div class="subtitle">Agile Development Framework</div>
         </div>
         
         <div class="progress-section">
@@ -323,104 +325,114 @@
                     <div class="tick"></div>
                 </div>
             </div>
-            <div class="progress-text">Quick Build</div>
+            <div class="progress-text">Rapid Prototyping & Development</div>
         </div>
         
         <div class="content">
             <div class="nav-buttons">
-                <a href="step1.html" class="nav-button back">← Back: Rapid Ideation</a>
-                <a href="step3.html" class="nav-button next">Next: Fast Test →</a>
+                <a href="step1.html" class="nav-button back">← Back: Product Ideation</a>
+                <a href="step3.html" class="nav-button next">Next: User Acceptance Testing →</a>
             </div>
             
             <div class="step-info">
                 <h2>🎯 Goal</h2>
-                <p>Build a working MVP quickly using the most efficient development approach.</p>
+                <p>Build your MVP quickly using rapid development techniques and modern tools.</p>
                 
                 <h3>What You Do:</h3>
                 <ol>
-                    <li>Share your project plan with the AI</li>
-                    <li>Let the AI build the core functionality rapidly</li>
-                    <li>Test the basic features as they're completed</li>
+                    <li>Share your MVP specification with the AI</li>
+                    <li>Get step-by-step development guidance</li>
+                    <li>Build your MVP with AI assistance</li>
                 </ol>
                 
-                <p><strong>What to Expect:</strong> The AI will focus on speed and getting something working quickly, prioritizing functionality over perfection.</p>
+                <p><strong>What to Expect:</strong> The AI will provide hands-on development guidance and help you build your MVP efficiently.</p>
             </div>
             
-            <h2>System Prompt</h2>
-            <p>Copy this prompt and paste it into your AI assistant to begin:</p>
+            <h2>AI Prompting</h2>
+            <p>Copy this text and paste it into your AI assistant to begin:</p>
             
             <div class="system-prompt">
                 <div class="prompt-header">
-                    <div class="prompt-title">System Prompt</div>
+                    <div class="prompt-title">AI Prompting</div>
                     <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
                 </div>
                 <div class="prompt-content">
-                    <pre>You are a Rapid Development Specialist focused on building MVPs quickly and efficiently. Your goal is to create working software as fast as possible.
+                    <pre>You are a Rapid Development Specialist for an agile development project. Your goal is to guide fast, efficient development of the MVP using modern tools and best practices for speed.
 
 Your Process:
-1. REVIEW: Analyze the project plan and identify core features
-2. PRIORITIZE: Start with the most essential functionality first
-3. BUILD: Create working code using the fastest, most reliable approaches
-4. ITERATE: Get something working, then improve incrementally
-5. TEST: Ensure basic functionality works before moving forward
+1. REVIEW: Analyze the MVP specification and requirements
+2. SETUP: Guide development environment and tool selection
+3. BUILD: Provide step-by-step development guidance
+4. ITERATE: Support rapid iteration and feature implementation
+5. OPTIMIZE: Ensure code quality while maintaining speed
+6. DEPLOY: Prepare for quick deployment and testing
 
-Development Principles:
-• Speed over perfection - get it working first
-• Use proven, simple technologies and patterns
-• Focus on core functionality, skip nice-to-haves
-• Build incrementally - one feature at a time
-• Test as you go to catch issues early
-• Use existing libraries and frameworks when possible
-• Keep code simple and readable
-• Document only what's essential
-
-Technical Approach:
-• Choose the fastest development stack for the use case
+Rapid Development Approach:
+• Choose the fastest, most suitable technology stack
+• Use frameworks and tools that accelerate development
+• Implement MVP features with minimal complexity
+• Focus on core functionality over polish
 • Use rapid prototyping techniques
-• Implement core features with minimal complexity
-• Focus on user-facing functionality first
-• Use simple data storage solutions initially
-• Implement basic error handling
-• Create a working demo as quickly as possible
+• Leverage existing libraries and services
+• Implement basic but functional UI/UX
 
-Build Strategy:
-• Start with the most critical user flow
-• Build a minimal but complete feature before adding more
-• Use placeholder content where needed to maintain momentum
-• Focus on making it work, not making it perfect
-• Get user feedback early and often
+Development Guidance Areas:
+• Technology stack selection for speed
+• Development environment setup
+• Code structure and architecture basics
+• Feature implementation guidance
+• Database setup and basic operations
+• API development (if needed)
+• Frontend development with rapid frameworks
+• Integration with third-party services
+• Basic security and performance considerations
+
+Implementation Support:
+• Step-by-step coding guidance
+• Code examples and templates
+• Troubleshooting common issues
+• Best practices for rapid development
+• Testing strategies for MVP
+• Version control and deployment preparation
+• Documentation for handoff
 
 Final Output:
-• Working MVP with core functionality
-• Basic user interface that demonstrates the concept
-• Essential features implemented and tested
-• Simple deployment or demo setup
-• Brief documentation of what was built
-• List of known limitations and next steps
+A working MVP with:
+• All core features implemented and functional
+• Basic but clean user interface
+• Essential backend functionality
+• Database integration (if required)
+• Basic testing and validation
+• Deployment-ready codebase
+• Documentation for next steps
 
 Phase Gate Checklist:
-☐ Core functionality working and demonstrated?
-☐ Primary user flow completed end-to-end?
-☐ Basic testing completed for essential features?
-☐ MVP ready for user feedback?
-☐ Ready to proceed to testing phase?</pre>
+☐ Development environment set up successfully?
+☐ All MVP core features implemented?
+☐ Basic functionality tested and working?
+☐ User interface functional and usable?
+☐ Database and data operations working?
+☐ Code documented and organized?
+☐ Ready for user acceptance testing?</pre>
                 </div>
             </div>
             
             <div class="checklist">
                 <h3>Checklist</h3>
                 <ul>
-                    <li>Core functionality working and demonstrated?</li>
-                    <li>Primary user flow completed end-to-end?</li>
-                    <li>Basic testing completed for essential features?</li>
-                    <li>MVP ready for user feedback?</li>
-                    <li>Ready to proceed to testing phase?</li>
+                    <li>Development environment set up successfully?</li>
+                    <li>All MVP core features implemented?</li>
+                    <li>Basic functionality tested and working?</li>
+                    <li>User interface functional and usable?</li>
+                    <li>Database and data operations working?</li>
+                    <li>Code documented and organized?</li>
+                    <li>Ready for user acceptance testing?</li>
                 </ul>
             </div>
             
             <div style="text-align: center; margin: 40px 0;">
-                <p><strong>📄 Output:</strong> Working MVP with core functionality</p>
-                <p><strong>Next →</strong> <a href="step3.html">Step 3: Fast Test</a></p>
+                <p><strong>📄 Output:</strong> Working MVP with all core features implemented</p>
+                <p><strong>Next →</strong> <a href="step3.html">Step 3: User Acceptance Testing</a></p>
             </div>
         </div>
     </div>
