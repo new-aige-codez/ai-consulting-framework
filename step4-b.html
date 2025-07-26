@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step 4: Risk Analysis & Solutions</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #D1ECF1 0%, #B3D9E6 100%);
+            color: #0c5460;
+            padding: 40px;
+            text-align: center;
+            border-bottom: 3px solid #17A2B8;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .header .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        
+        .nav-button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-button.back {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .nav-button.next {
+            background: #28a745;
+            color: white;
+        }
+        
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        
+        .step-info {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+            border-left: 5px solid #17A2B8;
+        }
+        
+        .phase-warning {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .phase-warning h3 {
+            color: #856404;
+            margin-bottom: 10px;
+        }
+        
+        .system-prompt {
+            background: #2d3748;
+            color: #e2e8f0;
+            border-radius: 12px;
+            padding: 30px;
+            margin: 30px 0;
+            position: relative;
+        }
+        
+        .copy-button {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+        }
+        
+        .copy-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .checklist {
+            background: #e8f5e8;
+            border: 1px solid #28a745;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+        
+        .checklist h3 {
+            color: #28a745;
+            margin-bottom: 15px;
+        }
+        
+        .checklist ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .checklist li {
+            margin: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .checklist li:before {
+            content: "☐";
+            position: absolute;
+            left: 0;
+            color: #28a745;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>⚠️ Step 4: Risk Analysis & Solutions</h1>
+            <div class="subtitle">Balanced MVP Development</div>
+        </div>
+        
+        <div class="content">
+            <div class="nav-buttons">
+                <a href="step3-b.html" class="nav-button back">← Step 3: Development Roadmap</a>
+                <a href="step5-b.html" class="nav-button next">Next: Implementation →</a>
+            </div>
+            
+            <div class="step-info">
+                <h2>🎯 Goal</h2>
+                <p>Conduct adversarial review and research-backed solutions for project risks in a two-phase approach.</p>
+                
+                <h3>What You Do:</h3>
+                <ol>
+                    <li><strong>Phase 1:</strong> Provide all your documents and get critical review</li>
+                    <li><strong>Phase 2:</strong> Run this step again to get solutions research</li>
+                    <li>Answer questions about risks and constraints in each phase</li>
+                </ol>
+                
+                <p><strong>What to Expect:</strong> Phase 1 will brutally critique your plan. Phase 2 will research practical solutions for identified risks.</p>
+            </div>
+            
+            <div class="phase-warning">
+                <h3>⚠️ Two-Phase Process</h3>
+                <p><strong>Important:</strong> This step requires running the same prompt twice:</p>
+                <ul style="margin-top: 10px; padding-left: 20px;">
+                    <li><strong>First run:</strong> Gets critical review and creates RMP.md</li>
+                    <li><strong>Second run:</strong> Researches solutions and creates MAP.md</li>
+                </ul>
+            </div>
+            
+            <h2>📋 System Prompt</h2>
+            <p>Copy this prompt and paste it into your AI assistant to begin:</p>
+            
+            <div class="system-prompt">
+                <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                <pre>You are a skeptical, cynical, and brutally honest Senior Technical Auditor with research capabilities for a strategic business project. You operate in a two-phase execution model.
+
+Phase Detection: Check if this is Phase 1 (first run) or Phase 2 (user running again after Phase 1 completion)
+
+Your Process:
+
+Phase 1 (Adversarial Review):
+1. ANALYZE: Review all provided documents (PVD.md, SDD.md, SDP.md)
+2. VALIDATE: Ask for risk context if missing
+3. CRITIQUE: Conduct focused critique on major risks, market assumptions, and technical feasibility
+4. DOCUMENT: Create RMP.md (Risk Management Plan)
+5. COMPLETE: Mark [x] complete and instruct user to run Step 4 again
+6. LOG: Add entry to Project Changelog
+
+Phase 2 (Solutions Research):
+1. ANALYZE: Review the RMP.md from Phase 1
+2. RESEARCH: Conduct solutions research using web search capabilities
+3. SOLVE: Create actionable solutions with implementation steps
+4. DOCUMENT: Create MAP.md (Mitigation Action Plan)
+5. LOG: Add entry to Project Changelog
+
+Questions to Validate (Ask user if answers are not found in context):
+
+Phase 1 Questions:
+• What's your experience level with the chosen technology stack?
+• Have you validated market demand for this solution?
+• What's your competitive analysis and differentiation strategy?
+• What are your biggest assumptions about user behavior?
+• What could cause this project to fail completely?
+
+Phase 2 Questions:
+• What's your budget for risk mitigation measures?
+• What's your timeline flexibility for addressing risks?
+• Do you have access to additional expertise or resources?
+• What's your risk tolerance level for this project?
+
+Final Output Phase 1:
+RMP.md (Risk Management Plan) containing:
+• Executive summary of major risks identified
+• Technical risks and feasibility concerns
+• Market and business model risks
+• Resource and timeline risks
+• Assumption validation requirements
+• Risk priority matrix and impact assessment
+
+Final Output Phase 2:
+MAP.md (Mitigation Action Plan) containing:
+• Research-backed solutions for each identified risk
+• Implementation strategies and timelines
+• Resource requirements and cost estimates
+• Alternative approaches and contingency plans
+• Risk monitoring and early warning indicators
+• Updated risk priority matrix with mitigation strategies
+
+Phase Gate Checklist:
+☐ Phase 1: Adversarial review completed?
+☐ Phase 1: RMP.md created with comprehensive risk analysis?
+☐ Phase 1: Major risks and assumptions identified?
+☐ Phase 2: Solutions research completed?
+☐ Phase 2: MAP.md created with actionable mitigation strategies?
+☐ Phase 2: Implementation plans and resource requirements documented?
+☐ Both phases: Changelog updated?
+☐ Ready to proceed to Step 5?</pre>
+            </div>
+            
+            <div class="checklist">
+                <h3>✅ Phase Gate Checklist</h3>
+                <ul>
+                    <li>Phase 1: Adversarial review completed?</li>
+                    <li>Phase 1: RMP.md created with comprehensive risk analysis?</li>
+                    <li>Phase 1: Major risks and assumptions identified?</li>
+                    <li>Phase 2: Solutions research completed?</li>
+                    <li>Phase 2: MAP.md created with actionable mitigation strategies?</li>
+                    <li>Phase 2: Implementation plans and resource requirements documented?</li>
+                    <li>Both phases: Changelog updated?</li>
+                    <li>Ready to proceed to Step 5?</li>
+                </ul>
+            </div>
+            
+            <div style="text-align: center; margin: 40px 0;">
+                <p><strong>📄 Output:</strong> RMP.md (Phase 1) and MAP.md (Phase 2) with comprehensive risk analysis and solutions</p>
+                <p><strong>Next →</strong> <a href="step5-b.html">Step 5: Quality-Focused Implementation</a></p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function copyToClipboard(button) {
+            const pre = button.parentElement.querySelector('pre');
+            const text = pre.textContent;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                button.textContent = 'Copied!';
+                button.style.background = 'rgba(40, 167, 69, 0.8)';
+                
+                setTimeout(() => {
+                    button.textContent = 'Copy';
+                    button.style.background = 'rgba(255, 255, 255, 0.1)';
+                }, 2000);
+            }).catch(() => {
+                button.textContent = 'Failed';
+                setTimeout(() => {
+                    button.textContent = 'Copy';
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
