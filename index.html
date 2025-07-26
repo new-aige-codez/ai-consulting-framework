@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI-Driven Software Dev Workflow</title>
+    <title>AI Development Framework v.4</title>
     <style>
         * {
             margin: 0;
@@ -15,705 +15,473 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
             color: #333;
-            background: linear-gradient(135deg, #4c1d95 0%, #6d28d9 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-        }
-        
-        .header {
-            background: linear-gradient(135deg, #2d1b69 0%, #4c1d95 100%);
-            color: white;
-            text-align: center;
-            padding: 60px 20px 40px;
-            border-left: 4px solid white;
-            border-right: 4px solid white;
-            border-radius: 0 0 20px 20px;
-            margin: 0 20px;
-            box-shadow: 0 6px 25px rgba(0,0,0,0.3);
-        }
-        
-        .header h1 {
-            font-size: 3em;
-            font-weight: 700;
-            margin-bottom: 15px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
-        }
-        
-        .author {
-            font-size: 1.3em;
-            font-weight: 300;
-            opacity: 0.9;
-            font-style: italic;
+            padding: 20px;
         }
         
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 40px 20px;
-        }
-        
-        .section {
-            background: rgba(255, 255, 255, 0.95);
+            background: white;
             border-radius: 20px;
-            padding: 40px;
-            margin: 40px 0;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            backdrop-filter: blur(10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+            overflow: hidden;
         }
         
-        .section h2 {
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px;
             text-align: center;
-            font-size: 2.5em;
+        }
+        
+        .header h1 {
+            font-size: 3.5em;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header .subtitle {
+            font-size: 1.4em;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        .content {
+            padding: 60px 40px;
+        }
+        
+        .intro {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .intro h2 {
+            font-size: 2.2em;
             margin-bottom: 20px;
-            color: #2d1b69;
+            color: #333;
         }
         
-        .section .subtitle {
-            text-align: center;
+        .intro p {
             font-size: 1.2em;
-            color: #64748b;
-            margin-bottom: 40px;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        /* Quick Start Guide */
-        .quick-start {
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            padding: 40px;
-            margin: 40px 0;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(139, 92, 246, 0.3);
-        }
-        
-        .quick-start h2 {
-            color: #2d1b69;
-            margin-bottom: 20px;
-            font-size: 2em;
-            text-align: center;
-        }
-        
-        .quick-start ol {
-            color: #475569;
-            padding-left: 20px;
+            color: #666;
             max-width: 800px;
             margin: 0 auto;
+            line-height: 1.8;
         }
         
-        .quick-start li {
-            margin: 15px 0;
-            line-height: 1.6;
+        .paths-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
         }
         
-        .readme-link {
-            margin-top: 25px;
-            text-align: center;
-            padding: 15px;
-            background: rgba(139, 92, 246, 0.1);
-            border-radius: 8px;
-            border: 1px solid rgba(139, 92, 246, 0.2);
-        }
-        
-        .readme-link a {
-            color: #8b5cf6;
-            text-decoration: none;
-            font-weight: 600;
-        }
-        
-        .readme-link a:hover {
-            text-decoration: underline;
-        }
-        
-        /* Comparison Table */
-        .comparison-table {
+        .path-card {
             background: white;
             border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-            margin: 40px 0;
-        }
-        
-        .comparison-header {
-            background: linear-gradient(135deg, #2d1b69 0%, #4c1d95 100%);
-            color: white;
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            padding: 25px;
-            font-weight: 600;
-            font-size: 1.1em;
-        }
-        
-        .comparison-row {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            padding: 20px 25px;
-            border-bottom: 1px solid #f1f5f9;
-            align-items: center;
-        }
-        
-        .comparison-row:last-child {
-            border-bottom: none;
-        }
-        
-        .comparison-row:nth-child(even) {
-            background: #f8fafc;
-        }
-        
-        .metric-name {
-            font-weight: 600;
-            color: #2d1b69;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .star-rating {
-            display: flex;
-            gap: 2px;
-            font-size: 1.3em;
-            justify-content: center;
-        }
-        
-        .star-filled {
-            color: #fbbf24;
-        }
-        
-        .star-empty {
-            color: #e5e7eb;
-        }
-        
-        /* Path Selection */
-        .paths {
-            display: grid;
-            gap: 30px;
-            margin: 50px 0;
-        }
-        
-        /* Desktop: Force 3-column layout */
-        @media (min-width: 1024px) {
-            .paths {
-                grid-template-columns: 1fr 1fr 1fr;
-            }
-        }
-        
-        /* Tablet: Responsive grid */
-        @media (min-width: 768px) and (max-width: 1023px) {
-            .paths {
-                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            }
-        }
-        
-        /* Mobile: Single column */
-        @media (max-width: 767px) {
-            .paths {
-                grid-template-columns: 1fr;
-            }
-        }
-        
-        .path {
-            background: white;
-            border-radius: 16px;
-            padding: 40px;
+            padding: 40px 30px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
             border: 2px solid transparent;
             position: relative;
+            overflow: hidden;
         }
         
-        .path:hover:not(.coming-soon) {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-        
-        .path.path-a {
-            border-color: #fbbf24;
-        }
-        
-        .path.path-b {
-            border-color: #3b82f6;
-        }
-        
-        .path.path-c {
-            border-color: #8b5cf6;
-        }
-        
-        .path.coming-soon {
-            opacity: 0.6;
-            cursor: not-allowed;
-            filter: grayscale(0.3);
-        }
-        
-        .coming-soon-badge {
+        .path-card::before {
+            content: '';
             position: absolute;
-            top: 20px;
-            right: 20px;
-            background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
-            color: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9em;
-            font-weight: 600;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: var(--accent-color);
         }
         
-        .path h3 {
-            font-size: 2em;
-            margin-bottom: 15px;
+        .path-card.path-a {
+            --accent-color: #ff6b6b;
+        }
+        
+        .path-card.path-b {
+            --accent-color: #4ecdc4;
+        }
+        
+        .path-card.path-c {
+            --accent-color: #45b7d1;
+        }
+        
+        .path-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            border-color: var(--accent-color);
+        }
+        
+        .path-header {
             display: flex;
             align-items: center;
-            gap: 10px;
-        }
-        
-        .path.path-a h3 {
-            color: #f59e0b;
-        }
-        
-        .path.path-b h3 {
-            color: #3b82f6;
-        }
-        
-        .path.path-c h3 {
-            color: #8b5cf6;
-        }
-        
-        .path.coming-soon h3 {
-            color: #6b7280;
-        }
-        
-        .path .subtitle {
-            font-size: 1.1em;
-            color: #64748b;
             margin-bottom: 25px;
-            font-weight: 500;
-            text-align: left;
         }
         
-        .path-metrics {
+        .path-icon {
+            font-size: 3em;
+            margin-right: 20px;
+            color: var(--accent-color);
+        }
+        
+        .path-title {
+            flex: 1;
+        }
+        
+        .path-title h3 {
+            font-size: 1.8em;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        
+        .path-title .path-subtitle {
+            color: #666;
+            font-size: 1.1em;
+            font-weight: 500;
+        }
+        
+        .path-description {
+            margin-bottom: 30px;
+            color: #555;
+            line-height: 1.7;
+        }
+        
+        .path-features {
             margin-bottom: 30px;
         }
         
-        .path-metrics ul {
+        .path-features ul {
             list-style: none;
             padding: 0;
         }
         
-        .path-metrics li {
-            margin: 12px 0;
-            padding-left: 0;
-            color: #475569;
-            font-size: 1em;
-            line-height: 1.5;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+        .path-features li {
+            margin: 10px 0;
+            padding-left: 25px;
+            position: relative;
+            color: #555;
         }
         
-        .path .cta-button {
-            display: inline-block;
-            padding: 15px 30px;
+        .path-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        .path-steps {
+            margin-bottom: 30px;
+        }
+        
+        .path-steps h4 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+        
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 10px;
+        }
+        
+        .step-item {
+            background: #f8f9fa;
+            padding: 12px 8px;
             border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1em;
-            transition: all 0.3s ease;
             text-align: center;
+            font-size: 0.9em;
+            color: #666;
+            border: 1px solid #e9ecef;
+        }
+        
+        .path-button {
             width: 100%;
-        }
-        
-        .path.path-a .cta-button {
-            background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+            background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-color) 100%);
             color: white;
+            padding: 18px 30px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
         
-        .path.path-b .cta-button {
-            background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-            color: white;
-        }
-        
-        .path.path-c .cta-button {
-            background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
-            color: white;
-        }
-        
-        .path.coming-soon .cta-button {
-            background: #e5e7eb;
-            color: #9ca3af;
-            cursor: not-allowed;
-        }
-        
-        .path .cta-button:hover:not(.path.coming-soon .cta-button) {
+        .path-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            filter: brightness(1.1);
+        }
+        
+        .methodology {
+            background: #f8f9fa;
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .methodology h3 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+        }
+        
+        .methodology-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .methodology-item {
+            text-align: center;
+        }
+        
+        .methodology-item .icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            color: #667eea;
+        }
+        
+        .methodology-item h4 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .methodology-item p {
+            color: #666;
+            line-height: 1.6;
         }
         
         .footer {
             text-align: center;
-            padding: 40px 20px;
-            color: rgba(255, 255, 255, 0.8);
-            margin-top: 60px;
+            padding: 40px;
+            background: #f8f9fa;
+            color: #666;
+        }
+        
+        .footer p {
+            margin-bottom: 10px;
+        }
+        
+        .version {
+            font-weight: 600;
+            color: #667eea;
         }
         
         /* Responsive Design */
         @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 16px;
+            }
+            
             .header {
-                margin: 0 10px;
-                border-left: 2px solid white;
-                border-right: 2px solid white;
-                border-radius: 0 0 15px 15px;
+                padding: 40px 20px;
             }
             
             .header h1 {
-                font-size: 2.2em;
+                font-size: 2.5em;
             }
             
-            .author {
-                font-size: 1.1em;
+            .content {
+                padding: 40px 20px;
             }
             
-            .section h2 {
-                font-size: 2em;
-            }
-            
-            .comparison-header,
-            .comparison-row {
+            .paths-container {
                 grid-template-columns: 1fr;
-                gap: 15px;
+                gap: 30px;
+            }
+            
+            .path-card {
+                padding: 30px 20px;
+            }
+            
+            .path-header {
+                flex-direction: column;
                 text-align: center;
             }
             
-            .comparison-header {
-                padding: 20px;
+            .path-icon {
+                margin-right: 0;
+                margin-bottom: 15px;
             }
             
-            .comparison-row {
-                padding: 20px;
+            .steps-grid {
+                grid-template-columns: repeat(2, 1fr);
             }
             
-            .metric-name {
-                justify-content: center;
-                margin-bottom: 10px;
+            .methodology {
+                padding: 30px 20px;
             }
             
-            .path {
-                padding: 30px;
-            }
-            
-            .container {
-                padding: 20px 15px;
-            }
-            
-            .section {
-                margin: 20px 0;
-                padding: 30px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .header {
-                padding: 40px 15px 30px;
-                margin: 0 5px;
-            }
-            
-            .header h1 {
-                font-size: 1.8em;
-            }
-            
-            .path {
-                padding: 25px;
-            }
-            
-            .quick-start {
-                padding: 30px;
-            }
-            
-            .star-rating {
-                font-size: 1.1em;
-            }
-            
-            .section {
-                padding: 25px;
+            .methodology-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>AI-Driven Software Dev Workflow</h1>
-        <p class="author">-Brian Brubaker</p>
-    </div>
-    
     <div class="container">
-        <!-- Quick Start Guide -->
-        <div class="quick-start">
-            <h2>🚀 Quick Start Guide</h2>
-            <ol>
-                <li><strong>Compare the paths below:</strong> using our star rating system to understand differences</li>
-                <li><strong>Choose your path:</strong> based on your project needs and team capabilities</li>
-                <li><strong>Follow the numbered steps:</strong> with AI prompts and clear instructions</li>
-                <li><strong>Use AI assistance:</strong> by copying prompts into your preferred AI assistant</li>
-                <li><strong>Complete checklist:</strong> Ensure all checkboxes are marked off before continuing to next step</li>
-            </ol>
-            <p class="readme-link">
-                For complete instructions and detailed guidance, see our 
-                <a href="README.md" target="_blank">README.md</a> file.
-            </p>
+        <div class="header">
+            <h1>🤖 AI Development Framework</h1>
+            <div class="subtitle">Fast Track MVP Development</div>
         </div>
         
-        <!-- Comparison Section -->
-        <div class="section">
-            <h2>Compare paths, then choose</h2>
-            <p class="subtitle">Understanding the key differences between our development approaches using our comprehensive rating system</p>
+        <div class="content">
+            <div class="intro">
+                <h2>Choose Your Development Path</h2>
+                <p>Select the framework that matches your project complexity and timeline. Each path provides structured guidance with AI-powered development assistance.</p>
+            </div>
             
-            <div class="comparison-table">
-                <div class="comparison-header">
-                    <div>Aspect</div>
-                    <div>Path A - Fast Track</div>
-                    <div>Path B - Strategic</div>
-                    <div>Path C - Innovator</div>
+            <div class="paths-container">
+                <!-- Path A: The Sprinter -->
+                <div class="path-card path-a">
+                    <div class="path-header">
+                        <div class="path-icon">🏃‍♂️</div>
+                        <div class="path-title">
+                            <h3>Path A - The Sprinter</h3>
+                            <div class="path-subtitle">Quick Prototypes</div>
+                        </div>
+                    </div>
+                    <div class="path-description">
+                        Perfect for rapid prototyping and simple projects. Get from idea to working MVP in the shortest time possible with essential features only.
+                    </div>
+                    <div class="path-features">
+                        <ul>
+                            <li>4 streamlined steps</li>
+                            <li>Rapid development focus</li>
+                            <li>Essential features only</li>
+                            <li>Quick validation</li>
+                            <li>Minimal documentation</li>
+                        </ul>
+                    </div>
+                    <div class="path-steps">
+                        <h4>Steps Overview:</h4>
+                        <div class="steps-grid">
+                            <div class="step-item">1. Creative Foundation</div>
+                            <div class="step-item">2. Technical Research</div>
+                            <div class="step-item">3. Vibe Architecting</div>
+                            <div class="step-item">4. Development Execution</div>
+                        </div>
+                    </div>
+                    <a href="step1-a.html" class="path-button">Start Path A →</a>
                 </div>
                 
-                <div class="comparison-row">
-                    <div class="metric-name">⚡ Development Speed</div>
-                    <div class="star-rating">
-                        <span class="star-filled">⭐</span>
-                        <span class="star-filled">⭐</span>
-                        <span class="star-filled">⭐</span>
-                        <span class="star-filled">⭐</span>
-                        <span class="star-filled">⭐</span>
+                <!-- Path B: The Strategist -->
+                <div class="path-card path-b">
+                    <div class="path-header">
+                        <div class="path-icon">🎯</div>
+                        <div class="path-title">
+                            <h3>Path B - The Strategist</h3>
+                            <div class="path-subtitle">Business Applications</div>
+                        </div>
                     </div>
-                    <div class="star-rating">
-                        <span class="star-filled">⭐</span>
-                        <span class="star-filled">⭐</span>
-                        <span class="star-empty">⭐</span>
-                        <span class="star-empty">⭐</span>
-                        <span class="star-empty">⭐</span>
+                    <div class="path-description">
+                        Ideal for business applications and structured development. Balanced approach with comprehensive planning and quality assurance.
                     </div>
-                    <div class="star-rating">
-                        <span class="star-filled">⭐</span>
-                        <span class="star-filled">⭐</span>
-                        <span class="star-filled">⭐</span>
-                        <span class="star-empty">⭐</span>
-                        <span class="star-empty">⭐</span>
+                    <div class="path-features">
+                        <ul>
+                            <li>6 comprehensive steps</li>
+                            <li>Structured development</li>
+                            <li>Quality assurance focus</li>
+                            <li>Business logic emphasis</li>
+                            <li>Scalable architecture</li>
+                        </ul>
                     </div>
+                    <div class="path-steps">
+                        <h4>Steps Overview:</h4>
+                        <div class="steps-grid">
+                            <div class="step-item">1. Creative Foundation</div>
+                            <div class="step-item">2. Fundamental Requirements</div>
+                            <div class="step-item">3. Technical Research</div>
+                            <div class="step-item">4. Development Roadmap</div>
+                            <div class="step-item">5. Vibe Architecting</div>
+                            <div class="step-item">6. Development Execution</div>
+                        </div>
+                    </div>
+                    <a href="step1-b.html" class="path-button">Start Path B →</a>
                 </div>
                 
-                <div class="comparison-row">
-                    <div class="metric-name">🏗️ Complexity Handling</div>
-                    <div class="star-rating">
-                        <span class="star-filled">⭐</span>
-                        <span class="star-filled">⭐</span>
-                        <span class="star-empty">⭐</span>
-                        <span class="star-empty">⭐</span>
-                        <span class="star-empty">⭐</span>
+                <!-- Path C: The Architect -->
+                <div class="path-card path-c">
+                    <div class="path-header">
+                        <div class="path-icon">🏗️</div>
+                        <div class="path-title">
+                            <h3>Path C - The Architect</h3>
+                            <div class="path-subtitle">Enterprise Systems</div>
+                        </div>
                     </div>
-                    <div class="star-rating">
-                        <span class="star-filled">⭐</span>
-                        <span class="star-filled">⭐</span>
-                        <span class="star-filled">⭐</span>
-                        <span class="star-filled">⭐</span>
-                        <span class="star-filled">⭐</span>
+                    <div class="path-description">
+                        Designed for complex systems and enterprise applications. Comprehensive approach with advanced architecture and enterprise patterns.
                     </div>
-                    <div class="star-rating">
-                        <span class="star-filled">⭐</span>
-                        <span class="star-filled">⭐</span>
-                        <span class="star-filled">⭐</span>
-                        <span class="star-filled">⭐</span>
-                        <span class="star-filled">⭐</span>
+                    <div class="path-features">
+                        <ul>
+                            <li>8 detailed steps</li>
+                            <li>Enterprise architecture</li>
+                            <li>Advanced security & compliance</li>
+                            <li>Scalability & performance</li>
+                            <li>Comprehensive documentation</li>
+                        </ul>
                     </div>
+                    <div class="path-steps">
+                        <h4>Steps Overview:</h4>
+                        <div class="steps-grid">
+                            <div class="step-item">1. Creative Foundation</div>
+                            <div class="step-item">2. Fundamental Requirements</div>
+                            <div class="step-item">3. Technical Research</div>
+                            <div class="step-item">4. Development Roadmap</div>
+                            <div class="step-item">5. Vibe Architecting</div>
+                            <div class="step-item">6. Development Execution</div>
+                            <div class="step-item">7. Quality Assurance</div>
+                            <div class="step-item">8. Launch & Optimization</div>
+                        </div>
+                    </div>
+                    <a href="step1-c.html" class="path-button">Start Path C →</a>
                 </div>
-                
-                <div class="comparison-row">
-                    <div class="metric-name">📋 Planning Thoroughness</div>
-                    <div class="star-rating">
-                        <span class="star-filled">⭐</span>
-                        <span class="star-filled">⭐</span>
-                        <span class="star-empty">⭐</span>
-                        <span class="star-empty">⭐</span>
-                        <span class="star-empty">⭐</span>
+            </div>
+            
+            <div class="methodology">
+                <h3>🚀 Core Methodology</h3>
+                <div class="methodology-grid">
+                    <div class="methodology-item">
+                        <div class="icon">🎨</div>
+                        <h4>Vibe Architecting</h4>
+                        <p>Design-first approach that captures the essence and feel of your application before diving into technical implementation.</p>
                     </div>
-                    <div class="star-rating">
-                        <span class="star-filled">⭐</span>
-                        <span class="star-filled">⭐</span>
-                        <span class="star-filled">⭐</span>
-                        <span class="star-filled">⭐</span>
-                        <span class="star-filled">⭐</span>
+                    <div class="methodology-item">
+                        <div class="icon">🎫</div>
+                        <h4>One Ticket at a Time</h4>
+                        <p>Systematic development approach focusing on completing one feature completely before moving to the next.</p>
                     </div>
-                    <div class="star-rating">
-                        <span class="star-filled">⭐</span>
-                        <span class="star-filled">⭐</span>
-                        <span class="star-filled">⭐</span>
-                        <span class="star-filled">⭐</span>
-                        <span class="star-empty">⭐</span>
-                    </div>
-                </div>
-                
-                <div class="comparison-row">
-                    <div class="metric-name">📚 Documentation Quality</div>
-                    <div class="star-rating">
-                        <span class="star-filled">⭐</span>
-                        <span class="star-filled">⭐</span>
-                        <span class="star-empty">⭐</span>
-                        <span class="star-empty">⭐</span>
-                        <span class="star-empty">⭐</span>
-                    </div>
-                    <div class="star-rating">
-                        <span class="star-filled">⭐</span>
-                        <span class="star-filled">⭐</span>
-                        <span class="star-filled">⭐</span>
-                        <span class="star-filled">⭐</span>
-                        <span class="star-filled">⭐</span>
-                    </div>
-                    <div class="star-rating">
-                        <span class="star-filled">⭐</span>
-                        <span class="star-filled">⭐</span>
-                        <span class="star-filled">⭐</span>
-                        <span class="star-filled">⭐</span>
-                        <span class="star-empty">⭐</span>
-                    </div>
-                </div>
-                
-                <div class="comparison-row">
-                    <div class="metric-name">⚠️ Risk Management</div>
-                    <div class="star-rating">
-                        <span class="star-filled">⭐</span>
-                        <span class="star-filled">⭐</span>
-                        <span class="star-empty">⭐</span>
-                        <span class="star-empty">⭐</span>
-                        <span class="star-empty">⭐</span>
-                    </div>
-                    <div class="star-rating">
-                        <span class="star-filled">⭐</span>
-                        <span class="star-filled">⭐</span>
-                        <span class="star-filled">⭐</span>
-                        <span class="star-filled">⭐</span>
-                        <span class="star-filled">⭐</span>
-                    </div>
-                    <div class="star-rating">
-                        <span class="star-filled">⭐</span>
-                        <span class="star-filled">⭐</span>
-                        <span class="star-filled">⭐</span>
-                        <span class="star-filled">⭐</span>
-                        <span class="star-filled">⭐</span>
-                    </div>
-                </div>
-                
-                <div class="comparison-row">
-                    <div class="metric-name">🎯 Code Quality Standards</div>
-                    <div class="star-rating">
-                        <span class="star-filled">⭐</span>
-                        <span class="star-filled">⭐</span>
-                        <span class="star-filled">⭐</span>
-                        <span class="star-empty">⭐</span>
-                        <span class="star-empty">⭐</span>
-                    </div>
-                    <div class="star-rating">
-                        <span class="star-filled">⭐</span>
-                        <span class="star-filled">⭐</span>
-                        <span class="star-filled">⭐</span>
-                        <span class="star-filled">⭐</span>
-                        <span class="star-filled">⭐</span>
-                    </div>
-                    <div class="star-rating">
-                        <span class="star-filled">⭐</span>
-                        <span class="star-filled">⭐</span>
-                        <span class="star-filled">⭐</span>
-                        <span class="star-filled">⭐</span>
-                        <span class="star-filled">⭐</span>
-                    </div>
-                </div>
-                
-                <div class="comparison-row">
-                    <div class="metric-name">📖 Ease of Learning</div>
-                    <div class="star-rating">
-                        <span class="star-filled">⭐</span>
-                        <span class="star-filled">⭐</span>
-                        <span class="star-filled">⭐</span>
-                        <span class="star-filled">⭐</span>
-                        <span class="star-filled">⭐</span>
-                    </div>
-                    <div class="star-rating">
-                        <span class="star-filled">⭐</span>
-                        <span class="star-filled">⭐</span>
-                        <span class="star-filled">⭐</span>
-                        <span class="star-empty">⭐</span>
-                        <span class="star-empty">⭐</span>
-                    </div>
-                    <div class="star-rating">
-                        <span class="star-filled">⭐</span>
-                        <span class="star-filled">⭐</span>
-                        <span class="star-empty">⭐</span>
-                        <span class="star-empty">⭐</span>
-                        <span class="star-empty">⭐</span>
+                    <div class="methodology-item">
+                        <div class="icon">📋</div>
+                        <h4>Phase Gate Validation</h4>
+                        <p>Quality checkpoints at each step ensure nothing is missed and standards are maintained throughout development.</p>
                     </div>
                 </div>
             </div>
         </div>
         
-        <!-- Path Selection Section -->
-        <div class="section">
-            <h2>Choose Your Development Path</h2>
-            <p class="subtitle">Select the approach that best fits your project timeline, complexity, and strategic requirements</p>
-            
-            <div class="paths">
-                <div class="path path-a">
-                    <h3>⚡ Path A - The Executor</h3>
-                    <div class="subtitle">Fast Track MVP Development</div>
-                    <div class="path-metrics">
-                        <ul>
-                            <li>⏱️ Duration: 1-2 weeks</li>
-                            <li>📊 Complexity: Simple to moderate projects</li>
-                            <li>📋 Steps: 4 focused steps</li>
-                            <li>🎯 Focus: Rapid MVP development</li>
-                            <li>📝 Documentation: Essential only</li>
-                            <li>🧪 Testing: Basic validation</li>
-                            <li>🚀 Deployment: Quick launch</li>
-                        </ul>
-                    </div>
-                    <a href="step1.html" class="cta-button">Start Fast Track →</a>
-                </div>
-                
-                <div class="path path-b">
-                    <h3>🧠 Path B - The Strategist</h3>
-                    <div class="subtitle">Strategic Product Development</div>
-                    <div class="path-metrics">
-                        <ul>
-                            <li>⏱️ Duration: 4-8 weeks</li>
-                            <li>📊 Complexity: Enterprise-level projects</li>
-                            <li>📋 Steps: 6 comprehensive steps</li>
-                            <li>🎯 Focus: Strategic planning & architecture</li>
-                            <li>📝 Documentation: Extensive PVD & specifications</li>
-                            <li>🧪 Testing: Comprehensive QA strategy</li>
-                            <li>🚀 Deployment: Production-ready systems</li>
-                        </ul>
-                    </div>
-                    <a href="step1-b.html" class="cta-button">Start Strategic Path →</a>
-                </div>
-                
-                <div class="path path-c coming-soon">
-                    <div class="coming-soon-badge">Coming Soon</div>
-                    <h3>🔮 Path C - The Innovator</h3>
-                    <div class="subtitle">Advanced Methodology (In Development)</div>
-                    <div class="path-metrics">
-                        <ul>
-                            <li>⏱️ Duration: 2-4 weeks</li>
-                            <li>📊 Complexity: Cutting-edge projects</li>
-                            <li>📋 Steps: Advanced methodology</li>
-                            <li>🎯 Focus: Innovation & emerging tech</li>
-                            <li>📝 Documentation: Intelligent automation</li>
-                            <li>🧪 Testing: AI-powered validation</li>
-                            <li>🚀 Deployment: Next-gen systems</li>
-                        </ul>
-                    </div>
-                    <div class="cta-button">Coming Soon</div>
-                </div>
-            </div>
+        <div class="footer">
+            <p><span class="version">AI Development Framework v.4</span></p>
+            <p>Structured AI-powered development for rapid MVP creation</p>
         </div>
-    </div>
-    
-    <div class="footer">
-        <p>&copy; 2024 AI-Driven Software Dev Workflow. Designed for modern development teams.</p>
     </div>
 </body>
 </html>
