@@ -41,30 +41,8 @@
         .author {
             font-size: 1.3em;
             font-weight: 300;
-            margin-bottom: 25px;
             opacity: 0.9;
             font-style: italic;
-        }
-        
-        .readme-notice {
-            font-size: 1.1em;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 15px 25px;
-            border-radius: 8px;
-            display: inline-block;
-            backdrop-filter: blur(10px);
-        }
-        
-        .readme-notice a {
-            color: #60a5fa;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s ease;
-        }
-        
-        .readme-notice a:hover {
-            color: #93c5fd;
-            text-decoration: underline;
         }
         
         .container {
@@ -129,6 +107,25 @@
             line-height: 1.6;
         }
         
+        .readme-link {
+            margin-top: 25px;
+            text-align: center;
+            padding: 15px;
+            background: rgba(139, 92, 246, 0.1);
+            border-radius: 8px;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+        }
+        
+        .readme-link a {
+            color: #8b5cf6;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .readme-link a:hover {
+            text-decoration: underline;
+        }
+        
         /* Comparison Table */
         .comparison-table {
             background: white;
@@ -190,9 +187,29 @@
         /* Path Selection */
         .paths {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 30px;
             margin: 50px 0;
+        }
+        
+        /* Desktop: Force 3-column layout */
+        @media (min-width: 1024px) {
+            .paths {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+        }
+        
+        /* Tablet: Responsive grid */
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .paths {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+        }
+        
+        /* Mobile: Single column */
+        @media (max-width: 767px) {
+            .paths {
+                grid-template-columns: 1fr;
+            }
         }
         
         .path {
@@ -355,11 +372,6 @@
                 font-size: 1.1em;
             }
             
-            .readme-notice {
-                font-size: 1em;
-                padding: 12px 20px;
-            }
-            
             .section h2 {
                 font-size: 2em;
             }
@@ -382,11 +394,6 @@
             .metric-name {
                 justify-content: center;
                 margin-bottom: 10px;
-            }
-            
-            .paths {
-                grid-template-columns: 1fr;
-                gap: 20px;
             }
             
             .path {
@@ -435,10 +442,6 @@
     <div class="header">
         <h1>AI-Driven Software Dev Workflow</h1>
         <p class="author">-Brian Brubaker</p>
-        <p class="readme-notice">
-            📖 For complete instructions, read the 
-            <a href="README.md" target="_blank">README.md</a> file.
-        </p>
     </div>
     
     <div class="container">
@@ -446,13 +449,16 @@
         <div class="quick-start">
             <h2>🚀 Quick Start Guide</h2>
             <ol>
-                <li><strong>Read this guide</strong> to understand how to use the framework effectively</li>
-                <li><strong>Compare the paths below</strong> using our star rating system to understand differences</li>
-                <li><strong>Choose your path</strong> based on your project needs and team capabilities</li>
-                <li><strong>Follow the numbered steps</strong> with AI prompts and clear instructions</li>
-                <li><strong>Use AI assistance</strong> by copying prompts into your preferred AI assistant (Claude, ChatGPT, etc.)</li>
-                <li><strong>Complete phase gates</strong> ensuring all checklist items are done before moving to the next step</li>
+                <li><strong>Compare the paths below:</strong> using our star rating system to understand differences</li>
+                <li><strong>Choose your path:</strong> based on your project needs and team capabilities</li>
+                <li><strong>Follow the numbered steps:</strong> with AI prompts and clear instructions</li>
+                <li><strong>Use AI assistance:</strong> by copying prompts into your preferred AI assistant</li>
+                <li><strong>Complete checklist:</strong> Ensure all checkboxes are marked off before continuing to next step</li>
             </ol>
+            <p class="readme-link">
+                For complete instructions and detailed guidance, see our 
+                <a href="README.md" target="_blank">README.md</a> file.
+            </p>
         </div>
         
         <!-- Comparison Section -->
@@ -469,7 +475,7 @@
                 </div>
                 
                 <div class="comparison-row">
-                    <div class="metric-name">⚡ Speed/Duration</div>
+                    <div class="metric-name">⚡ Development Speed</div>
                     <div class="star-rating">
                         <span class="star-filled">⭐</span>
                         <span class="star-filled">⭐</span>
@@ -519,7 +525,7 @@
                 </div>
                 
                 <div class="comparison-row">
-                    <div class="metric-name">📋 Planning Depth</div>
+                    <div class="metric-name">📋 Planning Thoroughness</div>
                     <div class="star-rating">
                         <span class="star-filled">⭐</span>
                         <span class="star-filled">⭐</span>
@@ -544,7 +550,7 @@
                 </div>
                 
                 <div class="comparison-row">
-                    <div class="metric-name">📚 Documentation</div>
+                    <div class="metric-name">📚 Documentation Quality</div>
                     <div class="star-rating">
                         <span class="star-filled">⭐</span>
                         <span class="star-filled">⭐</span>
@@ -594,7 +600,7 @@
                 </div>
                 
                 <div class="comparison-row">
-                    <div class="metric-name">🎯 Code Quality</div>
+                    <div class="metric-name">🎯 Code Quality Standards</div>
                     <div class="star-rating">
                         <span class="star-filled">⭐</span>
                         <span class="star-filled">⭐</span>
@@ -619,7 +625,7 @@
                 </div>
                 
                 <div class="comparison-row">
-                    <div class="metric-name">📚 Learning Curve</div>
+                    <div class="metric-name">📖 Ease of Learning</div>
                     <div class="star-rating">
                         <span class="star-filled">⭐</span>
                         <span class="star-filled">⭐</span>
