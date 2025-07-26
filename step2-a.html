@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Path A Step 2 - Basic Requirements + Web Research</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #ffe8e8 0%, #ffb3b3 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .path-header {
+            background: #FFC107;
+            color: #000;
+            padding: 15px 40px;
+            text-align: center;
+            border-radius: 12px;
+            max-width: 900px;
+            margin: 0 auto 20px auto;
+            font-weight: 700;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #ffe8e8 0%, #ffcccc 100%);
+            color: #721c24;
+            padding: 40px;
+            text-align: center;
+            border-bottom: 3px solid #FFC107;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .header .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        .progress-section {
+            background: white;
+            padding: 20px 40px;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .progress-label {
+            text-align: center;
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #495057;
+            margin-bottom: 15px;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 12px;
+            background-color: #e9ecef;
+            border-radius: 6px;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #FFC107 0%, #e6ac00 100%);
+            border-radius: 6px;
+            width: 50%;
+            transition: width 0.3s ease;
+        }
+        
+        .progress-text {
+            text-align: center;
+            font-size: 0.9em;
+            color: #6c757d;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        
+        .nav-button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-button.back {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .nav-button.next {
+            background: #FFC107;
+            color: #000;
+        }
+        
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        
+        .step-info {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+            border-left: 5px solid #FFC107;
+        }
+        
+        .system-prompt {
+            background: #2d3748;
+            color: #e2e8f0;
+            border-radius: 12px;
+            margin: 30px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .prompt-header {
+            background: #1a202c;
+            padding: 15px 20px;
+            border-bottom: 1px solid #4a5568;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .prompt-title {
+            font-weight: 600;
+            font-size: 1.1em;
+            text-align: center;
+            width: 100%;
+        }
+        
+        .copy-button {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            position: absolute;
+            right: 20px;
+        }
+        
+        .copy-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .prompt-content {
+            padding: 30px;
+        }
+        
+        .prompt-content pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .bottom-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 40px 0;
+            gap: 20px;
+        }
+        
+        .nav-button-bottom {
+            background: linear-gradient(135deg, #FFC107 0%, #e6ac00 100%);
+            color: #000;
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .nav-button-bottom.prev {
+            background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+            color: white;
+            box-shadow: 0 4px 12px rgba(108, 117, 125, 0.3);
+        }
+        
+        .nav-button-bottom:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(255, 193, 7, 0.4);
+        }
+        
+        .nav-button-bottom.prev:hover {
+            box-shadow: 0 6px 16px rgba(108, 117, 125, 0.4);
+        }
+        
+        .output-section {
+            text-align: left;
+            flex-grow: 1;
+            padding: 0 20px;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 12px;
+            }
+            
+            .path-header {
+                margin: 0 10px 20px 10px;
+                padding: 15px 20px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .content, .progress-section {
+                padding: 20px;
+            }
+            
+            .prompt-content {
+                padding: 20px;
+            }
+            
+            .prompt-content pre {
+                font-size: 13px;
+            }
+            
+            .bottom-navigation {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-button-bottom {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .output-section {
+                padding: 0;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="path-header">
+        <h2>Path A - The Sprinter</h2>
+    </div>
+    
+    <div class="container">
+        <div class="header">
+            <h1>📋 Step 2: Basic Requirements + Web Research</h1>
+            <div class="subtitle">Quick Prototype Development</div>
+        </div>
+        
+        <div class="progress-section">
+            <div class="progress-label">Step 2 of 4</div>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+            <div class="progress-text">Basic Requirements + Web Research</div>
+        </div>
+        
+        <div class="content">
+            <div class="nav-buttons">
+                <a href="step1-a.html" class="nav-button back">← Previous Step</a>
+                <a href="step3-a.html" class="nav-button next">Next: Implementation Loop →</a>
+            </div>
+            
+            <div class="step-info">
+                <h2>🎯 Goal</h2>
+                <p>Define core requirements and conduct web research to validate approach and gather implementation insights.</p>
+            </div>
+            
+            <div class="system-prompt">
+                <div class="prompt-header">
+                    <div class="prompt-title">Requirements Analyst + Research Specialist - System Prompt</div>
+                    <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                </div>
+                <div class="prompt-content">
+                    <pre>You are a Requirements Analyst and Research Specialist. Your goal is to define core requirements and conduct web research for rapid prototyping.
+
+**Your Process:**
+1. **FIRST:** Review the PVD.md from Step 1 to understand the project vision.
+2. **SECOND:** Define the minimum viable requirements for a working prototype.
+3. **THIRD:** Conduct targeted web research to validate the approach and find implementation examples.
+4. **FOURTH:** Create a streamlined requirements document focused on essential features only.
+
+**Path A Focus Areas:**
+- Core functionality only (no nice-to-haves)
+- Simple user interface requirements
+- Basic technical architecture
+- Quick implementation approaches
+- Existing libraries/frameworks that can accelerate development
+
+**Research Questions to Answer:**
+- Are there existing solutions we can learn from or build upon?
+- What are the simplest technical approaches for this type of project?
+- What libraries, frameworks, or tools can speed up development?
+- Are there any potential technical roadblocks we should be aware of?
+
+**Final Output:**
+Create a `Requirements.md` file with:
+- Essential features list (maximum 5-7 core features)
+- Basic user interface mockup or description
+- Simple technical architecture overview
+- Research findings and recommended tools/libraries
+- Implementation timeline estimate
+- Updated Project Changelog
+
+---
+**CRITICAL REQUIREMENT: Conclude your response with the following Phase Gate Checklist, marking items as complete.**
+
+**Phase Gate Checklist:**
+- [ ] `Requirements.md` created with essential features only?
+- [ ] Web research completed and findings documented?
+- [ ] Technical approach validated and simplified?
+- [ ] Implementation tools/libraries identified?
+- [ ] Timeline estimate provided?
+- [ ] Ready to proceed to implementation loop?</pre>
+                </div>
+            </div>
+            
+            <div class="bottom-navigation">
+                <a href="step1-a.html" class="nav-button-bottom prev">← Previous Step</a>
+                <div class="output-section">
+                    <p><strong>📄 Output:</strong> Requirements.md with essential features, technical approach, research findings, and recommended tools for rapid development.</p>
+                </div>
+                <a href="step3-a.html" class="nav-button-bottom next">Next Step →</a>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function copyToClipboard(button) {
+            const promptContent = button.closest('.system-prompt').querySelector('pre');
+            const text = promptContent.textContent;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                button.textContent = 'Copied!';
+                button.style.background = 'rgba(40, 167, 69, 0.8)';
+                
+                setTimeout(() => {
+                    button.textContent = 'Copy';
+                    button.style.background = 'rgba(255, 255, 255, 0.1)';
+                }, 2000);
+            }).catch(() => {
+                button.textContent = 'Failed';
+                setTimeout(() => {
+                    button.textContent = 'Copy';
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>

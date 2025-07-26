@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI-Driven Software Dev Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 40px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 3.5em;
+            margin-bottom: 15px;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header .subtitle {
+            font-size: 1.4em;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        .content {
+            padding: 60px 40px;
+        }
+        
+        .intro {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .intro h2 {
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .intro p {
+            font-size: 1.2em;
+            color: #666;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+        
+        .paths-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+        
+        .path-card {
+            background: white;
+            border-radius: 16px;
+            padding: 40px 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .path-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: var(--accent-color);
+        }
+        
+        .path-card.path-a {
+            --accent-color: #FFC107;
+        }
+        
+        .path-card.path-b {
+            --accent-color: #007BFF;
+        }
+        
+        .path-card.path-c {
+            --accent-color: #28A745;
+        }
+        
+        .path-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            border-color: var(--accent-color);
+        }
+        
+        .path-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        
+        .path-icon {
+            font-size: 3em;
+            margin-right: 20px;
+            color: var(--accent-color);
+        }
+        
+        .path-title {
+            flex: 1;
+        }
+        
+        .path-title h3 {
+            font-size: 1.8em;
+            margin-bottom: 5px;
+            color: #333;
+        }
+        
+        .path-title .path-subtitle {
+            color: #666;
+            font-size: 1.1em;
+            font-weight: 500;
+        }
+        
+        .path-description {
+            margin-bottom: 20px;
+            color: #555;
+            line-height: 1.7;
+        }
+        
+        .time-estimate {
+            background: rgba(0,0,0,0.05);
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            font-weight: 600;
+            color: var(--accent-color);
+            text-align: center;
+        }
+        
+        .path-features {
+            margin-bottom: 30px;
+        }
+        
+        .path-features ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .path-features li {
+            margin: 10px 0;
+            padding-left: 25px;
+            position: relative;
+            color: #555;
+        }
+        
+        .path-features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+        
+        .path-steps {
+            margin-bottom: 30px;
+        }
+        
+        .path-steps h4 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+        
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 10px;
+        }
+        
+        .step-item {
+            background: #f8f9fa;
+            padding: 12px 8px;
+            border-radius: 8px;
+            text-align: center;
+            font-size: 0.9em;
+            color: #666;
+            border: 1px solid #e9ecef;
+        }
+        
+        .path-button {
+            width: 100%;
+            background: linear-gradient(135deg, var(--accent-color) 0%, var(--accent-color) 100%);
+            color: var(--button-text-color);
+            padding: 18px 30px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+        
+        .path-card.path-a .path-button {
+            --button-text-color: #000;
+        }
+        
+        .path-card.path-b .path-button {
+            --button-text-color: #FFF;
+        }
+        
+        .path-card.path-c .path-button {
+            --button-text-color: #FFF;
+        }
+        
+        .path-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+            filter: brightness(1.1);
+        }
+        
+        .methodology {
+            background: #f8f9fa;
+            border-radius: 16px;
+            padding: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .methodology h3 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+        }
+        
+        .methodology-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .methodology-item {
+            text-align: center;
+        }
+        
+        .methodology-item .icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            color: #667eea;
+        }
+        
+        .methodology-item h4 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            color: #333;
+        }
+        
+        .methodology-item p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .paths-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .path-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .path-icon {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 16px;
+            }
+            
+            .header {
+                padding: 40px 20px;
+            }
+            
+            .header h1 {
+                font-size: 2.5em;
+            }
+            
+            .content {
+                padding: 40px 20px;
+            }
+            
+            .paths-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .path-card {
+                padding: 30px 20px;
+            }
+            
+            .path-header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .path-icon {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+            
+            .steps-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .methodology {
+                padding: 30px 20px;
+            }
+            
+            .methodology-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🤖 AI-Driven Software Dev Guide</h1>
+            <div class="subtitle">Highly effective protocol for developing quality software, using AI</div>
+        </div>
+        
+        <div class="content">
+            <div class="intro">
+                <h2>Choose Your Development Path</h2>
+                <p>Select the framework that matches your project complexity and timeline. Each path provides structured guidance with AI-powered development assistance.</p>
+            </div>
+
+            <div class="paths-container">
+                <!-- Path A: The Sprinter -->
+                <div class="path-card path-a">
+                    <div class="path-header">
+                        <div class="path-icon">🏃‍♂️</div>
+                        <div class="path-title">
+                            <h3>Path A - The Sprinter</h3>
+                            <div class="path-subtitle">Quick Prototypes</div>
+                        </div>
+                    </div>
+                    <div class="path-description">
+                        Perfect for rapid prototyping and simple projects. Get from idea to working MVP in the shortest time possible with essential features only.
+                    </div>
+                    <div class="time-estimate">⏱️ 1-2 weeks for rapid prototyping</div>
+                    <div class="path-features">
+                        <ul>
+                            <li>4 streamlined steps</li>
+                            <li>Rapid development focus</li>
+                            <li>Essential features only</li>
+                            <li>Quick validation</li>
+                            <li>Minimal documentation</li>
+                        </ul>
+                    </div>
+                    <div class="path-steps">
+                        <h4>Steps Overview:</h4>
+                        <div class="steps-grid">
+                            <div class="step-item">1. Creative Foundation</div>
+                            <div class="step-item">2. Basic Requirements + Web Research</div>
+                            <div class="step-item">3. Implementation Loop</div>
+                            <div class="step-item">4. Quality Review</div>
+                        </div>
+                    </div>
+                    <a href="step1-a.html" class="path-button">Start Path A →</a>
+                </div>
+
+                <!-- Path B: The Strategist -->
+                <div class="path-card path-b">
+                    <div class="path-header">
+                        <div class="path-icon">🎯</div>
+                        <div class="path-title">
+                            <h3>Path B - The Strategist</h3>
+                            <div class="path-subtitle">Business Applications</div>
+                        </div>
+                    </div>
+                    <div class="path-description">
+                        Ideal for business applications and structured development. Balanced approach with comprehensive planning and quality assurance.
+                    </div>
+                    <div class="time-estimate">⏱️ 2-4 weeks for business applications</div>
+                    <div class="path-features">
+                        <ul>
+                            <li>6 comprehensive steps</li>
+                            <li>Structured development</li>
+                            <li>Quality assurance focus</li>
+                            <li>Business logic emphasis</li>
+                            <li>Scalable architecture</li>
+                        </ul>
+                    </div>
+                    <div class="path-steps">
+                        <h4>Steps Overview:</h4>
+                        <div class="steps-grid">
+                            <div class="step-item">1. Creative Foundation</div>
+                            <div class="step-item">2. Fundamental Requirements</div>
+                            <div class="step-item">3. Technical Research</div>
+                            <div class="step-item">4. Development Roadmap</div>
+                            <div class="step-item">5. Vibe Architecting</div>
+                            <div class="step-item">6. Development Execution</div>
+                        </div>
+                    </div>
+                    <a href="step1-b.html" class="path-button">Start Path B →</a>
+                </div>
+
+                <!-- Path C: The Architect -->
+                <div class="path-card path-c">
+                    <div class="path-header">
+                        <div class="path-icon">🏗️</div>
+                        <div class="path-title">
+                            <h3>Path C - The Architect</h3>
+                            <div class="path-subtitle">Enterprise Systems</div>
+                        </div>
+                    </div>
+                    <div class="path-description">
+                        Designed for complex systems and enterprise applications. Comprehensive approach with advanced architecture and enterprise patterns.
+                    </div>
+                    <div class="time-estimate">⏱️ 4-8 weeks for enterprise systems</div>
+                    <div class="path-features">
+                        <ul>
+                            <li>8 detailed steps</li>
+                            <li>Enterprise architecture</li>
+                            <li>Advanced security & compliance</li>
+                            <li>Scalability & performance</li>
+                            <li>Comprehensive documentation</li>
+                        </ul>
+                    </div>
+                    <div class="path-steps">
+                        <h4>Steps Overview:</h4>
+                        <div class="steps-grid">
+                            <div class="step-item">1. Creative Foundation</div>
+                            <div class="step-item">2. Fundamental Requirements</div>
+                            <div class="step-item">3. Technical Research</div>
+                            <div class="step-item">4. Development Roadmap</div>
+                            <div class="step-item">5. Vibe Architecting</div>
+                            <div class="step-item">6. Development Execution</div>
+                            <div class="step-item">7. Quality Assurance</div>
+                            <div class="step-item">8. Launch & Optimization</div>
+                        </div>
+                    </div>
+                    <a href="step1-c.html" class="path-button">Start Path C →</a>
+                </div>
+            </div>
+
+            <div class="methodology">
+                <h3>Core Methodology</h3>
+                <div class="methodology-grid">
+                    <div class="methodology-item">
+                        <div class="icon">💬</div>
+                        <h4>Q&A Dialogue</h4>
+                        <p>Through structured question-and-answer sessions, AI agents develop comprehensive project understanding, building detailed knowledge for effective implementation.</p>
+                    </div>
+                    <div class="methodology-item">
+                        <div class="icon">🧠</div>
+                        <h4>Context Engineering</h4>
+                        <p>Strategic design and management of AI input information to optimize performance and reliability through curated, structured context delivery.</p>
+                    </div>
+                    <div class="methodology-item">
+                        <div class="icon">📋</div>
+                        <h4>Phase Gate Validation</h4>
+                        <p>Quality checkpoints at each development step ensure comprehensive standards maintenance and prevent critical oversight throughout the process.</p>
+                    </div>
+                    <div class="methodology-item">
+                        <div class="icon">⚙️</div>
+                        <h4>Industry Standards</h4>
+                        <p>Built upon proven enterprise methodologies including Agile, Kanban, and RUP frameworks, ensuring professional development practices throughout.</p>
+                    </div>
+                    <div class="methodology-item">
+                        <div class="icon">🔍</div>
+                        <h4>Deep Research</h4>
+                        <p>Utilizes advanced research AI tools compiling extensive online sources, creating highly accurate reports that enhance coding model effectiveness.</p>
+                    </div>
+                    <div class="methodology-item">
+                        <div class="icon">🔄</div>
+                        <h4>Iterative Progression</h4>
+                        <p>Systematic development approach using one-ticket-at-a-time methodology, ensuring complete feature implementation before advancing to next tasks.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

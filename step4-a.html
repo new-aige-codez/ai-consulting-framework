@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Path A Step 4 - Quality Review</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #ffe8e8 0%, #ffb3b3 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .path-header {
+            background: #FFC107;
+            color: #000;
+            padding: 15px 40px;
+            text-align: center;
+            border-radius: 12px;
+            max-width: 900px;
+            margin: 0 auto 20px auto;
+            font-weight: 700;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #ffe8e8 0%, #ffcccc 100%);
+            color: #721c24;
+            padding: 40px;
+            text-align: center;
+            border-bottom: 3px solid #FFC107;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        
+        .header .subtitle {
+            font-size: 1.2em;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        .progress-section {
+            background: white;
+            padding: 20px 40px;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .progress-label {
+            text-align: center;
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #495057;
+            margin-bottom: 15px;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 12px;
+            background-color: #e9ecef;
+            border-radius: 6px;
+            overflow: hidden;
+            margin-bottom: 8px;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #FFC107 0%, #e6ac00 100%);
+            border-radius: 6px;
+            width: 100%;
+            transition: width 0.3s ease;
+        }
+        
+        .progress-text {
+            text-align: center;
+            font-size: 0.9em;
+            color: #6c757d;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        
+        .nav-button {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-button.back {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .nav-button.complete {
+            background: #28a745;
+            color: white;
+        }
+        
+        .nav-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        
+        .step-info {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+            border-left: 5px solid #FFC107;
+        }
+        
+        .system-prompt {
+            background: #2d3748;
+            color: #e2e8f0;
+            border-radius: 12px;
+            margin: 30px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .prompt-header {
+            background: #1a202c;
+            padding: 15px 20px;
+            border-bottom: 1px solid #4a5568;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .prompt-title {
+            font-weight: 600;
+            font-size: 1.1em;
+            text-align: center;
+            width: 100%;
+        }
+        
+        .copy-button {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            position: absolute;
+            right: 20px;
+        }
+        
+        .copy-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .prompt-content {
+            padding: 30px;
+        }
+        
+        .prompt-content pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .bottom-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 40px 0;
+            gap: 20px;
+        }
+        
+        .nav-button-bottom {
+            background: linear-gradient(135deg, #28a745 0%, #1e7e34 100%);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .nav-button-bottom.prev {
+            background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+            color: white;
+            box-shadow: 0 4px 12px rgba(108, 117, 125, 0.3);
+        }
+        
+        .nav-button-bottom:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(40, 167, 69, 0.4);
+        }
+        
+        .nav-button-bottom.prev:hover {
+            box-shadow: 0 6px 16px rgba(108, 117, 125, 0.4);
+        }
+        
+        .output-section {
+            text-align: left;
+            flex-grow: 1;
+            padding: 0 20px;
+        }
+        
+        .completion-banner {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            font-size: 1.2em;
+            font-weight: 600;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                margin: 10px;
+                border-radius: 12px;
+            }
+            
+            .path-header {
+                margin: 0 10px 20px 10px;
+                padding: 15px 20px;
+            }
+            
+            .header {
+                padding: 30px 20px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .content, .progress-section {
+                padding: 20px;
+            }
+            
+            .prompt-content {
+                padding: 20px;
+            }
+            
+            .prompt-content pre {
+                font-size: 13px;
+            }
+            
+            .bottom-navigation {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-button-bottom {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .output-section {
+                padding: 0;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="path-header">
+        <h2>Path A - The Sprinter</h2>
+    </div>
+    
+    <div class="container">
+        <div class="header">
+            <h1>✅ Step 4: Quality Review</h1>
+            <div class="subtitle">Quick Prototype Development</div>
+        </div>
+        
+        <div class="progress-section">
+            <div class="progress-label">Step 4 of 4 - Complete!</div>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+            <div class="progress-text">Quality Review</div>
+        </div>
+        
+        <div class="content">
+            <div class="completion-banner">
+                🎉 Congratulations! You've completed Path A - The Sprinter
+            </div>
+            
+            <div class="nav-buttons">
+                <a href="step3-a.html" class="nav-button back">← Previous Step</a>
+                <a href="index.html" class="nav-button complete">Return to Framework</a>
+            </div>
+            
+            <div class="step-info">
+                <h2>🎯 Goal</h2>
+                <p>Conduct a final quality review of your prototype, document lessons learned, and plan next steps for further development.</p>
+            </div>
+            
+            <div class="system-prompt">
+                <div class="prompt-header">
+                    <div class="prompt-title">Quality Assurance Specialist - System Prompt</div>
+                    <button class="copy-button" onclick="copyToClipboard(this)">Copy</button>
+                </div>
+                <div class="prompt-content">
+                    <pre>You are a Quality Assurance Specialist focused on rapid prototype evaluation. Your goal is to assess the prototype and provide actionable feedback.
+
+**Your Process:**
+1. **FIRST:** Review the Implementation.md from Step 3 to understand what was built.
+2. **SECOND:** Test all implemented features systematically.
+3. **THIRD:** Identify critical issues that must be fixed vs. nice-to-have improvements.
+4. **FOURTH:** Document lessons learned and recommendations for future development.
+
+**Path A Quality Review Focus:**
+- Does the prototype demonstrate the core concept?
+- Are the essential features working as intended?
+- What are the most critical bugs or issues?
+- Is the prototype ready for user feedback?
+- What would be the next logical development steps?
+
+**Testing Approach:**
+- Test each core feature manually
+- Try common user workflows
+- Test edge cases and error conditions
+- Evaluate user experience and usability
+- Check performance and reliability
+
+**Quality Assessment Criteria:**
+- Functionality: Do the core features work?
+- Usability: Can users accomplish their goals?
+- Reliability: Does it work consistently?
+- Performance: Is it fast enough for a prototype?
+- Completeness: Does it demonstrate the concept?
+
+**Final Output:**
+Create a `QualityReview.md` file with:
+- Feature testing results and status
+- Critical issues that need immediate attention
+- Nice-to-have improvements for future iterations
+- User experience assessment
+- Performance evaluation
+- Lessons learned and recommendations
+- Next steps for continued development
+- Final Project Changelog entry
+
+---
+**CRITICAL REQUIREMENT: Conclude your response with the following Phase Gate Checklist, marking items as complete.**
+
+**Phase Gate Checklist:**
+- [ ] All core features tested and documented?
+- [ ] Critical issues identified and prioritized?
+- [ ] `QualityReview.md` created with findings?
+- [ ] User experience evaluated?
+- [ ] Next development steps recommended?
+- [ ] Path A prototype complete and ready for feedback?</pre>
+                </div>
+            </div>
+            
+            <div class="bottom-navigation">
+                <a href="step3-a.html" class="nav-button-bottom prev">← Previous Step</a>
+                <div class="output-section">
+                    <p><strong>📄 Output:</strong> QualityReview.md with comprehensive testing results, critical issues, recommendations, and next steps for your prototype.</p>
+                </div>
+                <a href="index.html" class="nav-button-bottom">Complete Path A ✅</a>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function copyToClipboard(button) {
+            const promptContent = button.closest('.system-prompt').querySelector('pre');
+            const text = promptContent.textContent;
+            
+            navigator.clipboard.writeText(text).then(() => {
+                button.textContent = 'Copied!';
+                button.style.background = 'rgba(40, 167, 69, 0.8)';
+                
+                setTimeout(() => {
+                    button.textContent = 'Copy';
+                    button.style.background = 'rgba(255, 255, 255, 0.1)';
+                }, 2000);
+            }).catch(() => {
+                button.textContent = 'Failed';
+                setTimeout(() => {
+                    button.textContent = 'Copy';
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>
