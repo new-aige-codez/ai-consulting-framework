@@ -141,6 +141,8 @@
             box-shadow: 0 8px 25px rgba(0,0,0,0.1);
             position: relative;
             overflow: hidden;
+            text-decoration: none;
+            color: inherit;
         }
         
         .path-button:hover {
@@ -343,7 +345,7 @@
                 <h2>🚀 Select Your Path</h2>
                 <p class="intro">Choose the path that best matches your project needs and time constraints:</p>
                 
-                <button class="path-button sprinter" onclick="selectPath('Path A - The Sprinter')">
+                <a href="step1.html" class="path-button sprinter">
                     <span class="path-emoji">🟡</span>
                     <span class="path-title">Path A - The Sprinter →</span>
                     <span class="path-subtitle">Fast Track MVP Development</span>
@@ -353,7 +355,7 @@
                         • Basic web research and requirements<br>
                         • Combined implementation and review
                     </div>
-                </button>
+                </a>
                 
                 <button class="path-button strategist" onclick="selectPath('Path B - The Strategist')">
                     <span class="path-emoji">🔵</span>
@@ -409,17 +411,10 @@
     
     <script>
         function selectPath(pathName) {
-            // Get path-specific information
+            // Get path-specific information for paths B and C (Path A now links directly)
             let pathInfo = {};
             
-            if (pathName === 'Path A - The Sprinter') {
-                pathInfo = {
-                    steps: '4 streamlined steps',
-                    questions: '8-12 essential questions',
-                    time: '2-4 hours + development time',
-                    focus: 'Core functionality with basic research'
-                };
-            } else if (pathName === 'Path B - The Strategist') {
+            if (pathName === 'Path B - The Strategist') {
                 pathInfo = {
                     steps: '6 structured steps',
                     questions: '15-25 strategic questions',
@@ -460,7 +455,7 @@
                     <li><strong>Time:</strong> ${pathInfo.time}</li>
                     <li><strong>Focus:</strong> ${pathInfo.focus}</li>
                 </ul>
-                <p style="text-align: center; margin: 20px 0; font-weight: 600; color: #333;">Ready to begin your development journey!</p>
+                <p style="text-align: center; margin: 20px 0; font-weight: 600; color: #333;">Coming Soon! This path is under development.</p>
                 <div style="text-align: center;">
                     <button onclick="this.parentElement.remove()" style="
                         background: #667eea;
@@ -471,7 +466,7 @@
                         cursor: pointer;
                         font-size: 16px;
                         font-weight: 600;
-                    ">Let's Go!</button>
+                    ">Got it!</button>
                 </div>
             `;
             
