@@ -69,27 +69,89 @@
             padding: 40px 20px;
         }
         
-        .intro {
-            text-align: center;
-            margin-bottom: 50px;
+        .section {
+            margin: 60px 0;
         }
         
-        .intro h2 {
+        .section h2 {
+            text-align: center;
             font-size: 2.5em;
             margin-bottom: 20px;
             color: #1e293b;
         }
         
-        .intro p {
+        .section .subtitle {
+            text-align: center;
             font-size: 1.2em;
             color: #64748b;
+            margin-bottom: 40px;
             max-width: 800px;
-            margin: 0 auto;
+            margin-left: auto;
+            margin-right: auto;
         }
         
+        /* Comparison Table */
+        .comparison-table {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            margin: 40px 0;
+        }
+        
+        .comparison-header {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
+            color: white;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            padding: 25px;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+        
+        .comparison-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            padding: 20px 25px;
+            border-bottom: 1px solid #f1f5f9;
+            align-items: center;
+        }
+        
+        .comparison-row:last-child {
+            border-bottom: none;
+        }
+        
+        .comparison-row:nth-child(even) {
+            background: #f8fafc;
+        }
+        
+        .metric-name {
+            font-weight: 600;
+            color: #1e293b;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .star-rating {
+            display: flex;
+            gap: 2px;
+            font-size: 1.3em;
+            justify-content: center;
+        }
+        
+        .star-filled {
+            color: #fbbf24;
+        }
+        
+        .star-empty {
+            color: #e5e7eb;
+        }
+        
+        /* Path Selection */
         .paths {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 30px;
             margin: 50px 0;
         }
@@ -101,9 +163,10 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             transition: all 0.3s ease;
             border: 2px solid transparent;
+            position: relative;
         }
         
-        .path:hover {
+        .path:hover:not(.coming-soon) {
             transform: translateY(-5px);
             box-shadow: 0 20px 40px rgba(0,0,0,0.15);
         }
@@ -114,6 +177,25 @@
         
         .path.path-b {
             border-color: #3b82f6;
+        }
+        
+        .path.coming-soon {
+            opacity: 0.6;
+            cursor: not-allowed;
+            filter: grayscale(0.3);
+        }
+        
+        .coming-soon-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
         }
         
         .path h3 {
@@ -132,17 +214,36 @@
             color: #3b82f6;
         }
         
+        .path.coming-soon h3 {
+            color: #6b7280;
+        }
+        
         .path .subtitle {
             font-size: 1.1em;
             color: #64748b;
             margin-bottom: 25px;
             font-weight: 500;
+            text-align: left;
         }
         
-        .path .description {
-            color: #475569;
+        .path-metrics {
             margin-bottom: 30px;
-            line-height: 1.7;
+        }
+        
+        .path-metrics ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .path-metrics li {
+            margin: 12px 0;
+            padding-left: 0;
+            color: #475569;
+            font-size: 1em;
+            line-height: 1.5;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         
         .path .cta-button {
@@ -167,119 +268,18 @@
             color: white;
         }
         
-        .path .cta-button:hover {
+        .path.coming-soon .cta-button {
+            background: #e5e7eb;
+            color: #9ca3af;
+            cursor: not-allowed;
+        }
+        
+        .path .cta-button:hover:not(.path.coming-soon .cta-button) {
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(0,0,0,0.2);
         }
         
-        .comparison-section {
-            margin: 60px 0;
-        }
-        
-        .comparison-section h2 {
-            text-align: center;
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            color: #1e293b;
-        }
-        
-        .comparison-section .subtitle {
-            text-align: center;
-            font-size: 1.2em;
-            color: #64748b;
-            margin-bottom: 40px;
-        }
-        
-        .aspect-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 25px;
-            margin: 40px 0;
-        }
-        
-        .aspect-block {
-            border-radius: 16px;
-            padding: 30px;
-            color: white;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .aspect-block::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
-            pointer-events: none;
-        }
-        
-        .aspect-block:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
-        }
-        
-        .aspect-block.duration {
-            background: linear-gradient(135deg, #3B82F6 0%, #1E40AF 100%);
-        }
-        
-        .aspect-block.complexity {
-            background: linear-gradient(135deg, #10B981 0%, #047857 100%);
-        }
-        
-        .aspect-block.planning {
-            background: linear-gradient(135deg, #8B5CF6 0%, #5B21B6 100%);
-        }
-        
-        .aspect-block.documentation {
-            background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
-        }
-        
-        .aspect-block.risk {
-            background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
-        }
-        
-        .aspect-block.quality {
-            background: linear-gradient(135deg, #06B6D4 0%, #0891B2 100%);
-        }
-        
-        .aspect-block h3 {
-            font-size: 1.5em;
-            margin-bottom: 20px;
-            font-weight: 600;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
-        }
-        
-        .aspect-comparison {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-        
-        .path-comparison {
-            background: rgba(255, 255, 255, 0.15);
-            padding: 20px;
-            border-radius: 12px;
-            backdrop-filter: blur(10px);
-        }
-        
-        .path-comparison h4 {
-            font-size: 1.1em;
-            margin-bottom: 10px;
-            font-weight: 600;
-            opacity: 0.9;
-        }
-        
-        .path-comparison p {
-            font-size: 0.95em;
-            line-height: 1.5;
-            opacity: 0.85;
-        }
-        
+        /* Quick Start */
         .quick-start {
             background: white;
             border-radius: 16px;
@@ -293,6 +293,7 @@
             color: #1e293b;
             margin-bottom: 20px;
             font-size: 2em;
+            text-align: left;
         }
         
         .quick-start ol {
@@ -301,7 +302,7 @@
         }
         
         .quick-start li {
-            margin: 10px 0;
+            margin: 15px 0;
             line-height: 1.6;
         }
         
@@ -328,12 +329,28 @@
                 padding: 12px 20px;
             }
             
-            .intro h2 {
+            .section h2 {
                 font-size: 2em;
             }
             
-            .intro p {
-                font-size: 1.1em;
+            .comparison-header,
+            .comparison-row {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                text-align: center;
+            }
+            
+            .comparison-header {
+                padding: 20px;
+            }
+            
+            .comparison-row {
+                padding: 20px;
+            }
+            
+            .metric-name {
+                justify-content: center;
+                margin-bottom: 10px;
             }
             
             .paths {
@@ -343,20 +360,6 @@
             
             .path {
                 padding: 30px;
-            }
-            
-            .aspect-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            
-            .aspect-comparison {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-            
-            .comparison-section h2 {
-                font-size: 2em;
             }
             
             .container {
@@ -373,16 +376,16 @@
                 font-size: 1.8em;
             }
             
-            .aspect-block {
-                padding: 25px;
-            }
-            
             .path {
                 padding: 25px;
             }
             
             .quick-start {
                 padding: 30px;
+            }
+            
+            .star-rating {
+                font-size: 1.1em;
             }
         }
     </style>
@@ -398,130 +401,198 @@
     </div>
     
     <div class="container">
-        <div class="intro">
+        <!-- Comparison Section -->
+        <div class="section">
+            <h2>Compare paths, then choose</h2>
+            <p class="subtitle">Understanding the key differences between our development approaches using our rating system</p>
+            
+            <div class="comparison-table">
+                <div class="comparison-header">
+                    <div>Aspect</div>
+                    <div>Path A - Fast Track</div>
+                    <div>Path B - Strategic</div>
+                </div>
+                
+                <div class="comparison-row">
+                    <div class="metric-name">⚡ Speed/Duration</div>
+                    <div class="star-rating">
+                        <span class="star-filled">⭐</span>
+                        <span class="star-filled">⭐</span>
+                        <span class="star-filled">⭐</span>
+                        <span class="star-filled">⭐</span>
+                        <span class="star-filled">⭐</span>
+                    </div>
+                    <div class="star-rating">
+                        <span class="star-filled">⭐</span>
+                        <span class="star-filled">⭐</span>
+                        <span class="star-empty">⭐</span>
+                        <span class="star-empty">⭐</span>
+                        <span class="star-empty">⭐</span>
+                    </div>
+                </div>
+                
+                <div class="comparison-row">
+                    <div class="metric-name">🏗️ Complexity Handling</div>
+                    <div class="star-rating">
+                        <span class="star-filled">⭐</span>
+                        <span class="star-filled">⭐</span>
+                        <span class="star-empty">⭐</span>
+                        <span class="star-empty">⭐</span>
+                        <span class="star-empty">⭐</span>
+                    </div>
+                    <div class="star-rating">
+                        <span class="star-filled">⭐</span>
+                        <span class="star-filled">⭐</span>
+                        <span class="star-filled">⭐</span>
+                        <span class="star-filled">⭐</span>
+                        <span class="star-filled">⭐</span>
+                    </div>
+                </div>
+                
+                <div class="comparison-row">
+                    <div class="metric-name">📋 Planning Depth</div>
+                    <div class="star-rating">
+                        <span class="star-filled">⭐</span>
+                        <span class="star-filled">⭐</span>
+                        <span class="star-empty">⭐</span>
+                        <span class="star-empty">⭐</span>
+                        <span class="star-empty">⭐</span>
+                    </div>
+                    <div class="star-rating">
+                        <span class="star-filled">⭐</span>
+                        <span class="star-filled">⭐</span>
+                        <span class="star-filled">⭐</span>
+                        <span class="star-filled">⭐</span>
+                        <span class="star-filled">⭐</span>
+                    </div>
+                </div>
+                
+                <div class="comparison-row">
+                    <div class="metric-name">📚 Documentation</div>
+                    <div class="star-rating">
+                        <span class="star-filled">⭐</span>
+                        <span class="star-filled">⭐</span>
+                        <span class="star-empty">⭐</span>
+                        <span class="star-empty">⭐</span>
+                        <span class="star-empty">⭐</span>
+                    </div>
+                    <div class="star-rating">
+                        <span class="star-filled">⭐</span>
+                        <span class="star-filled">⭐</span>
+                        <span class="star-filled">⭐</span>
+                        <span class="star-filled">⭐</span>
+                        <span class="star-filled">⭐</span>
+                    </div>
+                </div>
+                
+                <div class="comparison-row">
+                    <div class="metric-name">⚠️ Risk Management</div>
+                    <div class="star-rating">
+                        <span class="star-filled">⭐</span>
+                        <span class="star-filled">⭐</span>
+                        <span class="star-empty">⭐</span>
+                        <span class="star-empty">⭐</span>
+                        <span class="star-empty">⭐</span>
+                    </div>
+                    <div class="star-rating">
+                        <span class="star-filled">⭐</span>
+                        <span class="star-filled">⭐</span>
+                        <span class="star-filled">⭐</span>
+                        <span class="star-filled">⭐</span>
+                        <span class="star-filled">⭐</span>
+                    </div>
+                </div>
+                
+                <div class="comparison-row">
+                    <div class="metric-name">🎯 Code Quality</div>
+                    <div class="star-rating">
+                        <span class="star-filled">⭐</span>
+                        <span class="star-filled">⭐</span>
+                        <span class="star-filled">⭐</span>
+                        <span class="star-empty">⭐</span>
+                        <span class="star-empty">⭐</span>
+                    </div>
+                    <div class="star-rating">
+                        <span class="star-filled">⭐</span>
+                        <span class="star-filled">⭐</span>
+                        <span class="star-filled">⭐</span>
+                        <span class="star-filled">⭐</span>
+                        <span class="star-filled">⭐</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Path Selection Section -->
+        <div class="section">
             <h2>Choose Your Development Path</h2>
-            <p>Select the approach that best fits your project timeline, complexity, and strategic requirements. Both paths deliver production-ready results with comprehensive AI guidance.</p>
-        </div>
-        
-        <div class="paths">
-            <div class="path path-a">
-                <h3>⚡ Path A - The Executor</h3>
-                <div class="subtitle">Fast Track MVP Development</div>
-                <div class="description">
-                    Perfect for rapid prototyping and quick market validation. Get your MVP built and deployed in record time with streamlined processes and focused execution.
-                </div>
-                <a href="step1.html" class="cta-button">Start Fast Track →</a>
-            </div>
+            <p class="subtitle">Select the approach that best fits your project timeline, complexity, and strategic requirements</p>
             
-            <div class="path path-b">
-                <h3>🧠 Path B - The Strategist</h3>
-                <div class="subtitle">Strategic Product Development</div>
-                <div class="description">
-                    Comprehensive planning and strategic development for scalable, enterprise-ready solutions. Build with thorough documentation, risk management, and quality assurance.
-                </div>
-                <a href="step1-b.html" class="cta-button">Start Strategic Path →</a>
-            </div>
-        </div>
-        
-        <div class="comparison-section">
-            <h2>Path Comparison</h2>
-            <p class="subtitle">Understanding the key differences between our development approaches</p>
-            
-            <div class="aspect-grid">
-                <div class="aspect-block duration">
-                    <h3>Duration</h3>
-                    <div class="aspect-comparison">
-                        <div class="path-comparison">
-                            <h4>Path A - Fast Track</h4>
-                            <p>1-2 weeks for complete MVP development and deployment</p>
-                        </div>
-                        <div class="path-comparison">
-                            <h4>Path B - Strategic</h4>
-                            <p>4-8 weeks for comprehensive planning and development</p>
-                        </div>
+            <div class="paths">
+                <div class="path path-a">
+                    <h3>⚡ Path A - The Executor</h3>
+                    <div class="subtitle">Fast Track MVP Development</div>
+                    <div class="path-metrics">
+                        <ul>
+                            <li>⏱️ Duration: 1-2 weeks</li>
+                            <li>📊 Complexity: Simple to moderate projects</li>
+                            <li>📋 Steps: 4 focused steps</li>
+                            <li>🎯 Focus: Rapid MVP development</li>
+                            <li>📝 Documentation: Essential only</li>
+                            <li>🧪 Testing: Basic validation</li>
+                            <li>🚀 Deployment: Quick launch</li>
+                        </ul>
                     </div>
+                    <a href="step1.html" class="cta-button">Start Fast Track →</a>
                 </div>
                 
-                <div class="aspect-block complexity">
-                    <h3>Complexity</h3>
-                    <div class="aspect-comparison">
-                        <div class="path-comparison">
-                            <h4>Path A - Fast Track</h4>
-                            <p>Simple to moderate complexity projects with core features</p>
-                        </div>
-                        <div class="path-comparison">
-                            <h4>Path B - Strategic</h4>
-                            <p>Complex enterprise solutions with advanced requirements</p>
-                        </div>
+                <div class="path path-b">
+                    <h3>🧠 Path B - The Strategist</h3>
+                    <div class="subtitle">Strategic Product Development</div>
+                    <div class="path-metrics">
+                        <ul>
+                            <li>⏱️ Duration: 4-8 weeks</li>
+                            <li>📊 Complexity: Enterprise-level projects</li>
+                            <li>📋 Steps: 6 comprehensive steps</li>
+                            <li>🎯 Focus: Strategic planning & architecture</li>
+                            <li>📝 Documentation: Extensive PVD & specifications</li>
+                            <li>🧪 Testing: Comprehensive QA strategy</li>
+                            <li>🚀 Deployment: Production-ready systems</li>
+                        </ul>
                     </div>
+                    <a href="step1-b.html" class="cta-button">Start Strategic Path →</a>
                 </div>
                 
-                <div class="aspect-block planning">
-                    <h3>Planning Depth</h3>
-                    <div class="aspect-comparison">
-                        <div class="path-comparison">
-                            <h4>Path A - Fast Track</h4>
-                            <p>Essential planning focused on immediate development needs</p>
-                        </div>
-                        <div class="path-comparison">
-                            <h4>Path B - Strategic</h4>
-                            <p>Comprehensive strategic planning with detailed specifications</p>
-                        </div>
+                <div class="path coming-soon">
+                    <div class="coming-soon-badge">Coming Soon</div>
+                    <h3>🔮 Path C - The Innovator</h3>
+                    <div class="subtitle">Advanced Methodology (In Development)</div>
+                    <div class="path-metrics">
+                        <ul>
+                            <li>⏱️ Duration: TBD</li>
+                            <li>📊 Complexity: Specialized projects</li>
+                            <li>📋 Steps: To be announced</li>
+                            <li>🎯 Focus: [Advanced methodology]</li>
+                            <li>📝 Documentation: TBD</li>
+                            <li>🧪 Testing: TBD</li>
+                            <li>🚀 Deployment: TBD</li>
+                        </ul>
                     </div>
-                </div>
-                
-                <div class="aspect-block documentation">
-                    <h3>Documentation</h3>
-                    <div class="aspect-comparison">
-                        <div class="path-comparison">
-                            <h4>Path A - Fast Track</h4>
-                            <p>Basic documentation for immediate development and deployment</p>
-                        </div>
-                        <div class="path-comparison">
-                            <h4>Path B - Strategic</h4>
-                            <p>Extensive documentation including PVD, technical specs, and processes</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="aspect-block risk">
-                    <h3>Risk Management</h3>
-                    <div class="aspect-comparison">
-                        <div class="path-comparison">
-                            <h4>Path A - Fast Track</h4>
-                            <p>Basic risk identification with rapid mitigation strategies</p>
-                        </div>
-                        <div class="path-comparison">
-                            <h4>Path B - Strategic</h4>
-                            <p>Comprehensive risk analysis with detailed mitigation plans</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="aspect-block quality">
-                    <h3>Quality Assurance</h3>
-                    <div class="aspect-comparison">
-                        <div class="path-comparison">
-                            <h4>Path A - Fast Track</h4>
-                            <p>Essential testing and validation for MVP launch</p>
-                        </div>
-                        <div class="path-comparison">
-                            <h4>Path B - Strategic</h4>
-                            <p>Comprehensive QA strategy with multiple testing phases</p>
-                        </div>
-                    </div>
+                    <div class="cta-button">Coming Soon</div>
                 </div>
             </div>
         </div>
         
+        <!-- Quick Start Guide -->
         <div class="quick-start">
             <h2>🚀 Quick Start Guide</h2>
             <ol>
-                <li><strong>Choose Your Path:</strong> Select Path A for rapid development or Path B for strategic planning</li>
-                <li><strong>Follow the Steps:</strong> Each path provides numbered steps with AI prompts and clear instructions</li>
-                <li><strong>Use AI Assistance:</strong> Copy the provided prompts into your preferred AI assistant (Claude, ChatGPT, etc.)</li>
-                <li><strong>Complete Phase Gates:</strong> Ensure all checklist items are completed before moving to the next step</li>
-                <li><strong>Build and Deploy:</strong> Follow the guidance to create and launch your product</li>
+                <li><strong>Compare the paths above</strong> using our star rating system to understand which approach fits your needs</li>
+                <li><strong>Choose your path:</strong> Select Path A for rapid development or Path B for strategic planning</li>
+                <li><strong>Follow the numbered steps:</strong> Each path provides clear steps with AI prompts and instructions</li>
+                <li><strong>Use AI assistance:</strong> Copy the provided prompts into your preferred AI assistant (Claude, ChatGPT, etc.)</li>
+                <li><strong>Complete phase gates:</strong> Ensure all checklist items are completed before moving to the next step</li>
+                <li><strong>Build and deploy:</strong> Follow the guidance to create and launch your product</li>
             </ol>
         </div>
     </div>
