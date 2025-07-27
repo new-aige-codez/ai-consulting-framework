@@ -73,7 +73,12 @@
             color: #495057;
             margin-bottom: 15px;
         }
-        
+
+        .progress-container {
+            position: relative;
+            margin-bottom: 8px;
+        }
+
         .progress-bar {
             width: 100%;
             height: 12px;
@@ -87,9 +92,44 @@
             height: 100%;
             background: linear-gradient(90deg, #007BFF 0%, #0056b3 100%);
             border-radius: 6px;
-            width: 16.67%;
+            width: 12.5%;
             transition: width 0.3s ease;
         }
+
+        .progress-ticks {
+            position: absolute;
+            top: -2px;
+            left: 0;
+            right: 0;
+            height: 16px;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 1px;
+        }
+
+        .tick {
+            width: 3px;
+            height: 16px;
+            background: #dee2e6;
+            border-radius: 2px;
+            position: absolute;
+        }
+
+        .tick.completed {
+            background: #007BFF;
+        }
+
+        .tick.current {
+            background: #0056b3;
+            box-shadow: 0 0 8px rgba(0, 86, 179, 0.5);
+        }
+
+        .tick:nth-child(1) { left: 12.5%; }  /* Step 1 */
+        .tick:nth-child(2) { left: 37.5%; }  /* Step 3 */
+        .tick:nth-child(3) { left: 50%; }    /* Step 4 */
+        .tick:nth-child(4) { left: 62.5%; }  /* Step 5 */
+        .tick:nth-child(5) { left: 87.5%; }  /* Step 7 */
+        .tick:nth-child(6) { left: 100%; }   /* Step 8 */
         
         .progress-text {
             text-align: center;
@@ -381,9 +421,19 @@
         </div>
         
         <div class="progress-section">
-            <div class="progress-label">Step 1 of 6</div>
-            <div class="progress-bar">
-                <div class="progress-fill"></div>
+            <div class="progress-label">Step 1 of 8</div>
+            <div class="progress-container">
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <div class="progress-ticks">
+                    <div class="tick current"></div>
+                    <div class="tick"></div>
+                    <div class="tick"></div>
+                    <div class="tick"></div>
+                    <div class="tick"></div>
+                    <div class="tick"></div>
+                </div>
             </div>
             <div class="progress-text">Creative Foundation</div>
         </div>
@@ -437,7 +487,7 @@
 5. **FINAL:** Once you have all necessary information, create the complete `PVD.md` with Project Glossary and detailed Product Vision sections.
 6. Add the first entry to the Project Changelog.
 
----
+--- 
 **Questions to Validate (Ask user if answers are not found in context):**
 
 **Technical Problem Definition (Required for ALL Paths):**
@@ -452,6 +502,14 @@
 - What's your team's technical expertise level?
 - Do you have existing infrastructure or hosting preferences?
 
+**Success Criteria (Required for Path C):**
+- How will you measure success in the first 6 months?
+- What would make this project a complete failure?
+- What features are absolutely essential vs. nice-to-have?
+- What are your key performance indicators (KPIs)?
+- Do you have existing user research or validation?
+--- 
+
 **Final Output (when all questions are answered):**
 A complete `PVD.md` file with:
 - Project overview and vision statement
@@ -460,6 +518,7 @@ A complete `PVD.md` file with:
 - Technical approach and constraints
 - Project Glossary with key terms and definitions
 - Project Changelog with first entry
+- Path A: Brief sanity check assessment
 
 ---
 **CRITICAL REQUIREMENT: Conclude your response with the following Phase Gate Checklist, marking items as complete.**
@@ -468,6 +527,7 @@ A complete `PVD.md` file with:
 - [ ] `PVD.md` created and structured correctly?
 - [ ] Project Glossary and Product Vision sections completed?
 - [ ] First changelog entry added?
+- [ ] Path A: Sanity check completed (if applicable)?
 - [ ] Ready to proceed to next step in your chosen path?</pre>
                 </div>
             </div>
